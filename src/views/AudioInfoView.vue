@@ -9,8 +9,9 @@
   import { useWindowSize } from '@vueuse/core'
   import { useElementSize } from '@vueuse/core'
   //import sound from '../assets/AudioTest.m4a'
-  import sound_en from '../assets/Audio/EN03-Disc1.wav'
-  import sound_xh from '../assets/Audio/XH03-Disc1.wav'
+  import sound_en from '../assets/Audio/EN02-AudioInfo.wav'
+  import sound_xh from '../assets/Audio/XH02-AudioInfo.wav'
+
 
   const audio = ref(); 
   const audio_en = new Audio(sound_en)
@@ -26,24 +27,7 @@
     lang.value =  langparam.value
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
   } 
- // function setpage(n) {
-   // console.log("start fn: n=", n);
-  //alert(`x= ${x}  total = ${total}`);
-    //n = n+1;
-    //nnew.value = n;
-    //console.log("end fn: n=", n);
-  //}
 
-  // function setup() {
-  //   const el = ref(null);
-  //   const { width, height } = useElementSize(el);
-  //   return {
-  //     el,
-  //     width,
-  //     height,
-  //   };
-  // }
-  //var myTrack = new Audio('../assets/AudioTest.m4a')
   var myTrack = new Audio('../assets/ENDisc1.wav')
   function send() {
     //alert(`send function`);
