@@ -1,1 +1,0 @@
-import{r as e,o as t,c as n,n as o}from"./index-C0R2gJ6j.js";const r={type:"text"},s="ID",p={__name:"FormInput",setup(a){return o(),e(),e(0),e("writehere"),e("email.net"),e("new.net"),e(0),getemail(s),e("iv"),(c,_)=>(t(),n("input",r))}};export{p as default};
