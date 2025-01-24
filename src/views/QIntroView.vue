@@ -1,5 +1,11 @@
 <script setup>
   import { ref } from 'vue'
+  import sound_en from '../assets/Audio/EN06-QIntro.wav'
+  import sound_xh from '../assets/Audio/XH06-QIntro.wav'
+
+  const audio_en = new Audio(sound_en)
+  const audio_xh = new Audio(sound_xh) 
+
   const lang = ref("L")
   const lang_qi=ref("a")
   const lang_q = ref("b")
@@ -52,7 +58,16 @@ lang_q.value = "E"
     <div class="row">
       <div class="footer foot-fixed"> 
         <br><br>
-        <img alt="speaker" src="../assets/speaker-white.png" width="40" height="40" class="speaker"/>
+        <div v-if="$route.params.lang === 'xh'">
+          <span @click=audio_xh.play() >     
+            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          </span>
+        </div>
+        <div v-if="$route.params.lang === 'en'">
+          <span @click=audio_en.play() >     
+            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          </span>
+        </div>
         <div class="d-flex align-items-center justify-content-between">
           <router-link :to="{ name: 'disclaimer3', params: { lang } }" class="arrowsx"> &#8592 </router-link>
           <router-link :to="{ name: 'question', params: { lang, total: 0, qnumber: 1 } }" class="arrowsx"> &#8594 </router-link>

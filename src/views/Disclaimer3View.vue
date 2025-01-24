@@ -6,23 +6,19 @@
 
 <script setup>
   import { ref } from 'vue'
+  import sound_en from '../assets/Audio/EN05-Disc3.wav'
+  import sound_xh from '../assets/Audio/XH05-Disc3.wav'
+
+  const audio_en = new Audio(sound_en)
+  const audio_xh = new Audio(sound_xh) 
   const lang = ref("L")
   const lang_qi = ref("I")
   const words = ref("D")
-  //const n = ref(1)
-  //const nnew = ref(1)
 
   function setlang(langparam) {
     lang.value =  langparam.value
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
   } 
-  //function setpage(n) {
-    //console.log("start fn: n=", n);
-  //alert(`x= ${x}  total = ${total}`);
-    //n = n+1;
-    //nnew.value = n;
-    //console.log("end fn: n=", n);
-  //}
 </script>
 
 
@@ -51,9 +47,18 @@
     {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
   
     <!-- Footer navigation -->
-    <div class = "footer-mt-auto foot-fixed"> 
+    <div class = "footer-mt-auto foot-fixed">  
         <div class="d-flex align-items-center justify-content-between">   
-          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" />
+          <div v-if="$route.params.lang === 'xh'">
+          <span @click=audio_xh.play() >     
+            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          </span>
+        </div>
+        <div v-if="$route.params.lang === 'en'">
+          <span @click=audio_en.play() >     
+            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          </span>
+        </div>
           <div>
             <span class="circleoutlinex"></span> &nbsp;
             <span class="circleoutlinex"></span> &nbsp;
