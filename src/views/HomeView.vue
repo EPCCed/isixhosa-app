@@ -7,7 +7,7 @@
 <script setup>
   import { useRoute } from 'vue-router'
   import { ref, watch } from 'vue'
-  import sound from '../assets/AudioTest.m4a'
+  // import sound from '../assets/AudioTest.m4a'
   import FormInput from '../views/FormInput.vue'
   import { useWindowSize } from '@vueuse/core'
 
@@ -17,8 +17,8 @@
   //console.log('useRoute=', useRoute)
   console.log('width=', width.value, ' height=', height.value)
 
-  import VueAudio from '../assets/AudioTest.m4a'
-  var myTrack = new Audio('../assets/AudioTest.m4a')
+  // import VueAudio from '../assets/AudioTest.m4a'
+  // var myTrack = new Audio('../assets/AudioTest.m4a')
   function send() {
     alert(`send function`);
     myTrack.play()
@@ -28,7 +28,7 @@ const route = useRoute()
 const userData = ref()
 const clickcount = ref(0)
 const inputvar = ref('writehere')
-const audio = new Audio(sound) 
+// const audio = new Audio(sound) 
 const num = ref(0)
 </script>
 
@@ -37,9 +37,9 @@ const num = ref(0)
 <!---------------------------->
 <template>
 
-  <div class="container row">
-     <!-- Adjust width depending on small or larger screen size, by total columns used -->
-    <div col-sm-6 col-12>
+<div class="container row">
+  <!-- Adjust width depending on small or larger screen size, by total columns used -->
+  <div col-sm-6 col-12>
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader ">
