@@ -7,27 +7,22 @@
 <script setup>
   console.log('script set up: localStorage.email =', localStorage.email);
 import { ref } from 'vue'
+import sound_en from '../assets/Audio/EN01-Lang.wav'
+import sound_xh from '../assets/Audio/XH01-Lang.wav'
+
 const name = ref('Lucy')
 const lang = ref("unset")
-
-  import sound_en from '../assets/Audio/EN01-Lang.wav'
-  import sound_xh from '../assets/Audio/XH01-Lang.wav'
 const audio = ref(); 
 const audio_en = new Audio(sound_en);
 const audio_xh = new Audio(sound_xh); 
 
 function setlangI(event) {
-  //alert(`lang= ${lang.value}`);
   lang.value="xh";
-  
-  //count.value="V"
-  //alert(`lang= ${lang.value}`);
   } 
 function setlangE(event) {
   lang.value="en";
   } 
 </script>
-
 
 <!---------------------------->
 <!--  SCREEN SETUP SECTION  -->
@@ -47,8 +42,6 @@ function setlangE(event) {
         <h7> Please choose a language to continue </h7>
         <h6 @click=audio_en.play()>
             <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp </h6>
-
-
       </div>
 
     <!--  Language Choices  -->
@@ -75,8 +68,6 @@ function setlangE(event) {
     <footer class="mt-auto footer">
         <span id="bottom"> 
           <h9> Blank footer text for language screen. Blank footer text for language screen. Next line </h9> 
-          <!-- <div class="d-flex align-items-center justify-content-between">   
-          </div> -->
 
           <!--  Navigation Arrows -->
           <div class="footer-text ">
@@ -102,7 +93,6 @@ function setlangE(event) {
   width: 100%; 
   height: 35vh;
 }
-
 .selected {
   color: red;
   background-color: lightgrey;
@@ -125,36 +115,4 @@ function setlangE(event) {
 h9 {
   color: darkred
 }
-/* a:hover{
-  color: green;
-  background-color: white; 
-  font-size: 22px;
-  font-weight: 700;
-} */
-/* a:link{
-  color: blue;
-}   */
-
-/* h3 {
-  font-weight:  500;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.h4 {
-    font-size: 0.5rem;
-    color: white;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-} */
 </style>

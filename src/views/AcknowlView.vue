@@ -1,21 +1,24 @@
 <script setup>
-
 </script>
 
 <template>
-<div class="container row">
-    <!-- Adjust width depending on small or larger screen size, by total columns used -->
-  <div col-sm-6 col-12></div>
 
-  <!--  Page title -->
+<div class="container row">
+  
+  <!-- Adjust width depending on small or larger screen size, by total columns used -->
+  <div col-sm-6 col-12>
+
+    <!--  Page title -->
     <div class="header">
-        <br> 
-        <h4> ACKNOWLEDGEMENTS </h4>
+       <br> 
+       <h4> ACKNOWLEDGEMENTS </h4>
     </div>
-<div class="set-width">
-    <br>
-</div>
-  <!-- Main text -->
+
+    <div class="set-width">
+        <br>
+    </div>
+    
+    <!-- Main text -->
     <div class="ack-middle">
         <table class="table table-sm table-striped"> 
             <thead> 
@@ -38,7 +41,7 @@
                         &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
                 </tr> 
                 <tr> 
-                    <td>Barbera Laughton<br>
+                    <td>Barbara Laughton<br>
                         &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
                         <td>Thandi Hamana<br>
                             &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
@@ -85,7 +88,8 @@
         </div>
     </div>
 
-    </div>
+</div>
+</div>
     
 </template>
 

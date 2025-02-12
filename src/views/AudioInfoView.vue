@@ -12,7 +12,6 @@
   import sound_en from '../assets/Audio/EN02-AudioInfo.wav'
   import sound_xh from '../assets/Audio/XH02-AudioInfo.wav'
 
-
   const audio = ref(); 
   const audio_en = new Audio(sound_en)
   const audio_xh = new Audio(sound_xh) 
@@ -50,7 +49,7 @@
       {{ console.log('width=', width, 'height=', height) }}
       <br>
       <div class="screenbox" v-if="$route.params.lang === 'xh'">
-        Ukuba ungathanda ukumamela imiyalelo okanye imibuzo, nceda cofa iqhosha lesipikha kwikona engezantsi yasekhohlo.
+        Ukuba ungathanda ukumamela imiyalelo okanye imibuzo, nceda cofa iqhosha lesipikha kwikona engezantsi yasekhohlo (left).
       </div>
       <div class="screenbox" v-if="$route.params.lang === 'en'">
         If you would like to listen to the instructions or questions, please press the speaker button in the lower left corner.
@@ -58,10 +57,7 @@
     </div>
 
     {{setlang($route.params.lang)}}
-    <!-- {{ setpage(n) }} -->
-<!-- 
-    {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
-   -->
+
   <!-- Footer navigation -->
 
     <div class = "footer-mt-auto foot-fixed">  

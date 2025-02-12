@@ -5,12 +5,12 @@
 <!---------------------------->
 
 <script setup>
-
   import { useRoute } from 'vue-router'
   import { ref, watch } from 'vue'
   import sound from '../assets/AudioTest.m4a'
   import FormInput from '../views/FormInput.vue'
   import { useWindowSize } from '@vueuse/core'
+
   const { width, height } = useWindowSize()
 
   console.log('useWindowSize=', useWindowSize())
@@ -29,9 +29,6 @@ const userData = ref()
 const clickcount = ref(0)
 const inputvar = ref('writehere')
 const audio = new Audio(sound) 
-
-//const testemail = ref('t')
-//localStorage.email = ref('lse.net')
 const num = ref(0)
 </script>
 
@@ -40,21 +37,19 @@ const num = ref(0)
 <!---------------------------->
 <template>
 
- <!-- <button @click=audio.play() class="'bg-green"> Audio </button>   -->
-
- <div class="container row">
-    <!-- Adjust width depending on small or larger screen size, by total columns used -->
+  <div class="container row">
+     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader ">
         <img alt="isiXhosa" src="../assets/isiXhosaLogo.png" class="logo img-fluid"  />
     </div>
-    <!--<div class="set-width">
+    <div class="set-width">
       <br>
     </div>
 
-     Title and University Logos -->
+    <!-- Title and University Logos -->
     <div class="homemiddle">
          <h2 class="darkred"> IPHEPHA LEMIBUZO <br>
                             LEMPILO YESIGULANE </h2>

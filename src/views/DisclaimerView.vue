@@ -26,24 +26,6 @@
     lang.value =  langparam.value
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
   } 
- // function setpage(n) {
-   // console.log("start fn: n=", n);
-  //alert(`x= ${x}  total = ${total}`);
-    //n = n+1;
-    //nnew.value = n;
-    //console.log("end fn: n=", n);
-  //}
-
-  // function setup() {
-  //   const el = ref(null);
-  //   const { width, height } = useElementSize(el);
-  //   return {
-  //     el,
-  //     width,
-  //     height,
-  //   };
-  // }
-  //var myTrack = new Audio('../assets/AudioTest.m4a')
   var myTrack = new Audio('../assets/ENDisc1.wav')
   function send() {
     //alert(`send function`);

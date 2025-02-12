@@ -7,12 +7,13 @@
 <script setup>
   import { useWindowSize } from '@vueuse/core';
   import ptIDData from '../email.json';
+  import { ref } from 'vue'
+  
   const { width, height } = useWindowSize()
   const confirmed =ref(0)
-import { ref } from 'vue'
-//const id= ref('PtID');
-const ptID = ref('')
-const newName = ref('nN');
+  //const id= ref('PtID');
+  const ptID = ref('')
+  const newName = ref('nN');
 
 if (localStorage.name) {
       this.name = localStorage.name;
@@ -31,12 +32,10 @@ function save_ptID(string) {
               ptIDData.ptID,'confirmed=', confirmed.value);
   return ptID.value = window.sessionStorage.ptID;
 }
-
 //watch: {
   //  name(newName); 
     //  localStorage.name = newName;
   //}
-
 </script>
 
 <!---------------------------->
@@ -46,7 +45,7 @@ function save_ptID(string) {
 <div class="container row">
   <div col-sm-6 col-12> 
 
-  <!--  Header  -->
+    <!--  Header  -->
     <div class = "header-mt-auto head-fixed"> 
       <h5>  <br>
             FOR OFFICE USE
@@ -55,7 +54,7 @@ function save_ptID(string) {
       </h5>
     </div>
   
-  <!--  CENTRE SECTION  -->
+    <!--  CENTRE SECTION  -->
     <div class="middle">
       <br><br>
       <div class="center"> 
@@ -81,7 +80,7 @@ function save_ptID(string) {
         <div class="footer-text">
           Exported user response from this session will be labelled using this provided identifier.
           <br><br>
-          Impendulo yomsebenzisi ethunyelweyo kule seshini iza kuleyibhelishwa kusetyenziswa 
+          Impendulo yomsebenzisi ethunyelweyo kule seshini iza ku-labelled kusetyenziswa 
           esi sichongi sinikiweyo.
           <div class="arrows">
             <span><RouterLink to="/email" class = "arrows"> &#8592 </RouterLink> </span>
@@ -90,23 +89,20 @@ function save_ptID(string) {
         </div>
     </div>
 
-  </div>
-</div>
+  </div> <!-- col-sm col -->
+</div> <!-- container row -->
 
 </template>
 
 <style scoped>
-
-h1 {
+/* h1 {
   font-weight: 700;
   font-size: 2.6rem;
   position: relative;
   top: -10px;
-}
-
+} */
 h3 {
   font-weight:  500;
   font-size: 1.2rem;
 }
-
 </style>

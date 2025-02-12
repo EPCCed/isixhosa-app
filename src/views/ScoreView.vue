@@ -32,6 +32,7 @@ function setlang(langparam) {
 <!-- {{console.log("lang=", lang, "$route.params.lang=", $route.params.lang)}}
 {{console.log("total=", total, "$route.params.total=", $route.params.total)}} -->
 <!-- <div class="screendef"> -->
+  <!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
 
   <div class="container row">
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
@@ -40,27 +41,44 @@ function setlang(langparam) {
       <!--  Header  -->
         <div class = "header">
           <br> 
-          <h4 v-if="$route.params.lang === 'xh'"> UKUFAKWA IKHOWUDI YIOFISI </h4>
-          <h4 v-if="$route.params.lang === 'en'"> CODING BY THE OFFICE </h4>
+          <!-- <h4 v-if="$route.params.lang === 'xh'"> UKUFAKWA IKHOWUDI YIOFISI </h4>
+          <h4 v-if="$route.params.lang === 'en'"> CODING BY THE OFFICE </h4> -->
         </div> 
+
+        <br>
+        <form action="mailto:l.norris@epcc.ed.ac.uk" method="post" enctype="text/plain">
+  Patient ID:<br>
+  <input type="text" name="name"><br>
+  E-mail:<br>
+  <input type="text" name="mail"><br>
+  <input type="submit" value="Send">
+  <!-- <input type="reset" value="Reset"> -->
+</form>
+
 
     <!--  Score --> 
     {{settotal($route.params.total)}}
     <!-- display_total= {{ display_total }} -->
 
     <div class="middle middle-score">
-        <br><br>
-        <h4 v-if="$route.params.lang === 'xh'">
+        <!-- <br><br> -->
+        <!-- <h4 v-if="$route.params.lang === 'xh'">
           AmaNqaku eWonke   &nbsp&nbsp&nbsp&nbsp   {{ display_total }}
-        </h4>
-        <h4 v-if="$route.params.lang === 'en'">
+        </h4> -->
+        <!-- <h4 v-if="$route.params.lang === 'en'">
           Total Score &nbsp&nbsp&nbsp&nbsp {{ display_total }}
-        </h4>
-        <br><br>
-        <h6>Scores for Patient ID: &nbsp {{  display_ptID }}</h6>
-        <h6>will be emailed to: &nbsp&nbsp&nbsp {{ display_email }}
-        &nbsp&nbsp&nbsp&nbsp <button @click = send_email(ptID)> Send Email </button>    </h6>
+        </h4> -->
+        <!-- <br><br> -->
+        <!-- <h5>Scores for Patient ID: &nbsp {{  display_ptID }} <br><br>
+            &nbsp will be emailed to: &nbsp&nbsp&nbsp {{ display_email }}
+            &nbsp&nbsp&nbsp&nbsp <button @click = send_email(ptID)> <a href="mailto:EMAILADDRESS"> Send Email </a> </button>    </h6> 
+        <br><br><br>
+        <p> <a href="mailto:l.norris@epcc.ed.ac.uk"> Send Email </a> </p> </h5> -->
         <!-- <button @click="mailto:name@one.net" method="post" enctype="text/plain"></button> -->
+  
+
+
+
       </div>
 
   <!-- {{ console.log('email_address=',emailData.email_address) }}  -->

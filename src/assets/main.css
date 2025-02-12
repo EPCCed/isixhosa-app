@@ -55,16 +55,7 @@ a,
   width: 100%; 
   height: 25vh;
 }
-/*.centre {
-  padding: 0%;
-  background-color: white;
-  color: black;
-  text-align: left; 
-  width: 0vw;
-  height: 50vh;
-  margin-left: 1vw;
-  margin-right: 5vw;
-}*/
+
 .middle {
   padding: 0%;
   background-color: white;
@@ -191,12 +182,6 @@ h9 {
    text-decoration: none;
  }
 
-/* .arrowbox {
-  background-color:darkred;
-  padding: 5px;
-  width: 100%;
-  height: 25%;
-} */
 .arrows {
   color: white;
   font-weight:  200;
@@ -259,8 +244,25 @@ h9 {
   width: 35px;
   height: 30px;
 }
+.speaker_q {
+  margin-left: 10px;
+  margin-right: 0px;
+  width: 35px;
+  height: 35px;
+  /* padding: 5px;
+  background-color: darkred; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
 .speaker:hover {
   background-color: blue;
+}
+.speaker_q:hover {
+  width: 40px;
+  background-color: blue;
+  padding: 5px;
 }
 
 .dotx {
