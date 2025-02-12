@@ -221,7 +221,7 @@ console.log('qnum=', qnum)
 <!--  SET AUDIO VARIABLE FOR CURRENT QUESTION NUMBER & LANGUAGE                                       -->
 <!------------------------------------------------------------------------------------------------------> 
 
-
+{{ console.log("route.params.lang=", $route.params.lang, ' qnum=',qnum, 'audioQ1_en=', audioQ1_en)}}
   <div v-if="$route.params.lang === 'en'" class="white">
     <span v-if = 'qnum == 1'> {{ audioQ = audioQ1_en}} </span>
     <span v-if = 'qnum == 2'> {{ audioQ = audioQ2_en}} </span>
