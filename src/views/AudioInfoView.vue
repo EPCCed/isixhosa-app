@@ -27,11 +27,11 @@
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
   } 
 
-  var myTrack = new Audio('../assets/ENDisc1.wav')
-  function send() {
-    //alert(`send function`);
-    myTrack.play()
-    } 
+  // var myTrack = new Audio('../assets/ENDisc1.wav')
+  // function send() {
+  //   //alert(`send function`);
+  //   myTrack.play()
+  //   } 
 </script>
 
 
