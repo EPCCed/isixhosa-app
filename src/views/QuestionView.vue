@@ -102,7 +102,7 @@ const audioXA2_xh = new Audio(soundXA2_xh)
 const audioXA3_en = new Audio(soundXA3_en)
 const audioXA3_xh = new Audio(soundXA3_xh)
 
-const audioQ = new Audio(soundA0_xh)
+const audioQ = new Audio(soundQ1_en)
 const audionew = new Audio(soundA1_en)
 const question = ref (questionDataEn);
 const qscore = ref(0)
@@ -222,8 +222,9 @@ console.log('qnum=', qnum)
 <!------------------------------------------------------------------------------------------------------> 
 
 {{ console.log("route.params.lang=", $route.params.lang, ' qnum=',qnum, 'audioQ1_en=', audioQ1_en)}}
-  <div v-if="$route.params.lang === 'en'" class="white">
-    <span v-if = 'qnum == 1'> {{ audioQ = audioQ1_en}} </span>
+  <div v-if="$route.params.lang === 'en'" class="white"> 
+        {{ console.log("v-if lang=en") }}
+    <span v-if = 'qnum == 1'> {{ audioQ = audioQ1_en, console.log("q1")}} </span>
     <span v-if = 'qnum == 2'> {{ audioQ = audioQ2_en}} </span>
     <span v-if = 'qnum == 3'> {{ audioQ = audioQ3_en}} </span>
     <span v-if = 'qnum == 4'> {{ audioQ = audioQ4_en}} </span>

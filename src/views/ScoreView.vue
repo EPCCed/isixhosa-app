@@ -44,17 +44,15 @@ function setlang(langparam) {
           <!-- <h4 v-if="$route.params.lang === 'xh'"> UKUFAKWA IKHOWUDI YIOFISI </h4>
           <h4 v-if="$route.params.lang === 'en'"> CODING BY THE OFFICE </h4> -->
         </div> 
-
         <br>
-        <form action="mailto:l.norris@epcc.ed.ac.uk" method="post" enctype="text/plain">
-  Patient ID:<br>
-  <input type="text" name="name"><br>
-  E-mail:<br>
-  <input type="text" name="mail"><br>
-  <input type="submit" value="Send">
-  <!-- <input type="reset" value="Reset"> -->
-</form>
 
+  <a href="mailto:a.krause@epcc.ed.ac.uk?Subject=SubjectHere&body=ThisIsTheMailtext">
+    Send Email to AK
+  </a>
+  <br><br>
+  <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=SubjectHere&body=ThisIsTheMailtext">
+    Send Email to LN
+  </a>
 
     <!--  Score --> 
     {{settotal($route.params.total)}}
@@ -89,7 +87,7 @@ function setlang(langparam) {
   <!--  Navigation Footer  -->
 
     <div class="footer">
-      <h9> Blank footer text for language screen. Blank footer text for language screen. Next line </h9> 
+      <h6> Blank footer text for language screen. Blank footer text for language screen. Next line </h6> 
       <div class="d-flex align-items-center justify-content-between">            
           <router-link :to="{ name: 'complete', params: { lang, total }}" class="leftbutton"> &#8592 </router-link>
           <RouterLink to="/" class="rightbutton" ><h5>Home</h5> </RouterLink> 
@@ -113,7 +111,7 @@ function setlang(langparam) {
   margin-right: 0vw;
 }
 
-h9 {
+h6 {
   color: darkred
 }
 
