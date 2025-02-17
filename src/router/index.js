@@ -53,35 +53,35 @@ const router = createRouter({
       component: () => import('../views/QIntroView.vue')
     },
     {
-      path: '/question/:lang/:total/:qnumber',
+      path: '/question/:lang/:qnumber',
       name: 'question',
       component: () => import('../views/QuestionView.vue')
     },
     {
-      path: '/extraquestion/:lang/:total',
+      path: '/extraquestion/:lang',
       name: 'extraquestion',
       component: () => import('../views/Q10View.vue')
     },
     {
-      path: '/complete/:lang/:total',
+      path: '/complete/:lang',
       name: 'complete',
       component: () => import('../views/CompleteView.vue')
     },
     {
-      path: '/score/:lang/:total',
+      path: '/score/:lang',
       name: 'score',
       component: () => import('../views/ScoreView.vue')
     },
-    {
-      path: '/Q1/:lang/:total',
-      name: 'Q1',
-      component: () => import('../views/Q1View.vue')
-    },
-    {
-      path: '/Q2/:lang/:total',
-      name: 'Q2',
-      component: () => import('../views/Q2View.vue')
-    },
+    // {
+    //   path: '/Q1/:lang/:total',
+    //   name: 'Q1',
+    //   component: () => import('../views/Q1View.vue')
+    // },
+    // {
+    //   path: '/Q2/:lang/:total',
+    //   name: 'Q2',
+    //   component: () => import('../views/Q2View.vue')
+    // },
     {
       path: '/aboutapp',
       name: 'aboutapp',
@@ -92,16 +92,16 @@ const router = createRouter({
       name: 'acknowl',
       component: () => import('../views/AcknowlView.vue')
     },
-    {
-      path: '/about/:lang',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
-    },
-    {
-      path: '/forminput',
-      name: 'forminput',
-      component: () => import('../views/FormInput.vue')
-    },
+    // {
+    //   path: '/about/:lang',
+    //   name: 'about',
+    //   component: () => import('../views/AboutView.vue')
+    // },
+    // {
+    //   path: '/forminput',
+    //   name: 'forminput',
+    //   component: () => import('../views/FormInput.vue')
+    // },
   ]
 })
 

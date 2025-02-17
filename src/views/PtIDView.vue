@@ -42,7 +42,7 @@ function save_ptID(string) {
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-<div class="container row">
+<div class="container">
   <div col-sm-6 col-12> 
 
     <!--  Header  -->
@@ -55,7 +55,7 @@ function save_ptID(string) {
     </div>
   
     <!--  CENTRE SECTION  -->
-    <div class="middle">
+    <div class="middle-small">
       <br><br>
       <div class="center"> 
         <h3>  Enter Participant ID or Patient Code </h3>
@@ -71,11 +71,10 @@ function save_ptID(string) {
         <br><br>
       </div>
     </div>
-  <!-- {{ console.log('localS=',localStorage.email) }}  -->
-  <!-- {{ console.log('wsessionS=',window.sessionStorage.email) }} -->
+
   
   <!--  FOOTER SECTION  -->
-    <div class="footer-mt-auto footer"> 
+    <div class="footer-mt-auto footer-large"> 
         <br>
         <div class="footer-text">
           Exported user response from this session will be labelled using this provided identifier.
@@ -95,12 +94,6 @@ function save_ptID(string) {
 </template>
 
 <style scoped>
-/* h1 {
-  font-weight: 700;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-} */
 h3 {
   font-weight:  500;
   font-size: 1.2rem;

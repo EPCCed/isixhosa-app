@@ -1,11 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { ref, onMounted } from 'vue'
+//import HelloWorld from './components/HelloWorld.vue'
+//import Home from './components/Home.vue'
 
+import { ref, onMounted } from 'vue'
+// reactive state
 const score = ref(0)
 const lang = ref("L")
 const newName = ref(' ')
 
+//const score_total =ref(0)
+
+// functions that mutate state and trigger updates
 function increment() {
   inc.value++
 }

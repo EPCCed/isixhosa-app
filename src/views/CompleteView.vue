@@ -21,7 +21,7 @@
 {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
 <!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
 
-<div class="container row">
+<div class="container">
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <!-- <div col-sm-6 col-12> -->
 
@@ -42,8 +42,8 @@
     <div class="footer">
       <img alt="speaker" src="../assets/speaker-white.png" class="speaker"/>
         <div class="d-flex align-items-center justify-content-between">
-          <router-link :to="{ name: 'qintro', params: { lang } }" class="leftbutton"> &#8592 </router-link>      
-          <router-link :to="{ name: 'score', params: { lang, total }}" class="rightbutton"> &#8594 </router-link>
+          <router-link :to="{ name: 'extraquestion', params: { lang } }" class="leftbutton"> &#8592 </router-link>      
+          <router-link :to="{ name: 'score', params: { lang }}" class="rightbutton"> &#8594 </router-link>
         </div>
     </div>
     

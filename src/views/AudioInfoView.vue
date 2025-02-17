@@ -74,12 +74,6 @@
           </span>
         </div>
 
-<!-- 
-        <div>
-          <span class="dotx"></span> &nbsp; 
-          <span class="circleoutlinex"></span> &nbsp;
-          <span class="circleoutlinex"></span> &nbsp;
-        </div> -->
       </div>
 
       <div class="d-flex align-items-center justify-content-between">
@@ -88,8 +82,7 @@
       </div>
     </div>
 
-  
-</div>
+ </div>
 </template>
 
 

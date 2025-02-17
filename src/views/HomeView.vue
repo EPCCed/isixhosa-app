@@ -37,12 +37,13 @@ const num = ref(0)
 <!---------------------------->
 <template>
 
-<div class="container row">
+<div class="container">
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader ">
+      <br>
         <img alt="isiXhosa" src="../assets/isiXhosaLogo.png" class="logo img-fluid"  />
     </div>
     <div class="set-width">
@@ -83,42 +84,28 @@ h9 {
 .homeheader {
   padding: 0vh;
   width: 100%;
-  /*height: 58vh;*/
+  height: 58vh;
 }
 .homemiddle {
   padding: 0vh;
   text-align: center;
   margin-left: 0%;
   width: 100%;
-  /*height: 18vh;*/ 
+  height: 18vh; 
 }
 .homefooter {
-  /* padding: 2%; */
+  padding: 2%;
   background-color: darkred;
   color: white;
-  /*width: 100%;
-  height: 12vh;*/
+  /*width: 100%; */
+  height: 15vh;
 }
 .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-/*.rightbuttonhome {
-  color: white;
-  font-weight:  200;
-  font-size: 3.5rem;
-  text-decoration: none;
-  display: inline;
-  margin-left: 50%;
-  margin-right: 2%; 
-}
-h1 {
-  font-weight: 700;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}*/
+
 h2 {
   font-weight: 700;
   font-size: 180%;
@@ -129,16 +116,15 @@ h3 {
   font-weight:  800;
   font-size: 100%;
 }
-.aboutbutton {
+/*.aboutbutton {
   /* display: flex;
-  flex-wrap: wrap; */ 
-  width:75px;
+  flex-wrap: wrap; 
   color: white;
   text-decoration: none;
   margin-left: 100px;
   margin-right: 500px;
   border: 1px solid white;
-        }
+} */
 
 .greetings h1,
 .greetings h3 {

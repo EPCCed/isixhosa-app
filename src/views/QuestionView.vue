@@ -8,18 +8,6 @@
 
 import { ref } from 'vue';
 
-const componentKey = ref(0);
-const forceRerender = () => {
-  componentKey.value += 1;
-};
-
-// const methodThatForcesUpdate = () => {
-//   // ...
-//   const instance = ref();
-//   instance.proxy.forceUpdate();
-//   // ...
-// };
-
 import questionDataXh from '../question-text-xh.json';
 import questionDataEn from '../question-text-en.json';
 import updateData from '../update.json';
@@ -63,48 +51,104 @@ import soundXA2_xh from '../assets/Audio/XH23-XA2.wav'
 import soundXA3_en from '../assets/Audio/EN24-XA3.wav'
 import soundXA3_xh from '../assets/Audio/XH24-XA3.wav'
 
-const audioQ1_en = new Audio(soundQ1_en)
-const audioQ1_xh = new Audio(soundQ1_xh)
-const audioQ2_en = new Audio(soundQ2_en)
-const audioQ2_xh = new Audio(soundQ2_xh)
-const audioQ3_en = new Audio(soundQ3_en)
-const audioQ3_xh = new Audio(soundQ3_xh)
-const audioQ4_en = new Audio(soundQ4_en)
-const audioQ4_xh = new Audio(soundQ4_xh)
-const audioQ5_en = new Audio(soundQ5_en)
-const audioQ5_xh = new Audio(soundQ5_xh)
-const audioQ6_en = new Audio(soundQ6_en)
-const audioQ6_xh = new Audio(soundQ6_xh)
-const audioQ7_en = new Audio(soundQ7_en)
-const audioQ7_xh = new Audio(soundQ7_xh)
-const audioQ8_en = new Audio(soundQ8_en)
-const audioQ8_xh = new Audio(soundQ8_xh)
-const audioQ9_en = new Audio(soundQ9_en)
-const audioQ9_xh = new Audio(soundQ9_xh)
-const audioXQ_en = new Audio(soundXQ_en)
-const audioXQ_xh = new Audio(soundXQ_xh)
+const componentKey = ref(0);
+const forceRerender = () => {
+  componentKey.value += 1;
+};
+const selected = ref(null)
+const language = ref('English')
+const question = ref(0)
 
-const audioA0_en = new Audio(soundA0_en)
-const audioA0_xh = new Audio(soundA0_xh)
-const audioA1_en = new Audio(soundA1_en)
-const audioA1_xh = new Audio(soundA1_xh)
-const audioA2_en = new Audio(soundA2_en)
-const audioA2_xh = new Audio(soundA2_xh)
-const audioA3_en = new Audio(soundA3_en)
-const audioA3_xh = new Audio(soundA3_xh)
+const answers = {
+  'English': [
+    "Not at<br> all<br><br>",
+    "Several<br> days<br><br>",
+    "More<br> than<br> half the<br> days<br><br>",
+    "Nearly<br> every<br> day<br><br>",
+  ],
+  'isiXhosa': [
+    "Andikhange<br> konke konke<br><br>",
+    "lintsuku<br> eziliqela<br><br>",
+    "Ngaphezulu<br> kwesiqingatha<br> seentsuku<br><br>",
+    "Phantse<br> yonke<br> imihla <br><br>"
+  ]
+}
+const header = {
+  "English": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
+  "isiXhosa": "Kwiiveki ezi-2 ezidlulileyo, ingaba uhlutshwe rhoqo kangakanani yiyo nayiphi na kwezi ngxaki zilandelayo?"
+}
+const questions = {
+    "English": [
+        "Little interest or pleasure in doing things", 
+        "Feeling down, depressed, or hopeless",
+        "Trouble falling or staying asleep, or sleeping too much",
+        "Feeling tired or having little energy",
+        "Poor appetite or overeating",
+        "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+        "Trouble concentrating on things, such as reading or watching television",
+        "Moving or speaking so slowly that other people could have noticed?  Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+        "Thoughts that you would be better off dead or of hurting yourself in some way",
+        "question 10 text"
+    ],
+    'isiXhosa': [
+        "Umdla okanye ubumnandi obuncinci ekwenzeni izinto", 
+        "Ukuziva unomoya ophantsi, udakumbile, okanye ungenathemba",
+        "Ukusokola ukulala, okanye ukulala ngokugqithisileyo",
+        "Ukuziva udiniwe okanye ungenamandla kangako",
+        "Ukungacaceli ukutya okanye ukutya ngokugqithisileyo",
+        "Ukuziva kakubi ngawe - okanye ukuba awuphumeleli okanye udanise wena okanye udanise usapho lwakho",
+        "Ingxaki yokuzikisa ingqondo ezintweni, ezifana nokufunda okanye ukubukela umabonakude",
+        "Ukuhamba okanye ukuthetha ngokucothayo kangangokuba abanye abantu babe bakuqaphele oko? Okanye okuchaseneyo noko - ukungqunga okanye ukungazinzi kangangokuba uzulazule kakhulu kunokuqhelekileyo",
+        "Iingcinga zokuba kungcono ubhubhe okanye ukuzenzakalisa ngandlela ithile",
+        "question 10 text"
+    ],
+}
+const alert_msg = {
+  "English": "Please choose an answer to continue.",
+  "isiXhosa": "Ukuthumela iziphumo njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho."
+}
 
-const audioXA0_en = new Audio(soundXA0_en)
-const audioXA0_xh = new Audio(soundXA0_xh)
-const audioXA1_en = new Audio(soundXA1_en)
-const audioXA1_xh = new Audio(soundXA1_xh)
-const audioXA2_en = new Audio(soundXA2_en)
-const audioXA2_xh = new Audio(soundXA2_xh)
-const audioXA3_en = new Audio(soundXA3_en)
-const audioXA3_xh = new Audio(soundXA3_xh)
+const questions_audio = {
+  'English': [
+    new Audio(soundQ1_en),
+    new Audio(soundQ2_en),
+    new Audio(soundQ3_en),
+    new Audio(soundQ4_en),
+    new Audio(soundQ5_en),
+    new Audio(soundQ6_en),
+    new Audio(soundQ7_en),
+    new Audio(soundQ8_en),
+    new Audio(soundQ9_en),
+  ],
+  'isiXhosa': [
+    new Audio(soundQ1_xh),
+    new Audio(soundQ2_xh),
+    new Audio(soundQ3_xh),
+    new Audio(soundQ4_xh),
+    new Audio(soundQ5_xh),
+    new Audio(soundQ6_xh),
+    new Audio(soundQ7_xh),
+    new Audio(soundQ8_xh),
+    new Audio(soundQ9_xh)
+  ]}
+
+const answers_audio = {
+  'English': [
+    new Audio(soundA0_en),
+    new Audio(soundA1_en),
+    new Audio(soundA2_en),
+    new Audio(soundA3_en),
+  ],
+  'isiXhosa': [
+    new Audio(soundA0_xh),
+    new Audio(soundA1_xh),
+    new Audio(soundA2_xh),
+    new Audio(soundA3_xh)
+  ]}
 
 const audioQ = new Audio(soundQ1_en)
 const audionew = new Audio(soundA1_en)
-const question = ref (questionDataEn);
+// const question = ref (questionDataEn);
 const qscore = ref(0)
 const total = ref(0)
 const tot = ref(0)
@@ -118,79 +162,143 @@ const error = ref(" ")
 const scores = ref([])
 const confirmed = ref(0)
 const answered = ref(0)
-const answer_count =ref(0)
+const answer_count = ref(0)
+const already_reversed = ref(0)
 
-//{{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
-//, "  $route.params.lang=", $route.params.lang_q}}
+console.log('lang=', lang.value, 'route.params.lang=')
 
-console.log('lang=', lang.value, 'total=', total.value, 'qnum=', qnum.value)
+///////////////////////////////
+//        FUNCTIONS          //
+///////////////////////////////
 
-//router.push({ path: '/email' })
+function nextQuestion(diff) {
+  console.log("FN nextQuestion start: diff=", diff, "selected=", selected.value, "question=", question.value)
+  console.log("alert_msg[language]=", alert_msg[language], ".value=", alert_msg[language.value])
+  
+  if ( (selected.value != null && 
+        question.value+diff >= 0 &&
+        question.value+diff < questions[language.value].length) )
+    { 
+      question.value += diff
+      selected.value = null
+      console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
+    }
+  else 
+    if (selected.value == null &&
+        diff == -1)
+    {question.value += diff
+      console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
+    }
+  else 
+    if (diff==1)
+    {alert(alert_msg[language.value]);
+  }    
+  console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
+}
 
-function add_score(total, x, qnum) {
-  console.log("start fn add_score: total=", total, "  x=", x, "  qnum=", qnum);
-  total = total + x;
-  tot.value = total;
-  updateData.qtext[qnum-1] = x;
-  qnum = qnum + 1;
-  qnumnew.value = qnum;
-  console.log("end fn add_score: total=", total, "  x=", x, "   qnum=", qnum, "  qnumnew.value=", qnumnew.value);
-  console.log("updateData.qtext=", updateData.qtext );
+function changeSelected(id) {
+  console.log("FN changeSelected:  id=", id, "question=", question.value );
+  selected.value = id;
+  updateData.qtext[question.value] = id;
+  if (question.value==8)
+      {saveScores();}
+  console.log("FN changeSelected end:  updateData.qtext=", updateData.qtext, "selected=", selected.value);
+    }
 
+function setSelected(n)
+    {console.log("FUNCTION setSelected:  updateData.qtext=", updateData.qtext, "n=", n, "updateData.qtext[n]=", updateData.qtext[n])
+    if (updateData.qtext[n]=='0' || updateData.qtext[n]=='1'|| updateData.qtext[n]=='2'|| updateData.qtext[n]=='3' )
+        {selected.value=updateData.qtext[n];}
+    {console.log("FUNCTION setSelected:  selected=", selected.value)}    
+    }
+
+function setLanguage(l) {
+  if (l == 'en')
+      {language.value = 'English';
+       }
+  if (l == 'xh')
+      {language.value = 'isiXhosa';
+       }
+  // console.log("language=", language.value)  
 }
-function store_score(x, qnum) {
-  console.log("start fn store_score: x=", x, "  qnum=", qnum);
-  updateData.qtext[qnum-1] = x;
-  answered.value = 1;
-  answer_count.value = answer_count.value + 1;
-  console.log("updateData.qtext=", updateData.qtext );
-  console.log("end fn store_score: x=", x, " qnum=", qnum, " answered=", answered.value, " answer_count=", answer_count.value);
-  forceRerender();
+
+function setQnumber(n) {
+  console.log("FUNCTION setQnumber start: n=", n)
+  //  If page was arrived by coming back from Question 10, set the current question to 9 (but not if this has already been done)
+  if ( n == 9 & already_reversed.value==0)
+      {already_reversed.value = 1
+        question.value =8
+       }
+      console.log("FUNCTION setQnumber end: n=", n)
 }
-function next_question(qnum) {
-  console.log("start fn next_question: qnum=", qnum, 'answered=', answered.value);
-  if (answered.value==0) 
-      {//console.log('if entered');
-        alert("Please select an answer before continuing");}
-  else     
-    {qnum = qnum + 1;
-    qnumnew.value = qnum;
-    answered.value = 0;}
-  console.log("end fn next_question: qnum=", qnum, "  qnumnew.value=", qnumnew.value, 'answered.value=', answered.value);
+
+// function add_score(total, x, qnum) {
+//   console.log("start fn add_score: total=", total, "  x=", x, "  qnum=", qnum);
+//   total = total + x;
+//   tot.value = total;
+//   updateData.qtext[qnum-1] = x;
+//   qnum = qnum + 1;
+//   qnumnew.value = qnum;
+//   console.log("end fn add_score: total=", total, "  x=", x, "   qnum=", qnum, "  qnumnew.value=", qnumnew.value);
+//   console.log("updateData.qtext=", updateData.qtext );
+// }
+
+// function store_score(x, qnum) {
+//   console.log("FN store_score: x=", x, "  qnum=", qnum);
+//   updateData.qtext[qnum-1] = x;
+//   answered.value = 1;
+//   answer_count.value = answer_count.value + 1;
+//   console.log("updateData.qtext=", updateData.qtext );
+//   console.log("END FN store_score: x=", x, " qnum=", qnum, " answered=", answered.value, " answer_count=", answer_count.value);
+// }
+
+// function next_question(qnum) {
+//   console.log("FN next_question: qnum=", qnum, 'answered=', answered.value);
+//   if (answered.value==0) 
+//       {//console.log('if entered');
+//         alert("Please select an answer before continuing");}
+//   else     
+//     {qnum = qnum + 1;
+//     qnumnew.value = qnum;
+//     answered.value = 0;}
+//   console.log("end fn next_question: qnum=", qnum, "  qnumnew.value=", qnumnew.value, 'answered.value=', answered.value);
+// }
+// function not_answered() {
+//   console.log("start fn not_answered: qnum=", qnum, 'answered=', answered.value);
+//   alert("Please select an answer before continuing");
+// }
+function saveScores() {
+  console.log('FN saveScores start: updateData.qtext=', updateData.qtext, 'updateData.qtext[1]=',updateData.qtext[1]);
+  //updateData.qtext[8] = selected.value;
+  updateData.qtext[9] = updateData.qtext[0]+updateData.qtext[1]+updateData.qtext[2]+updateData.qtext[3]+updateData.qtext[4]+updateData.qtext[5]+
+                          updateData.qtext[6]+updateData.qtext[7]+updateData.qtext[8];
+  window.sessionStorage.scores = updateData.qtext;
+  console.log('fn saveScores end: window.sessionStorage.scores=', window.sessionStorage.scores);
 }
-function not_answered() {
-  console.log("start fn not_answered: qnum=", qnum, 'answered=', answered.value);
-  alert("Please select an answer before continuing");
-}
-function save_scores(total, x) {
-  console.log("start fn save_scores: total=", total, "  x=", x, "  qnum=", qnum);
-  updateData.qtext[9] = x;
-  updateData.qtext[10] = total;
-  window.sessionStorage.total = total; 
-  confirmed.value = 1;
-  console.log("end fn save_scores: total=", total, "  x=", x, "   qnum=", qnum, "  qnumnew.value=", qnumnew.value);
-  console.log("end fn 2: w.sStorage.total=", window.sessionStorage.total );
-  console.log("updateData.qtext=", updateData.qtext );
-}
+// function save_scores(total, x) {
+//   console.log("start fn save_scores: total=", total, "  x=", x, "  qnum=", qnum);
+//   updateData.qtext[9] = x;
+//   updateData.qtext[10] = total;
+//   window.sessionStorage.total = total; 
+//   confirmed.value = 1;
+//   console.log("end fn save_scores: total=", total, "  x=", x, "   qnum=", qnum, "  qnumnew.value=", qnumnew.value);
+//   console.log("end fn 2: w.sStorage.total=", window.sessionStorage.total );
+//   console.log("updateData.qtext=", updateData.qtext );
+// }
 function setlang(langparam) {
     lang.value=langparam.value;
     //lang_q.value="aaa";
     //console.log("fn setlang: lang=", lang.value)
   }
-  function back_oneQ(qnum) {
-    console.log("start fn back_oneQ: qnum=", qnum)
-    //updateData.qtext[qnum-1] = "reset";
-    console.log("updateData.qtext=", updateData.qtext );
-    qnum = qnum - 1 ;
-    qnumnew.value = qnum;
-    console.log("end fn back_oneQ: qnum=", qnum)
-  }
-console.log('qnum=', qnum)
-  // if (qnum==1)
-  //       {console.log('qn 1');
-  //         audio = audioA0_xh;}
-  // if (qnum==2)
-  //       {audio = audioQ2_en;}
+//   function back_oneQ(qnum) {
+//     console.log("start fn back_oneQ: qnum=", qnum)
+//     //updateData.qtext[qnum-1] = "reset";
+//     console.log("updateData.qtext=", updateData.qtext );
+//     qnum = qnum - 1 ;
+//     qnumnew.value = qnum;
+//     console.log("end fn back_oneQ: qnum=", qnum)
+//   }
+// console.log('qnum=', qnum)
 
 </script>
 
@@ -200,54 +308,85 @@ console.log('qnum=', qnum)
 <!---------------------------->
 <template>
 
-<MyComponent :key="componentKey">
+<!-- <MyComponent :key="componentKey"> -->
 
-  <div class="container">
+<!-- {{ language =  $route.params.lang }} -->
+<!--{{ console.log("answers=",answers, "answers[English,1]", answers['English',1]) }}
+{{ console.log("answers_audio", answers_audio, "answers_audio[English,1]=", answers_audio['English',1]) }} -->
+{{ console.log("$route.params.lang=", $route.params.lang, "$route.params.qnumber", $route.params.qnumber)}} 
+
+{{ setLanguage($route.params.lang) }}
+{{ setQnumber($route.params.qnumber) }}
+{{ setSelected(question) }}
+
+{{ console.log("$route.params.lang=", $route.params.lang, "language=", language, "question=", question)}}  
+
+<div class="container">
 
 <!------------------------------------------------------------------------------------------------------>
-<!--  DISPLAY HEADER                                                                                  -->
+<!--  HEADER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
-    <div class = "header">
-      <p v-if="$route.params.lang === 'xh'" class="headbox">
-        Kwiiveki ezi-2 ezidlulileyo, ingaba uhlutshwe rhoqo <br> 
-        kangakanani yiyo nayiphi na kwezi ngxaki zilandelayo?</p>
-      <p v-if="$route.params.lang === 'en'" class="headbox">
-        Over the last 2 weeks, how often have you been bothered by any of the following problems? <br>
-      </p>
-      <br><br>
+  <div class = "header">
+    <h2>{{ header[language] }}</h2>
+    <br><br>
+  </div>
+
+  <div class="middle">
+<!------------------------------------------------------------------------------------------------------>
+<!--  QUESTION                                                                                        -->
+<!------------------------------------------------------------------------------------------------------> 
+    <div class="question">
+<!-- {{ console.log("question=", question, "question_audio=", question_audio) }}
+{{ console.log("questions_audio[language[question]=", questions_audio[language][question]) }} -->
+      <h1> {{ question+1 }} </h1>
+      <h1> {{ questions[language][question] }}</h1>
+      <span  @click=questions_audio[language][question].play() >     
+            <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+      </span>
     </div>
-
+    <br><br>
 <!------------------------------------------------------------------------------------------------------>
-<!--  SET AUDIO VARIABLE FOR CURRENT QUESTION NUMBER & LANGUAGE                                       -->
+<!--  ANSWERS                                                                                         -->
 <!------------------------------------------------------------------------------------------------------> 
+    <div class="answers">
+      <div v-for="(answer, index) in answers[language]"
+          @click="changeSelected(index)"
+          :class="[{['active']: (selected==index)}]"
+      >
+<!-- {{ console.log("answer=", answer, 'index=', index, 'answers_audio[language,index]=', answers_audio[language,index]) }} -->
+        <h1>{{ index }}</h1>
+        <h2 v-html="answer"></h2>
+      </div>
+      <div v-for="(answer_audio, index) in answers_audio[language]"
+        @click=answer_audio.play() >     
+          <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+          <!-- {{ console.log('answer_audio=', answer_audio) }} -->
+      </div>    
+    </div>
+    <br><br>
+  </div> <!-- end middle section -->
+<!------------------------------------------------------------------------------------------------------>
+<!--  FOOTER                                                                                          -->
+<!------------------------------------------------------------------------------------------------------> 
+<div class = "mt-auto footer">
+      <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
+      <div class="d-flex align-items-center justify-content-between">
 
-{{ console.log("route.params.lang=", $route.params.lang, ' qnum=',qnum, 'audioQ1_en=', audioQ1_en)}}
-  <div v-if="$route.params.lang === 'en'" class="white"> 
-        {{ console.log("v-if lang=en") }}
-    <span v-if = 'qnum == 1'> {{ audioQ = audioQ1_en, console.log("q1")}} </span>
-    <span v-if = 'qnum == 2'> {{ audioQ = audioQ2_en}} </span>
-    <span v-if = 'qnum == 3'> {{ audioQ = audioQ3_en}} </span>
-    <span v-if = 'qnum == 4'> {{ audioQ = audioQ4_en}} </span>
-    <span v-if = 'qnum == 5'> {{ audioQ = audioQ5_en}} </span>
-    <span v-if = 'qnum == 6'> {{ audioQ = audioQ6_en}} </span>
-    <span v-if = 'qnum == 7'> {{ audioQ = audioQ7_en}} </span>
-    <span v-if = 'qnum == 8'> {{ audioQ = audioQ8_en}} </span>
-    <span v-if = 'qnum == 9'> {{ audioQ = audioQ9_en}} </span>
-  </div>
-  <div v-if="$route.params.lang === 'xh'" class="white">
-    <span v-if = 'qnum == 1'> {{ audioQ = audioQ1_xh}} </span>
-    <span v-if = 'qnum == 2'> {{ audioQ = audioQ2_xh}} </span>
-    <span v-if = 'qnum == 3'> {{ audioQ = audioQ3_xh}} </span>
-    <span v-if = 'qnum == 4'> {{ audioQ = audioQ4_xh}} </span>
-    <span v-if = 'qnum == 5'> {{ audioQ = audioQ5_xh}} </span>
-    <span v-if = 'qnum == 6'> {{ audioQ = audioQ6_xh}} </span>
-    <span v-if = 'qnum == 7'> {{ audioQ = audioQ7_xh}} </span>
-    <span v-if = 'qnum == 8'> {{ audioQ = audioQ8_xh}} </span>
-    <span v-if = 'qnum == 9'> {{ audioQ = audioQ9_xh}} </span>
-  </div>
-  {{ console.log("audioQ=", audioQ)}}
-  <!-- {{ console.log("audioQ1_en=", audioQ1_en) }} -->
-  <!-- {{setaudioQ(qnum)}} -->
+        <!-- Left arrow navigation, depending on question number -->
+        <a v-if="question > 0" @click="nextQuestion(-1)" class="leftbutton"> &#8592 </a>
+        <span v-else> <router-link :to="{ name: 'qintro', params: { lang } }" class="leftbutton"> &#8592 </router-link></span>
+
+        <!-- Right arrow navigation, depending on question number-->
+        <a v-if="question < 8" @click="nextQuestion(1)" class="rightbutton"> &#8594 </a>
+        
+        <span v-else> 
+          <!-- {{ saveScores() }} -->
+          <router-link :to="{ name: 'extraquestion', params: { lang } }" class="leftbutton"> &#8594 </router-link>  
+        </span>  
+           <!-- <router-link :to="{ name: 'complete', params: { lang, total:0} }" class="rightbutton" style="text-align: right"> &#8594 </router-link> -->
+      </div>
+      <router-link :to="{ name: 'extraquestion', params: { lang } }"> q10 </router-link>  
+    </div>
 
 <!------------------------------------------------------------------------------------------------------>
 <!--  QUESTIONS 1-9                                                                                   -->
@@ -256,11 +395,11 @@ console.log('qnum=', qnum)
 <!--   QUESTION TEXT AND AUDIO  -->
 
 <!--   Set question number and hide display -->
-<div class = "white">{{qnum=qnumnew}}</div> 
-<!-- <div v-if = "qnum == 10">{{ answered=0 }}</div> -->
-{{ console.log("Start Template:  qnum=", qnum, 'answered=', answered)}}
+<!-- <div class = "white">{{qnum=qnumnew}}</div> 
+<!- <div v-if = "qnum == 10">{{ answered=0 }}</div> -->
+<!-- {{ console.log("Start Template:  qnum=", qnum, 'answered=', answered)}} -->
 
-<div class = "qsection">
+<!-- <div class = "qsection">
     <h1 v-if = "qnum < 10" class="center"> 
       {{qnum}} <br><br> 
       <span  @click=audioQ.play() >     
@@ -275,18 +414,18 @@ console.log('qnum=', qnum)
            <br>
       </h1>
 
-    </h1>
+    </h1> --> 
   
   <!--  ANSWER OPTIONS (Q 1-9) -->
 
-  <div v-if = "qnum < 10">
-    <!-- Layout for non-mobiles -->
-    <div class = "d-none d-sm-block">
+  <!-- <div v-if = "qnum < 10">
+     Layout for non-mobiles -->
+    <!-- <div class = "d-none d-sm-block">
       <br><br><br>
-      {{ console.log("Start Answers:  updateData.qtext[qnum-1]", updateData.qtext[qnum-1])}}
-      <div class="row">
+     {{ console.log("Start Answers:  updateData.qtext[qnum-1]", updateData.qtext[qnum-1])}} -->
+      <!-- <div class="row"> -->
           <!-- ANSWER 0 -->
-          <div class="col-sm-3 text-center" >
+          <!-- <div class="col-sm-3 text-center" >
             <a class="answer" @click="store_score(0,qnum)">
               <span v-if="updateData.qtext[qnum-1]===0" class ="selected"> 0 </span>
               <span v-else class="answer"> 0 </span>
@@ -301,12 +440,13 @@ console.log('qnum=', qnum)
             <h2 v-if = "$route.params.lang === 'en'">
               <span  @click=audioA0_en.play() >     
                   <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+      {{ console.log('audioA0_en=', audioA0_en) }}
                </span><br>
                Not at<br> all<br><br> 
              </h2>
-            </div>
+            </div> --> 
           <!-- ANSWER 1 -->
-          <div class="col-sm-3 text-center">
+          <!-- <div class="col-sm-3 text-center">
             <a class="answer" @click="store_score(1,qnum)" >
               <span v-if="updateData.qtext[qnum-1]===1" class="selected"> 1 </span>
               <span v-else class="answer"> 1 </span>
@@ -324,9 +464,9 @@ console.log('qnum=', qnum)
                 </span><br>
                 Several<br> days<br><br> 
             </h2>
-            </div>
+            </div> -->
           <!-- ANSWER 2 -->
-          <div class="col-sm-3 text-center">
+          <!-- <div class="col-sm-3 text-center">
             <a class="answer" @click="store_score(2,qnum)">
               <span v-if="updateData.qtext[qnum-1]===2" class ="selected"> 2 </span>
               <span v-else class="answer"> 2 </span>
@@ -344,9 +484,9 @@ console.log('qnum=', qnum)
               </span><br>
                More<br> than<br> half the<br> days<br><br> 
             </h2>
-          </div>
+          </div> -->
             <!-- ANSWER 3 -->
-            <div class="col-sm-3 text-center">
+            <!-- <div class="col-sm-3 text-center">
               <a class="answer" @click="store_score(3,qnum)">
                 <span v-if="updateData.qtext[qnum-1]===3" class ="selected"> 3 </span>
                 <span v-else class="answer"> 3 </span>
@@ -364,13 +504,13 @@ console.log('qnum=', qnum)
                 </span><br>
                 Nearly<br> every<br> day<br><br> 
               </h2>
-              </div>
-        </div> <!-- end of row of answers from questions 1-9-->
-        <br><br>
-    </div> <!-- end of answers for non-mobile layout -->
+              </div> -->
+        <!-- </div> end of row of answers from questions 1-9-->
+        <!-- <br><br> -->
+    <!-- </div> end of answers for non-mobile layout --> 
     
     <!-- Layout for mobiles -->
-    <div class = "d-block d-sm-none">
+    <!-- <div class = "d-block d-sm-none">
       <br>
       <div class="row">
           <a class="col text-center answer" @click="add_score(tot,0,qnum)">
@@ -405,163 +545,24 @@ console.log('qnum=', qnum)
               <h2 v-if = "$route.params.lang === 'en'">
                   Nearly<br> every<br> day<br> </h2>
 
-            </a>
-        </div> <!-- end of row of answers from questions 1-9-->
-    </div> <!-- end of answers for mobile layout -->
-  </div> <!-- end of v-if qnum < 10 -->
-
-<!------------------------------------------------------------------------------------------------------>
-<!--  EXTRA QUESTION (Question 10)                                                                                  -->
-<!------------------------------------------------------------------------------------------------------> 
-<div v-else>  
-    <h3 v-if = "$route.params.lang === 'xh' ">  
-            <span  @click=audioXQ_xh.play() >     
-              <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-            </span> <br>
-            Ukuba ngaba ukhethe inani elingaphezulu kwe-0 ngazo
-            naziphi iingxaki ezi ngxaki zenze kwanzima kangakanani kuwe ukuba wenze umsebenzi
-            wakho, ukulungisa izinto ekhaya, okanye ukuvana nabanye abantu? <br><br>
-
-    </h3>
-    <h3 v-if = "$route.params.lang === 'en'"> 
-            <span  @click=audioXQ_en.play() >     
-              <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-            </span> <br>
-            If you have chosen a number higher than 0 for any problems,
-            how difficult have these problems made it for you to do your work, take care of things
-            at home, or get along with other people? <br><br>
-
-    </h3>
-
-    <!--  Display Extra Q Answer Options -->
-    <!-- Layout for non-mobiles -->
-    <div class = "d-none d-sm-block">
-      <br><br><br>
-        <div class="row">
-          <div class="col text-center">
-              <h2 v-if = "$route.params.lang === 'xh'">
-                <span  @click=audioXA0_xh.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br>
-                <a class="answer" @click="store_score(0,qnum)">
-                  Akunzimanga konke<br> konke<br> 
-                </a> <br>
-              </h2>
-              <h2 v-if = "$route.params.lang === 'en'">
-                <span  @click=audioXA0_en.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br>
-                <a class="answer" @click="store_score(0,qnum)">
-                  Not difficult <br> at all<br>
-                </a><br><br>
-              </h2>
-          </div>
-          <div class="col text-center">
-              <h2 v-if = "$route.params.lang === 'xh'">
-                <span  @click=audioXA1_xh.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br> 
-                <a class="answer" @click="store_score(1,qnum)">
-                  Kunzinyana<br> noko<br>
-                </a><br>
-               </h2>      
-              <h2 v-if = "$route.params.lang === 'en'">
-                <span  @click=audioXA1_en.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br>
-                <a class="answer" @click="store_score(1,qnum)">
-                  Somewhat <br> difficult <br> 
-                </a><br><br>
-
-              </h2>
-          </div>
-          <div class="col text-center">
-            <h2 v-if = "$route.params.lang === 'xh'">
-              <span  @click=audioXA2_xh.play() > 
-                <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-              </span><br>
-              <a class="answer" @click="store_score(2,qnum)">
-                Kunzima <br> kakhulu 
-              </a><br><br>
-            </h2>
-                <h2 v-if = "$route.params.lang === 'en'">
-                  <span  @click=audioXA2_en.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br>
-                  <a class="answer" @click="store_score(2,qnum)">
-                    Very <br> difficult <br>
-                  </a><br><br>
-                </h2>
-              </div>
-            <div class="col text-center">
-              <h2 v-if = "$route.params.lang === 'xh'">
-                <span  @click=audioXA3_xh.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br>
-                <a class="answer" @click="store_score(3,qnum)">
-                  Kube nzima <br> ngokugqithisileyo <br> 
-                </a><br>
-
-              </h2>
-              <h2 v-if = "$route.params.lang === 'en'">
-                <span  @click=audioXA3_en.play() > 
-                  <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-                </span><br>
-                <a class="answer" @click="store_score(3,qnum)">
-                  Extremely <br> difficult <br>
-                </a><br><br>
-
-              </h2>
-            </div>
-          <br><br><br><br><br><br>
-        </div> <!-- end of q10 answers -->
-    </div> <!-- end of non-mobile section -->
-
-    <!-- Layout for mobiles for q 10 -->
-    <div class = "d-block d-sm-none">
-      <br><br>
-      <div class="row">
-            <a class="col text-center answer" @click="save_scores(tot,0)">
-               <h2 v-if = "$route.params.lang === 'xh'">
-                  Akunzimanga konke<br> konke<br> </h2>
-                <h2 v-if = "$route.params.lang === 'en'">
-                  Not difficult <br> at all<br> </h2>
-            </a>
-            <a class="col text-center answer" @click="save_scores(tot,1)" >
-              <h2 v-if = "$route.params.lang === 'xh'">
-                  Kunzinyana<br> noko<br> </h2>
-              <h2 v-if = "$route.params.lang === 'en'">
-                  Somewhat <br> difficult <br> </h2>
-            </a>
-      </div> <!-- end of 1st row of answers -->
-      <br>
-      <div class="row">
-            <a class="col text-center answer" @click="save_scores(tot,2)">
-                <h2 v-if = "$route.params.lang === 'xh'">
-                    Kunzima <br> kakhulu <br> </h2>
-                <h2 v-if = "$route.params.lang === 'en'">
-                    Very <br> difficult <br> </h2>
-            </a>
-            <a class="col text-center answer" @click="save_scores(tot,3)">
-              <h2 v-if = "$route.params.lang === 'xh'">
-                  Kube nzima <br> ngokugqithisileyo <br> </h2>
-              <h2 v-if = "$route.params.lang === 'en'">
-                  Extremely <br> difficult <br> </h2>
-            </a>
-          <br><br>
-        </div> <!-- end of 2nd row of answers -->
-    </div> <!-- end of mobile layout section for q10 answers  -->
-  </div> <!-- end of v-else ie qnum is not < 10 ie qnum = 10 -->
-  <br>
-  </div> <!-- end of middle section -->
+            </a> -->
+        <!-- </div> end of row of answers from questions 1-9 -->
+    <!-- </div> end of answers for mobile layout -->
+  <!-- </div> end of v-if qnum < 10 -->
+          <!-- </div>
+          <div class="col text-center"> -->
+  <!-- <br>
+  </div> end of middle section -->
   {{setlang('E')}} 
   <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}} -->
-  {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }}
+  <!-- {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }} -->
 
-  <!-- Display Footer -->
-    <div class = "mt-auto footer">
+<!------------------------------------------------------------------------------------------------------>
+<!--  FOOTER                                                                                          -->
+<!------------------------------------------------------------------------------------------------------> 
+    <!-- <div class = "mt-auto footer"> -->
       <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
-      <div class="d-flex align-items-center justify-content-between">
+      <!-- <div class="d-flex align-items-center justify-content-between">
         <a v-if="qnum > 1" @click="back_oneQ(qnum)" class="leftbutton"> &#8592 </a>
         <span v-else> <router-link :to="{ name: 'qintro', params: { lang } }" class="leftbutton"> &#8592 </router-link></span>
         <a v-if="qnum < 10" @click="next_question(qnum)" class="rightbutton"> &#8594 </a>
@@ -572,12 +573,12 @@ console.log('qnum=', qnum)
           </span>
         </span>
       </div>
-    </div>
+    </div> -->
 
-    {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }}
+    <!-- {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }} -->
 </div> <!-- end of container -->
 
-</MyComponent>
+<!-- </MyComponent> -->
 </template>
 
 <style scoped>
@@ -651,26 +652,18 @@ h6 {
   font-size: 2.0rem;
   text-align: right;
 }
-/* h8 {
-  font-weight:  100;
-  font-size: 1.5rem;
-  text-align: right;
-  color: darkred
-} */
-h9 {
-  font-weight:  100;
-  font-size: 3.5rem;
-  text-align: right;
-}
-/* .greetings h1,
-.greetings h3 {
-  text-align: center;
-  } */
 
-/* @media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-} */
+.question {
+  padding: 1rem;  
+  text-align: center;
+}
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 0 2rem;
+}
+
+.active {
+  color: red;
+}
 </style>

@@ -51,11 +51,11 @@ function saveemail(string) {
 <!-------------------->
 <template>
 
-<div class="container">
+<div class="container screen">
   <div col-sm-6 col-12>
     
   <!--  Header  -->
-    <div class = "header-mt-auto head-fixed"> 
+    <div class = "header-mt-auto"> 
       <br>
       <h5>  FOR OFFICE USE
             <br>
@@ -64,13 +64,13 @@ function saveemail(string) {
     </div> <!-- end header -->
   
  <!-- CENTRE SECTION  -->  
-    <div class="middle-small">
+    <div class="bg-white">
       <br><br>
       <div class="center"> 
       {{ console.log('emailData.email_address=', emailData.email_address) }}
           <h3> Enter email address to export results </h3>
           <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
-          <br>
+          <br><br>
 <!-- NB This code allows checking of email format but causes an error on clicking confirm and doesn't save email address
 <form>
           <span v-if="confirmed === 0"> 
@@ -91,10 +91,11 @@ function saveemail(string) {
           </span> 
           <button @click = saveemail(email)> Confirm </button>
       </div>
+      <br><br>
     </div>
 
   <!--FOOTER SECTION -->
-    <footer class="mt-auto footer-large">
+    <footer class="mt-auto">
       <span id="bottom"> 
         <br>
         <div class="footer-text ">
@@ -125,15 +126,21 @@ h3 {
   font-weight:  500;
   font-size: 1.2rem;
 }
-.email-middle {
+.screen {
   padding: 0%;
+  background-color: darkred;
+  color: white;
+  text-align: center;
+  margin: auto;
+  width: 100%; 
+  height: 90vh;
+}
+.bg-darkred {
+  background-color: darkred;
+  color: white;
+}
+.bg-white {
   background-color: white;
   color: black;
-  text-align: left; 
-  /*width: 20vw;*/
-  width: 100%;
-  height: 35vh;
-  margin-left: 0vw;
-  margin-right: 0vw;
 }
 </style>

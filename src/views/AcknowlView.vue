@@ -3,7 +3,7 @@
 
 <template>
 
-<div class="container row">
+<div class="container">
   
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
@@ -81,7 +81,7 @@
     <br><br>
     
     <!--  Navigation Footer  -->
-    <div class="mt-auto ack-footer">
+    <div class="mt-auto footer">
         <div class="d-flex align-items-center justify-content-between">
             <RouterLink to="/aboutapp" class = "leftbutton"> &#8592 </RouterLink>
             <RouterLink to="/" class = "rightbutton"> &#8594 </RouterLink>
@@ -126,7 +126,7 @@ td {
   color: black;
   text-align: left; 
 width: 100%;
-/* height: 50vh; */
+height: 50vh; 
   margin-left: 0vw;
   margin-right: 0vw;
 }

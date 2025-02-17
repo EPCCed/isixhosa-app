@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div class="container row">
+<div class="container">
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
     
@@ -17,6 +17,7 @@
 
       <!--Main text -->
     <div class="about-middle">
+      <br><br>
       <h6> The isiXhosa translation of the nine-item Patient Health Questionnaire (PHQ-9) was developed and validated by a team of 
            researchers at The University of Edinburgh (UK) and Stellenbosch University (South Africa).</h6>
       <br>
@@ -53,6 +54,7 @@
   text-align: left; 
   /*width: 20vw;*/
   width: 100%;
+  height: 55vh;
   margin-left: 0vw;
   margin-right: 0vw;
 }

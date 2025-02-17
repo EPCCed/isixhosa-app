@@ -11,7 +11,7 @@
   const lang_q = ref("b")
   const words = ref("D")
   const x = ref("x")
-lang_q.value = "E"
+  lang_q.value = "E"
 
   function setlang(langparam) {
     //lang_qi.value="E";
@@ -20,28 +20,28 @@ lang_q.value = "E"
     lang_q.value="aaa";
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
   //alert(`lang_qi= ${lang_qi.value}`);
-  //onsole.log("setlang lang_qi =", lang_qi)
+  //console.log("setlang lang_qi =", lang_qi)
   } 
 
 </script>
 
 <template>
-    {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
+  {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
 
-    <div class="container row">
+  <div class="container">
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
     <!--  Header  -->
-    <div class="row"  >
+    <!-- <div class="row"  > -->
       <div class = "header"> 
       </div>
-    </div> <!-- end row -->
+    <!-- </div> end row -->
 
     <!-- Question Intro text-->
-    <div class="row">
+    <!-- <div class="row"> -->
       <div class="middle">      
-        <br>
+        <br><br><br>
         <div v-if="$route.params.lang === 'xh'">
             <h5>Kwiiveki ezi-2 ezidlulileyo, ingaba uhlutshwe rhoqo kangakanani yiyo nayiphi na kwezi ngxaki zilandelayo?</h5>
         </div>
@@ -50,13 +50,13 @@ lang_q.value = "E"
         </div>
         <br>
       </div>
-    </div>
+    <!-- </div> -->
     
     {{setlang('E')}}  
 
     <!-- Footer navigation -->
-    <div class="row">
-      <div class="footer foot-fixed"> 
+    <!-- <div class="row"> -->
+      <div class="footer"> 
         <br><br>
         <div v-if="$route.params.lang === 'xh'">
           <span @click=audio_xh.play() >     
@@ -70,11 +70,11 @@ lang_q.value = "E"
         </div>
         <div class="d-flex align-items-center justify-content-between">
           <router-link :to="{ name: 'disclaimer3', params: { lang } }" class="arrowsx"> &#8592 </router-link>
-          <router-link :to="{ name: 'question', params: { lang, total: 0, qnumber: 1 } }" class="arrowsx"> &#8594 </router-link>
+          <router-link :to="{ name: 'question', params: { lang, qnumber: 1 } }" class="arrowsx"> &#8594 </router-link>
         </div>
       </div>
-    </div>
-  
+    <!-- </div> -->
+
   </div>
 </div>
 </template>

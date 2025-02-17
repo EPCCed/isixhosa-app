@@ -29,31 +29,29 @@ function setlangE(event) {
 <!---------------------------->
 <template>
   {{console.log("start template: lang=", lang)}}
-  <div class="container row">
+  <div class="container">
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
-    <!--  Header  -->
+      <!--  Header  -->
       <div class = "mt-auto head-lang"> 
-        <h7> Nceda khetha ulwimi ukuqhubeka </h7>
+        <h6> Nceda khetha ulwimi ukuqhubeka </h6>
         <h6 @click=audio_xh.play()>
             <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp</h6>
         <br>
-        <h7> Please choose a language to continue </h7>
+        <h6> Please choose a language to continue </h6>
         <h6 @click=audio_en.play()>
             <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp </h6>
       </div>
 
-    <!--  Language Choices  -->
+      <!--  Language Choices  -->
       <div class="middle">
         <br><br>
- 
-        <a class="inputbox" @click="setlangI">
+         <a class="inputbox" @click="setlangI">
           <div v-if="lang === 'unset'"> <div class="unselected"> isiXhosa </div> </div>  
           <div v-if="lang === 'xh'"> <div class="selected"> isiXhosa </div> </div>  
           <div v-if="lang === 'en'"> <div class="unselected"> isiXhosa </div> </div>  
         </a>
-
         <br><br>
         <a class="inputbox" @click="setlangE">
           <div v-if="lang === 'unset'"> <div class="unselected"> English </div> </div> 
@@ -67,7 +65,7 @@ function setlangE(event) {
   
     <footer class="mt-auto footer">
         <span id="bottom"> 
-          <h9> Blank footer text for language screen. Blank footer text for language screen. Next line </h9> 
+          <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5> 
 
           <!--  Navigation Arrows -->
           <div class="footer-text ">
@@ -85,13 +83,13 @@ function setlangE(event) {
 
 <style scoped>
 .head-lang {
-  padding: 10%;
+  padding: 2%;
   background-color: darkred;
   color: white;
   text-align: center;
   margin: auto;
   width: 100%; 
-  height: 35vh;
+  height: 20vh;
 }
 .selected {
   color: red;
@@ -112,7 +110,7 @@ function setlangE(event) {
 .blank-footer {
   width: 35vw;
 }
-h9 {
+h5 {
   color: darkred
 }
 </style>

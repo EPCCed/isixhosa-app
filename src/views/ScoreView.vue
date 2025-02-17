@@ -11,6 +11,10 @@ const total = ref(0)
 const display_total = ref(0)
 const display_email = ref('')
 const display_ptID = ref('')
+const display_scores = ref(0)
+const display_extrascore = ref(0)
+const email_body_text = ref('')
+
 
 console.log('total=', total)
 
@@ -19,11 +23,23 @@ function settotal(t) {
   display_email.value = window.sessionStorage.email;
   display_ptID.value = window.sessionStorage.ptID;
 }
+function setScores() {
+  console.log("window.sessionStorage.scores=", window.sessionStorage.scores);
+  display_scores.value = window.sessionStorage.scores;
+  display_extrascore.value = window.sessionStorage.extrascore;
+  console.log('FN setScores:  display_total=', display_total.value);
+}
 
 function setlang(langparam) {
     lang.value =  langparam.value
     total.value=langparam.value;
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
+    } 
+
+function setEmailBody() {
+    email_body_text.value = "Extra score is:"
+     //email.body_text.value = "<b>STuff goes here</b> " //& display_extrascore & " more htmls in here</b>"
+    console.log("email_body_text=", email_body_text.value)
     } 
 
 </script>
@@ -34,7 +50,7 @@ function setlang(langparam) {
 <!-- <div class="screendef"> -->
   <!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
 
-  <div class="container row">
+  <div class="container">
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
@@ -45,12 +61,19 @@ function setlang(langparam) {
           <h4 v-if="$route.params.lang === 'en'"> CODING BY THE OFFICE </h4> -->
         </div> 
         <br>
+        {{ setScores() }}
+        {{ setEmailBody() }}
+<h3> Stored scores (questions 1-9 plus total): {{ display_scores }}</h3>
+<h3> Stored extra question score is: {{ display_extrascore }}</h3>
 
-  <a href="mailto:a.krause@epcc.ed.ac.uk?Subject=SubjectHere&body=ThisIsTheMailtext">
+  <a href="mailto:a.krause@epcc.ed.ac.uk?Subject='isiXHosa PHQ-9 Results'&body='Extra question score is:'">
     Send Email to AK
   </a>
   <br><br>
-  <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=SubjectHere&body=ThisIsTheMailtext">
+
+  {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore, "str=", str) }}
+
+  <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
     Send Email to LN
   </a>
 
