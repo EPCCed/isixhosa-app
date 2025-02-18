@@ -1,23 +1,32 @@
 <script setup>
   console.log('script set up: localStorage.email =', localStorage.email);
   import { ref } from 'vue'
+  import sound_en from '../assets/Audio/EN25-Thx.wav'
+  import sound_xh from '../assets/Audio/XH25-Thx.wav'
+
+
+
+  //const audio = ref(); 
+  const audio_en = new Audio(sound_en)
+  const audio_xh = new Audio(sound_xh)
+
+
   const lang = ref("L")
   const lang_qi = ref("I")
-//lang = $route.params.lang.value
   const words = ref("D")
-  const x = ref("x")
+  //const x = ref("x")
   const total = ref(0)
 
   function setlang(langparam) {
-    //lang_qi.value="E";
     lang.value =  langparam.value
     total.value=langparam.value;
-    //alert(`lang_qi= ${lang_qi.value}`);
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
     } 
+    
 </script>
 
 <template>
+
 {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
 <!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
 
@@ -40,7 +49,18 @@
 
     <!-- Footer navigation -->
     <div class="footer">
-      <img alt="speaker" src="../assets/speaker-white.png" class="speaker"/>
+      <div v-if="$route.params.lang === 'xh'">
+          <span @click=audio_xh.play() >     
+            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          </span>
+        </div>
+        <div v-if="$route.params.lang === 'en'">
+          <span @click=audio_en.play() >     
+            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          </span>
+        </div>
+        <!-- <button @click="audio_xh.pause()" type="button">Pause Audio</button>  -->
+      <!-- <img alt="speaker" src="../assets/speaker-white.png" class="speaker"/> -->
         <div class="d-flex align-items-center justify-content-between">
           <router-link :to="{ name: 'extraquestion', params: { lang } }" class="leftbutton"> &#8592 </router-link>      
           <router-link :to="{ name: 'score', params: { lang }}" class="rightbutton"> &#8594 </router-link>

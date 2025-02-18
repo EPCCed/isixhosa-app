@@ -182,7 +182,7 @@ function save_scores(total, x) {
 function setlang(langparam) {
     lang.value=langparam.value;
     //lang_q.value="aaa";
-    //console.log("fn setlang: lang=", lang.value)
+      console.log("fn setlang: lang=", lang.value)
   }
   // function back_oneQ(qnum) {
   //   console.log("start fn back_oneQ: qnum=", qnum)
@@ -194,17 +194,22 @@ function setlang(langparam) {
   // }
   function gotoQ9() {
     console.log("FUNCTION gotoQ9:  language=", language.value)
+    questions_audio[language.value].pause();
     router.push({name: 'question', params: { lang:language.value, qnumber: 9}});
     //to="{ name: 'complete', params: { lang, total:0}"
     //<router-link :to="{ name: 'complete', params: { lang, total:0} }" class="rightbutton" style="text-align: right"> &#8594 </router-link>
   }
   function gotoComplete() {
     console.log("FUNCTION gotoComplete:  selected=", selected.value)
+    {{console.log("lang=", lang, "language=",language.value)}}
     if (selected.value == null)
       {alert(alert_msg[language.value]);
     }
     else
-      router.push({name: 'complete', params: { lang:'en'}});
+      {console.log("question_audio[language]", questions_audio[language.value])
+      questions_audio[language.value].pause();
+      router.push({name: 'complete', params: { lang:language.value}});
+    }
     //to="{ name: 'complete', params: { lang, total:0}"
     //<router-link :to="{ name: 'complete', params: { lang, total:0} }" class="rightbutton" style="text-align: right"> &#8594 </router-link>
   }
@@ -270,6 +275,8 @@ console.log('qnum=', qnum)
 <!--  FOOTER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
 <div class = "mt-auto footer">
+  {{setlang('E')}} 
+  {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}}
       <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
       <div class="d-flex align-items-center justify-content-between">
         <!-- <router-link :to="{ name: 'question', params: { lang } }" class="leftbutton"> &#8592 </router-link>  -->
@@ -279,11 +286,17 @@ console.log('qnum=', qnum)
         <a @click="gotoComplete" class="rightbutton" style="text-align: right"> &#8594 </a>
       </div>
 </div>
+{{ console.log("language=", language, "selected=", selected) }}
 
-  <!-- </div> end of v-else ie qnum is not < 10 ie qnum = 10 -->
+<!-- Testing audio stops -------------------------------------------------------------------->
+<button @click="questions_audio[language].pause()" type="button">Pause Question Audio</button> 
+<button @click="answers_audio[language, selected].pause()" type="button">Pause Answer Audio</button> 
+<!------------------------------------------------------------------------------------------->
+
+<!-- </div> end of v-else ie qnum is not < 10 ie qnum = 10 -->
   <br>
   </div> <!-- end of middle section -->
-  {{setlang('E')}} 
+
   <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}} -->
   {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }}
 <!-- </div> end of container -->
