@@ -12,123 +12,78 @@
   import sound_en from '../assets/Audio/EN03-Disc1.wav'
   import sound_xh from '../assets/Audio/XH03-Disc1.wav'
 
-  const audio = ref(); 
-  const audio_en = new Audio(sound_en)
-  const audio_xh = new Audio(sound_xh) 
-  const { width, height } = useWindowSize()
+  // to allow use of router.push in functions:
+  import { useRouter, useRoute } from 'vue-router'
+  const router = useRouter()
+  const route = useRoute()
+
+  const screen_text = {
+    "en": "This questionnaire should only be administered by authorised research or clinical professionals.",
+    "xh": "Eli phephamibuzo kufuneka lilawulwe kuphela ziingcali zophando okanye zezonyango eziqeqeshiweyo ezigunyazisiweyo."
+  }
+  const screen_audio = {
+    'en': new Audio(sound_en),
+    'xh': new Audio(sound_xh)
+  }
+
   const lang = ref("L")
-  const lang_qi = ref("I")
-  const words = ref("D")
-  //const n = ref(1)
-  //const nnew = ref(1)
 
-  function setlang(langparam) {
-    lang.value =  langparam.value
-    console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
+  function setlang(l) {
+    lang.value =  l
+    console.log("setlang: lang=", lang.value, " l=", l)
   } 
-  // var myTrack = new Audio('../assets/ENDisc1.wav')
-  // function send() {
-  //   //alert(`send function`);
-  //   myTrack.play()
-  //   } 
-</script>
+  function gotoAudioInfo() {
+    console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({name: 'audioinfo', params: { lang: lang.value } });
+  }
+  function gotoDisc2() {
+    console.log("FUNCTION gotoDisc2:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({  name: 'disclaimer2', params: { lang: lang.value } });
+  }
 
+</script>
 
 <!---------------------------->
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
+  <div class="container">
+    {{setlang($route.params.lang)}}
 
-<div class="container">
-
-  <!-- Disclaimer text-->
-
+    <!-- Screen Body (Disclaimer Text)-->
     <div class = "infoscreen"> 
-      {{console.log("$route.params.lang=", $route.params.lang)}}
-      {{ console.log('width=', width, 'height=', height) }}
+      {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
+      {{ console.log('screen_text[lang]', screen_text[lang]) }}
       <br>
-      <div class="screenbox" v-if="$route.params.lang === 'xh'">
-        Eli phephamibuzo kufuneka lilawulwe kuphela ziingcali zophando okanye zezonyango eziqeqeshiweyo ezigunyazisiweyo.
-      </div>
-      <div class="screenbox" v-if="$route.params.lang === 'en'">
-          This questionnaire should only be administered by authorised research or clinical professionals.
+      <div class="screenbox">
+        {{ screen_text[lang] }}
       </div>
     </div>
 
-    {{setlang($route.params.lang)}}
-    <!-- {{ setpage(n) }} -->
-<!-- 
-    {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
-   -->
-  <!-- Footer navigation -->
-
-    <div class = "footer-mt-auto foot-fixed">  
+  <!-- Footer  -->
+  <div class = "footer-mt-auto foot-fixed">  
+    {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
+      <!--  Speaker and Progress dots -->
       <div class="d-flex align-items-center justify-content-between">   
-      
-        <div v-if="$route.params.lang === 'xh'">
-          <span @click=audio_xh.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-        <div v-if="$route.params.lang === 'en'">
-          <span @click=audio_en.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-
-
+        <span @click = screen_audio[lang].play>
+          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+        </span>
         <div>
           <span class="dotx"></span> &nbsp; 
           <span class="circleoutlinex"></span> &nbsp;
           <span class="circleoutlinex"></span> &nbsp;
         </div>
       </div>
-
+      <!--  Navigation Arros -->
       <div class="d-flex align-items-center justify-content-between">
-        <router-link :to="{ name: 'audioinfo', params: { lang } }" class="arrowsx"> &#8592 </router-link>
-        <router-link :to="{ name: 'disclaimer2', params: { lang } }" class="arrowsx"> &#8594 </router-link>
+        <a @click="gotoAudioInfo" class="arrowsx"> &#8592 </a>
+        <a @click="gotoDisc2" class="arrowsx"> &#8594 </a>
       </div>
-    </div>
-
-  
-</div>
+    </div> 
+  </div>
 </template>
 
-
 <style scoped>
-
- .dot {
-  height: 15px;
-  width: 15px;
-  background-color: white;
-  border-radius: 50%;
-  display: inline-block;
-  text-align: right;
-  margin-left: 50%;
-} 
-/*
-.circleoutline {
-            width: 15px;
-            height: 15px;
-            border: 2px solid white;
-            border-radius: 50%;
-            display: inline-block;
-            text-align: right;
-        } */
-/* .circle.filled {
-	background-color: #666666;
-} */
-/* h5 {
-  font-weight: 200;
-  font-size: 1rem;
-  text-align: left;
-  color: white;
-} */
-
-/* @media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-} */
 </style>

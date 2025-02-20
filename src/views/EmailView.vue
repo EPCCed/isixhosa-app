@@ -55,8 +55,8 @@ function saveemail(string) {
   <div col-sm-6 col-12>
     
   <!--  Header  -->
-    <div class = "header-mt-auto head-fixed"> 
-      <br>
+    <div class = "header-mt-auto header-small"> 
+      
       <h5>  FOR OFFICE USE
             <br>
             UKUSETYENZISWA YIOFISI KUPHELA 
@@ -65,12 +65,12 @@ function saveemail(string) {
   
  <!-- CENTRE SECTION  -->  
     <div class="middle-small">
-      <br><br>
+      <br>
       <div class="center"> 
       {{ console.log('emailData.email_address=', emailData.email_address) }}
           <h3> Enter email address to export results </h3>
           <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
-          <br>
+          
 <!-- NB This code allows checking of email format but causes an error on clicking confirm and doesn't save email address
 <form>
           <span v-if="confirmed === 0"> 
@@ -96,7 +96,7 @@ function saveemail(string) {
   <!--FOOTER SECTION -->
     <footer class="mt-auto footer-large">
       <span id="bottom"> 
-        <br>
+        
         <div class="footer-text ">
           Researchers or clinicians may enter an email address to which anonymised 
           user responses from the session will be exported. To send the results as 
@@ -125,15 +125,15 @@ h3 {
   font-weight:  500;
   font-size: 1.2rem;
 }
-.email-middle {
+/* .email-middle {
   padding: 0%;
   background-color: white;
   color: black;
   text-align: left; 
   /*width: 20vw;*/
-  width: 100%;
+  /* width: 100%;
   height: 35vh;
   margin-left: 0vw;
   margin-right: 0vw;
-}
-</style>
+} */
+</style> */

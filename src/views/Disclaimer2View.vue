@@ -6,129 +6,84 @@
 
 <script setup>
   import { ref } from 'vue'
+  import { useWindowSize } from '@vueuse/core'
+  import { useElementSize } from '@vueuse/core'
   //import sound from '../assets/AudioTest.m4a'
   import sound_en from '../assets/Audio/EN04-Disc2.wav'
   import sound_xh from '../assets/Audio/XH04-Disc2.wav'
 
-  //const audio = new Audio(sound) 
-  const audio_en = new Audio(sound_en)
-  const audio_xh = new Audio(sound_xh) 
+  // to allow use of router.push in functions:
+  import { useRouter, useRoute } from 'vue-router'
+  const router = useRouter()
+  const route = useRoute()
+
+  const screen_text = {
+    "en": "You should NOT complete this questionnaire in a setting where you do not have access to psychological care referrals, such as when you are at home.",
+    "xh": "Kufuneka UNGAgcwalisi eli phephamibuzo kwimeko apho ungenako ukufikelela kudluliselo lokhathalelo ngezengqondo, njengaxa usekhaya."
+  }
+  const screen_audio = {
+    'en': new Audio(sound_en),
+    'xh': new Audio(sound_xh)
+  }
 
   const lang = ref("L")
-  const lang_qi = ref("I")
-  const words = ref("D")
 
-  function setlang(langparam) {
-    lang.value =  langparam.value
-    console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
+  function setlang(l) {
+    lang.value =  l
+    console.log("setlang: lang=", lang.value, " l=", l)
   } 
-  // var myTrack = new Audio('../assets/AudioTest.m4a')
-  // function send() {
-  //   //alert(`send function`);
-  //   myTrack.play()
-  //   } 
-</script>
+  function gotoDisc1() {
+    console.log("FUNCTION gotoDisc1:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({name: 'disclaimer', params: { lang: lang.value } });
+  }
+  function gotoDisc3() {
+    console.log("FUNCTION gotoDisc3:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({  name: 'disclaimer3', params: { lang: lang.value } });
+  }
 
+</script>
 
 <!---------------------------->
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
+  <div class="container">
+    {{setlang($route.params.lang)}}
 
-{{console.log("$route.params.lang=", $route.params.lang)}}
-
-<div class="container">
-
-  <!-- Disclaimer text-->
+    <!-- Screen Body (Disclaimer Text)-->
     <div class = "infoscreen"> 
+      {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
+      {{ console.log('screen_text[lang]', screen_text[lang]) }}
       <br>
-      <div class="screenbox" v-if="$route.params.lang === 'xh'">
-        Kufuneka UNGAgcwalisi eli phephamibuzo kwimeko apho ungenako ukufikelela kudluliselo 
-        lokhathalelo ngezengqondo, njengaxa usekhaya.
-      </div>
-      <div class="screenbox" v-if="$route.params.lang === 'en'">
-            You should NOT complete this questionnaire in a setting where you do not have access 
-            to psychological care referrals, such as when you are at home.
+      <div class="screenbox">
+        {{ screen_text[lang] }}
       </div>
     </div>
 
-    {{setlang($route.params.lang)}}
-    <!-- {{ setpage(n) }} -->
-
-    {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
-  
-    <!-- Footer navigation -->
-      <div class = "footer-mt-auto foot-fixed">  
-        <div class="d-flex align-items-center justify-content-between">   
-          <div v-if="$route.params.lang === 'xh'">
-          <span @click=audio_xh.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-        <div v-if="$route.params.lang === 'en'">
-          <span @click=audio_en.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-          <div>
-            <span class="circleoutlinex"></span> &nbsp;
-            <span class="dotx"></span> &nbsp; 
-            <span class="circleoutlinex"></span> &nbsp;
-          </div>
-        </div>
-        
-        <div class="d-flex align-items-center justify-content-between">
-          <router-link :to="{ name: 'disclaimer', params: { lang } }" class="arrowsx"> &#8592 </router-link>
-          <router-link :to="{ name: 'disclaimer3', params: { lang } }" class="arrowsx"> &#8594 </router-link>
+  <!-- Footer  -->
+  <div class = "footer-mt-auto foot-fixed">  
+    {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
+      <!--  Speaker and Progress dots -->
+      <div class="d-flex align-items-center justify-content-between">   
+        <span @click = screen_audio[lang].play>
+          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+        </span>
+        <div>
+          <span class="circleoutlinex"></span> &nbsp;
+          <span class="dotx"></span> &nbsp; 
+          <span class="circleoutlinex"></span> &nbsp;
         </div>
       </div>
-  
+      <!--  Navigation Arros -->
+      <div class="d-flex align-items-center justify-content-between">
+        <a @click="gotoDisc1" class="arrowsx"> &#8592 </a>
+        <a @click="gotoDisc3" class="arrowsx"> &#8594 </a>
+      </div>
+    </div> 
   </div>
 </template>
 
-
 <style scoped>
-
-.dot {
-  height: 15px;
-  width: 15px;
-  background-color: white;
-  border-radius: 50%;
-  display: inline-block;
-  text-align: right;
-}
-.circle1outline {
-            width: 15px;
-            height: 15px;
-            border: 2px solid white;
-            border-radius: 50%;
-            display: inline-block;
-            text-align: right;
-            margin-left: 40vw;
-}
-.circle2outline {
-            width: 15px;
-            height: 15px;
-            border: 2px solid white;
-            border-radius: 50%;
-            display: inline-block;
-            text-align: right;
-}
-
-.circle.filled {
-	background-color: #666666;
-}
-h5 {
-  font-weight: 200;
-  font-size: 1rem;
-  text-align: left;
-  color: white;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>

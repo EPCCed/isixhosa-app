@@ -46,6 +46,15 @@ a,
   /* width: 100%;  */
   height: 20vh;
 }
+.header-small {
+  padding: 5%;
+  background-color: darkred;
+  color: white;
+  text-align: center;
+  margin: auto;
+  /* width: 100%;  */
+  height: 15vh;
+}
 .head-fixed {
   padding: 5%;
   background-color: darkred;
@@ -63,7 +72,7 @@ a,
   text-align: left; 
   /*width: 20vw;*/
   width: 100%;
-  height: 55vh;
+  height: 60vh;
   margin-left: 0vw;
   margin-right: 0vw;
 }
@@ -74,7 +83,7 @@ a,
   text-align: left; 
   /*width: 20vw;*/
   width: 100%;
-  height: 35vh;
+  height: 45vh;
   margin-left: 0vw;
   margin-right: 0vw;
 }
@@ -101,7 +110,14 @@ a,
   background-color: darkred;
   color: white;
   width: 100%;
-  height: 40vh;
+  height: 35vh;
+}
+.footer-small {
+  padding: 2%;
+  background-color: darkred;
+  color: white;
+  width: 100%;
+  height: 15vh;
 }
 .foot-fixed {
   padding: 2%;
@@ -267,21 +283,28 @@ h9 {
   margin-right: 0px;
   width: 35px;
   height: 35px;
-  /* padding: 5px;
-  background-color: darkred; */
   display: block;
   margin-left: auto;
   margin-right: auto;
   }
+  .speaker_a {
+    /*margin-left: 1px;
+    margin-right: 0px; */
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
 .speaker:hover {
   background-color: blue;
 }
-.speaker_q:hover {
-  width: 40px;
+/*.speaker_q:hover {
+  width: 10px;
   background-color: blue;
   padding: 5px;
-}
+} */
 
 .dotx {
   height: 15px;

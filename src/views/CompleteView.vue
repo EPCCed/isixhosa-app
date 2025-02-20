@@ -1,129 +1,83 @@
+<!-- DISCLAIMER SCREEN (x3) -->
+
+<!---------------------------->
+<!--  SCRIPT SETUP SECTION  -->
+<!---------------------------->
+
 <script setup>
-  console.log('script set up: localStorage.email =', localStorage.email);
   import { ref } from 'vue'
+  import { useWindowSize } from '@vueuse/core'
+  import { useElementSize } from '@vueuse/core'
   import sound_en from '../assets/Audio/EN25-Thx.wav'
   import sound_xh from '../assets/Audio/XH25-Thx.wav'
 
+  // to allow use of router.push in functions:
+  import { useRouter, useRoute } from 'vue-router'
+  const router = useRouter()
+  const route = useRoute()
 
-
-  //const audio = ref(); 
-  const audio_en = new Audio(sound_en)
-  const audio_xh = new Audio(sound_xh)
-
+  const screen_text = {
+    "en": "You have now completed the questionnaire.  Thank you.",
+    "xh": "Uligqibile ngoku iphephamibuzo. Enkosi."
+  }
+  const screen_audio = {
+    'en': new Audio(sound_en),
+    'xh': new Audio(sound_xh)
+  }
 
   const lang = ref("L")
-  const lang_qi = ref("I")
-  const words = ref("D")
-  //const x = ref("x")
-  const total = ref(0)
 
-  function setlang(langparam) {
-    lang.value =  langparam.value
-    total.value=langparam.value;
-    console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
-    } 
-    
+  function setlang(l) {
+    lang.value =  l
+    console.log("setlang: lang=", lang.value, " l=", l)
+  } 
+  function gotoQ10() {
+    console.log("FUNCTION gotoQ10:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({name: 'extraquestion', params: { lang: lang.value } });
+  }
+  function gotoScore() {
+    console.log("FUNCTION gotoScore:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({  name: 'score', params: { lang: lang.value } });
+  }
+
 </script>
 
+<!---------------------------->
+<!--  SCREEN SETUP SECTION  -->
+<!---------------------------->
 <template>
-
-{{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
-<!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
-
-<div class="container">
-    <!-- Adjust width depending on small or larger screen size, by total columns used -->
-  <!-- <div col-sm-6 col-12> -->
-
-  <!-- Completion text-->
-    <div class = "infoscreen"> 
-        <br><br><br>
-        <h4 v-if="$route.params.lang === 'xh'">
-                Uligqibile ngoku iphephamibuzo. Enkosi.
-        </h4>
-        <h4 v-if="$route.params.lang === 'en'">
-                You have now completed the questionnaire.  Thank you.
-        </h4>
-    </div>
-        
+  <div class="container">
     {{setlang($route.params.lang)}}
 
-    <!-- Footer navigation -->
-    <div class="footer">
-      <div v-if="$route.params.lang === 'xh'">
-          <span @click=audio_xh.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-        <div v-if="$route.params.lang === 'en'">
-          <span @click=audio_en.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-        <!-- <button @click="audio_xh.pause()" type="button">Pause Audio</button>  -->
-      <!-- <img alt="speaker" src="../assets/speaker-white.png" class="speaker"/> -->
-        <div class="d-flex align-items-center justify-content-between">
-          <router-link :to="{ name: 'extraquestion', params: { lang } }" class="leftbutton"> &#8592 </router-link>      
-          <router-link :to="{ name: 'score', params: { lang }}" class="rightbutton"> &#8594 </router-link>
-        </div>
+    <!-- Screen Body (Disclaimer Text)-->
+    <div class = "infoscreen"> 
+      {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
+      {{ console.log('screen_text[lang]', screen_text[lang]) }}
+      <br>
+      <div class="screenbox">
+        {{ screen_text[lang] }} 
+      </div>
     </div>
-    
-</div>
+
+  <!-- Footer  -->
+  <div class = "footer-mt-auto foot-fixed">  
+    {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
+      <!--  Speaker and Progress dots -->
+      <div class="d-flex align-items-center justify-content-between">   
+        <span @click = screen_audio[lang].play>
+          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+        </span>
+      </div>
+      <!--  Navigation Arros -->
+      <div class="d-flex align-items-center justify-content-between">
+        <a @click="gotoQ10" class="arrowsx"> &#8592 </a>
+        <a @click="gotoScore" class="arrowsx"> &#8594 </a>
+      </div>
+    </div> 
+  </div>
 </template>
 
-
 <style scoped>
-  /* .screen {
-  padding: 5%;
-  background-color: darkred;
-  color: white;
-  text-align: center;
-  margin: auto;
-  width: 50vw;
-  height: 80vh;
-}*/
- /* .infoscreen {
-  padding: 3%;
-
-  text-align: center;
-  margin: auto;
-
-}  */
-/*
-
-.footer {
-  padding: 5%;
-  background-color: darkred;
-  color: white;
-  width: 50vw;
-  height: 20vh;
-} */
-
-.screendef {
-  width: 40vw;
-  height: 100vh;
-  padding: 0%;
-}
-
-h4 {
-  font-weight: 100;
-  font-size: 1.5rem;
-  text-align: left;
-  margin-left: 6vw;
-  margin-right: 6vw;
-  color: white;
-}
-
-h5 {
-  font-weight: 200;
-  font-size: 1rem;
-  text-align: left;
-  color: white;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>

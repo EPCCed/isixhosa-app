@@ -279,21 +279,13 @@ console.log('qnum=', qnum)
   {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}}
       <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
       <div class="d-flex align-items-center justify-content-between">
-        <!-- <router-link :to="{ name: 'question', params: { lang } }" class="leftbutton"> &#8592 </router-link>  -->
-        <!-- <router-link :to="{ name: 'question', params: { lang, total: 0, qnumber: 1 } }" class="arrowsx"> &#8592 </router-link>     -->
         <a @click="gotoQ9" class="arrowsx"> &#8592 </a> 
-        <!-- <router-link :to="{ name: 'complete', params: { lang, total:0} }" class="rightbutton" style="text-align: right"> &#8594 </router-link> -->
-        <a @click="gotoComplete" class="rightbutton" style="text-align: right"> &#8594 </a>
+         <a @click="gotoComplete" class="rightbutton" style="text-align: right"> &#8594 </a>
       </div>
 </div>
 {{ console.log("language=", language, "selected=", selected) }}
 
-<!-- Testing audio stops -------------------------------------------------------------------->
-<button @click="questions_audio[language].pause()" type="button">Pause Question Audio</button> 
-<button @click="answers_audio[language, selected].pause()" type="button">Pause Answer Audio</button> 
-<!------------------------------------------------------------------------------------------->
 
-<!-- </div> end of v-else ie qnum is not < 10 ie qnum = 10 -->
   <br>
   </div> <!-- end of middle section -->
 
@@ -376,11 +368,6 @@ h6 {
   text-align: right;
 }
 
-/* h9 {
-  font-weight:  100;
-  font-size: 3.5rem;
-  text-align: right;
-} */
 .question {
   padding: 1rem;  
   text-align: center;

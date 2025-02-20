@@ -8,32 +8,43 @@
   import { ref } from 'vue'
   import { useWindowSize } from '@vueuse/core'
   import { useElementSize } from '@vueuse/core'
-  //import sound from '../assets/AudioTest.m4a'
   import sound_en from '../assets/Audio/EN02-AudioInfo.wav'
   import sound_xh from '../assets/Audio/XH02-AudioInfo.wav'
 
+  // to allow use of router.push in functions:
+  import { useRouter, useRoute } from 'vue-router'
+  const router = useRouter()
+  const route = useRoute()
+
   const audio = ref(); 
-  const audio_en = new Audio(sound_en)
-  const audio_xh = new Audio(sound_xh) 
-  const { width, height } = useWindowSize()
   const lang = ref("L")
-  const lang_qi = ref("I")
-  const words = ref("D")
-  //const n = ref(1)
-  //const nnew = ref(1)
 
-  function setlang(langparam) {
-    lang.value =  langparam.value
-    console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
+  const screen_text = {
+    "en": "If you would like to listen to the instructions or questions, please press the speaker button in the lower left corner.",
+    "xh": "Ukuba ungathanda ukumamela imiyalelo okanye imibuzo, nceda cofa iqhosha lesipikha kwikona engezantsi yasekhohlo (left)."
+  }
+
+const screen_audio = {
+    'en': new Audio(sound_en),
+    'xh': new Audio(sound_xh)
+    }
+
+  function setlang(l) {
+    lang.value =  l
+    console.log("FUNCTION setlang: lang=", lang.value, " l=", l)
   } 
+  function gotoLanguage() {
+    console.log("FUNCTION gotoLang:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({name: 'language'});
+  }
+  function gotoDisc1() {
+    console.log("FUNCTION gotoDisc1:  lang=", lang.value)
+    screen_audio[lang.value].pause();
+    router.push({  name: 'disclaimer', params: { lang: lang.value } });
+  }
 
-  // var myTrack = new Audio('../assets/ENDisc1.wav')
-  // function send() {
-  //   //alert(`send function`);
-  //   myTrack.play()
-  //   } 
-</script>
-
+  </script>
 
 <!---------------------------->
 <!--  SCREEN SETUP SECTION  -->
@@ -42,60 +53,32 @@
 
 <div class="container">
 
-  <!-- Disclaimer text-->
-
+  <!-- Screen Body (Audio Info text) -->
     <div class = "infoscreen"> 
-      {{console.log("$route.params.lang=", $route.params.lang)}}
-      {{ console.log('width=', width, 'height=', height) }}
+      {{setlang($route.params.lang)}}
+      {{console.log("$route.params.lang=", $route.params.lang, "lang=", lang)}}
       <br>
-      <div class="screenbox" v-if="$route.params.lang === 'xh'">
-        Ukuba ungathanda ukumamela imiyalelo okanye imibuzo, nceda cofa iqhosha lesipikha kwikona engezantsi yasekhohlo (left).
-      </div>
-      <div class="screenbox" v-if="$route.params.lang === 'en'">
-        If you would like to listen to the instructions or questions, please press the speaker button in the lower left corner.
+
+      <div class="screenbox">
+        {{ screen_text[lang] }}
       </div>
     </div>
 
-    {{setlang($route.params.lang)}}
-
   <!-- Footer navigation -->
-
     <div class = "footer-mt-auto foot-fixed">  
       <div class="d-flex align-items-center justify-content-between">   
-      
-        <div v-if="$route.params.lang === 'xh'">
-          <span @click=audio_xh.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-        <div v-if="$route.params.lang === 'en'">
-          <span @click=audio_en.play() >     
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
-          </span>
-        </div>
-
+        <span @click = screen_audio[lang].play>
+          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+        </span>
       </div>
-
       <div class="d-flex align-items-center justify-content-between">
-        <RouterLink to="/language" class="arrowsx"> &#8592 </RouterLink>
-        <router-link :to="{ name: 'disclaimer', params: { lang } }" class="arrowsx"> &#8594 </router-link>
+        <a @click="gotoLanguage" class="arrowsx"> &#8592 </a>
+        <a @click="gotoDisc1" class="arrowsx"> &#8594 </a>
       </div>
     </div>
 
  </div>
 </template>
 
-
 <style scoped>
-
- .dot {
-  height: 15px;
-  width: 15px;
-  background-color: white;
-  border-radius: 50%;
-  display: inline-block;
-  text-align: right;
-  margin-left: 50%;
-} 
-
 </style>

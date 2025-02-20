@@ -43,12 +43,13 @@ const num = ref(0)
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader ">
-      <br>
+      
         <img alt="isiXhosa" src="../assets/isiXhosaLogo.png" class="logo img-fluid"  />
     </div>
-    <div class="set-width">
+    <!-- <div class="set-width">
       <br>
-    </div>
+    </div> -->
+    <br><br>
 
     <!-- Title and University Logos -->
     <div class="homemiddle">
@@ -84,21 +85,21 @@ h9 {
 .homeheader {
   padding: 0vh;
   width: 100%;
-  height: 58vh;
+  height: 55vh;
 }
 .homemiddle {
   padding: 0vh;
   text-align: center;
   margin-left: 0%;
   width: 100%;
-  height: 18vh; 
+  height: 20vh; 
 }
 .homefooter {
-  padding: 2%;
+  padding: 0%;
   background-color: darkred;
   color: white;
   /*width: 100%; */
-  height: 15vh;
+  height: 10vh;
 }
 .logo {
   display: block;

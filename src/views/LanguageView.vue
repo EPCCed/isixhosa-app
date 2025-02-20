@@ -10,6 +10,11 @@ import { ref } from 'vue'
 import sound_en from '../assets/Audio/EN01-Lang.wav'
 import sound_xh from '../assets/Audio/XH01-Lang.wav'
 
+// to allow use of router.push in functions:
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const route = useRoute()
+
 const name = ref('Lucy')
 const lang = ref("unset")
 const audio = ref(); 
@@ -22,6 +27,21 @@ function setlangI(event) {
 function setlangE(event) {
   lang.value="en";
   } 
+function gotoPtID() {
+    console.log("FUNCTION gotoPtID:  lang=", lang.value)
+    audio_xh.pause();
+    audio_en.pause();
+    router.push({name: 'ptid'});
+   }
+  function gotoAudioInfo() {
+    console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
+    audio_xh.pause();
+    audio_en.pause();
+    if (lang.value=="unset")
+        {setlangE()}
+    router.push({  name: 'audioinfo', params: { lang: lang.value } });
+  }
+
 </script>
 
 <!---------------------------->
@@ -62,21 +82,20 @@ function setlangE(event) {
       </div>
 
       {{ console.log('lang=', lang) }}
-  
-    <footer class="mt-auto footer">
-        <span id="bottom"> 
-          <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5> 
 
-          <!--  Navigation Arrows -->
-          <div class="footer-text ">
-            <div class="d-flex align-items-center justify-content-between">
-              <span><RouterLink to="/ptid" class = "arrowsx"> &#8592 </RouterLink></span>
-              <span><router-link :to="{ name: 'audioinfo', params: { lang } }" class="arrowsx"> &#8594 </router-link></span>
-            </div>
-          </div>
-        </span> 
-      </footer> 
+  <!-- Footer - Navigation -->
+    <footer class="mt-auto footer"> 
+      <span id="bottom"> 
+        <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>   
+        <!-- <div class = "footer-mt-auto foot-fixed">   -->
+      <div class="d-flex align-items-center justify-content-between">
+        <a @click="gotoPtID" class="arrowsx"> &#8592 </a>
+        <a @click="gotoAudioInfo" class="arrowsx"> &#8594 </a>
+      </div>
+          <!-- </div> -->
+      </span> 
 
+    </footer>  
   </div>
 </div>
 </template>

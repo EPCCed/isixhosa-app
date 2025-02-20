@@ -46,9 +46,8 @@ function save_ptID(string) {
   <div col-sm-6 col-12> 
 
     <!--  Header  -->
-    <div class = "header-mt-auto head-fixed"> 
-      <h5>  <br>
-            FOR OFFICE USE
+    <div class = "header-mt-auto header-small"> 
+      <h5>  FOR OFFICE USE
             <br>
             UKUSETYENZISWA YIOFISI KUPHELA  
       </h5>
@@ -56,11 +55,11 @@ function save_ptID(string) {
   
     <!--  CENTRE SECTION  -->
     <div class="middle-small">
-      <br><br>
+      <br>
       <div class="center"> 
         <h3>  Enter Participant ID or Patient Code </h3>
         <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
-        <br>
+        
         <span v-if="confirmed === 0"> 
           <input v-model="ptIDData.ptID" class = "unselected">  
         </span> 
@@ -68,14 +67,14 @@ function save_ptID(string) {
           <input v-model="ptIDData.ptID" class = "selected">  
         </span> 
         <button @click = save_ptID(ptID)> Confirm </button>         
-        <br><br>
+        
       </div>
     </div>
 
   
   <!--  FOOTER SECTION  -->
     <div class="footer-mt-auto footer-large"> 
-        <br>
+      
         <div class="footer-text">
           Exported user response from this session will be labelled using this provided identifier.
           <br><br>

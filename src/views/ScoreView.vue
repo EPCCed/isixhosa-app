@@ -60,28 +60,29 @@ function setEmailBody() {
           <!-- <h4 v-if="$route.params.lang === 'xh'"> UKUFAKWA IKHOWUDI YIOFISI </h4>
           <h4 v-if="$route.params.lang === 'en'"> CODING BY THE OFFICE </h4> -->
         </div> 
-        <br>
-        {{ setScores() }}
-        {{ setEmailBody() }}
-<h3> Stored scores (questions 1-9 plus total): {{ display_scores }}</h3>
-<h3> Stored extra question score is: {{ display_extrascore }}</h3>
 
-  <a href="mailto:a.krause@epcc.ed.ac.uk?Subject='isiXHosa PHQ-9 Results'&body='Extra question score is:'">
-    Send Email to AK
-  </a>
-  <br><br>
+        <div class="middle middle-score">
+          <br>
+          {{ setScores() }}
+          {{ setEmailBody() }}
+          <h3> Stored scores (Qs 1-9 & total): {{ display_scores }}</h3>
+          <h3> Stored extra question score: {{ display_extrascore }}</h3>
 
-  {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore, "str=", str) }}
+          <a href="mailto:a.krause@epcc.ed.ac.uk?Subject='isiXHosa PHQ-9 Results'&body='Extra question score is:'">
+              Send Email to AK
+          </a>
+          <br><br>
 
-  <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
-    Send Email to LN
-  </a>
+          {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore) }}
 
-    <!--  Score --> 
-    {{settotal($route.params.total)}}
-    <!-- display_total= {{ display_total }} -->
+          <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
+            Send Email to LN
+          </a>
 
-    <div class="middle middle-score">
+          <!--  Score --> 
+          {{settotal($route.params.total)}}
+          <!-- display_total= {{ display_total }} -->
+
         <!-- <br><br> -->
         <!-- <h4 v-if="$route.params.lang === 'xh'">
           AmaNqaku eWonke   &nbsp&nbsp&nbsp&nbsp   {{ display_total }}
@@ -97,10 +98,17 @@ function setEmailBody() {
         <p> <a href="mailto:l.norris@epcc.ed.ac.uk"> Send Email </a> </p> </h5> -->
         <!-- <button @click="mailto:name@one.net" method="post" enctype="text/plain"></button> -->
   
-
-
-
-      </div>
+          <br><br> 
+          <h5>Scores for Pt ID: &nbsp&nbsp&nbsp&nbsp <span class="darkred"> {{  display_ptID }} </span> <br>
+              will be emailed to: &nbsp <span class="darkred"> {{ display_email }} </span>
+            <!-- &nbsp&nbsp&nbsp&nbsp <button @click = send_email(ptID)> <a href="mailto:EMAILADDRESS"> Send Email </a> </button>     -->
+          </h5>
+          <h6 class ="center">
+            <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}">
+              Send Email 
+          </a></h6>
+           <br><br><br> 
+        </div>
 
   <!-- {{ console.log('email_address=',emailData.email_address) }}  -->
   <!-- {{console.log('UpdateData=', UpdateData.qtext) }} -->
@@ -129,7 +137,7 @@ function setEmailBody() {
   text-align: left; 
   /*width: 20vw;*/
   width: 100%;
-  height: 45vh;
+  height: 55vh;
   margin-left: 5vw;
   margin-right: 0vw;
 }

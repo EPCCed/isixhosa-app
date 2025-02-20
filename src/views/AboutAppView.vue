@@ -1,4 +1,8 @@
 <script setup>
+// to allow use of router.push in functions:
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const route = useRoute()
 </script>
 
 <template>
