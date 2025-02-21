@@ -17,6 +17,9 @@
   //console.log('useRoute=', useRoute)
   console.log('width=', width.value, ' height=', height.value)
 
+  window.sessionStorage.reset_scores = 1
+  console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
+
   // import VueAudio from '../assets/AudioTest.m4a'
   // var myTrack = new Audio('../assets/AudioTest.m4a')
   function send() {

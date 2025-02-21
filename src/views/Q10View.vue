@@ -91,6 +91,9 @@ const answered = ref(0)
 const answer_count =ref(0)
 
 console.log('lang=', lang.value, 'total=', total.value, 'qnum=', qnum.value)
+//console.log('score_list=', score_list)
+console.log('window.sessionStorage.scores=', window.sessionStorage.scores)
+//console.log('updateData.qtext=', updateData.qtext, 'window.sessionStorage.scores=', window.sessionStorage.scores)
 
 ///////////////////////////////
 //        FUNCTIONS          //
@@ -257,7 +260,7 @@ console.log('qnum=', qnum)
   <div class="answers">
     <div v-for="(answer, index) in answers[language]"
         @click="changeSelected(index)"
-        :class="[{['active']: (selected==index)}]"
+        :class="[{['active border border-primary border-3']: (selected==index)}]"
      >
 <!-- {{ console.log("answer=", answer, 'index=', index, 'answers_audio[language,index]=', answers_audio[language,index]) }} -->
       <h1>{{ index }}</h1>
@@ -315,18 +318,7 @@ a.answer {
   text-align: center;
   text-decoration: none;
 }
-a.answer:hover{
-  font-size: 1.6rem;
-  font-weight: 600;
-  color:blue;
-  background-color: lightgrey; 
-  padding: 10px;
-}
-.selected {
-  color: red;
-  background-color: lightgrey;
-  padding: 10px;
-}
+
 .backQ {
   color: white;
   font-weight:  200;
@@ -378,7 +370,4 @@ h6 {
   padding: 0 2rem;
 }
 
-.active {
-  color: red;
-}
 </style>

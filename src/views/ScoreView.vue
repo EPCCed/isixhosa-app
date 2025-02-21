@@ -14,6 +14,7 @@ const display_ptID = ref('')
 const display_scores = ref(0)
 const display_extrascore = ref(0)
 const email_body_text = ref('')
+const mail_string = ref('')
 
 
 console.log('total=', total)
@@ -41,6 +42,12 @@ function setEmailBody() {
      //email.body_text.value = "<b>STuff goes here</b> " //& display_extrascore & " more htmls in here</b>"
     console.log("email_body_text=", email_body_text.value)
     } 
+function buildMailString() {
+    mail_string.value ="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosaPHQ-9Results&body=ExtraQuestionScore:";
+    console.log('mail_string=', mail_string.value);
+  }
+
+
 
 </script>
 
@@ -103,8 +110,11 @@ function setEmailBody() {
               will be emailed to: &nbsp <span class="darkred"> {{ display_email }} </span>
             <!-- &nbsp&nbsp&nbsp&nbsp <button @click = send_email(ptID)> <a href="mailto:EMAILADDRESS"> Send Email </a> </button>     -->
           </h5>
+          {{ buildMailString() }}
+          
           <h6 class ="center">
-            <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}">
+            <!-- <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}"> -->
+            <a href="{{mail_string}}">
               Send Email 
           </a></h6>
            <br><br><br> 
