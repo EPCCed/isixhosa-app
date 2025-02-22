@@ -56,23 +56,14 @@ import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
-
+// const componentKey = ref(0);
+// const forceRerender = () => {
+//   componentKey.value += 1;
+// };
 const selected = ref(null)
 const language = ref('en')
 const question = ref(0)
 
-const score_list = 
-    [  "one", 
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine",
-        "total"
-]
 const answers = {
   'en': [
     "Not at<br> all<br>",
@@ -160,6 +151,10 @@ const answers_audio = {
     new Audio(soundA3_xh)
   ]}
 
+//const audioQ = new Audio(soundQ1_en)
+//const audionew = new Audio(soundA1_en)
+// const question = ref (questionDataEn);
+//const qscore = ref(0)
 const total = ref(0)
 const tot = ref(0)
 //const ptotal = ref(0)
@@ -168,53 +163,29 @@ const lang = ref("L")
 //const lang_q= ref("x")
 const qnum = ref(1)
 const qnumnew = ref(1)
+//const error = ref(" ")
+//const scores = ref([])
 const confirmed = ref(0)
 const answered = ref(0)
 const answer_count = ref(0)
 const already_reversed = ref(0)
-const current_audio_answer = ref(0)
 
-console.log('score_list=', score_list)
-score_list.value = updateData.qtext.value
-console.log('score_list=', score_list)
-//window.sessionStorage.scores = {'one','two','three','four','five','six','seven','eight','nine','total'}
-//updateData.qtext = score_list ;
-//selected.value=5;
-console.log('updateData.qtext=', updateData.qtext, 'window.sessionStorage.scores=', window.sessionStorage.scores)
-console.log('selected=', selected.value, 'lang=', lang.value, 'route.params.lang=')
-console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
-
-if (window.sessionStorage.reset_scores == 1)
-    { updateData.qtext = score_list;
-      window.sessionStorage.extrascore = null
-      window.sessionStorage.reset_scores = 0
-     }
-console.log('updateData.qtext=', updateData.qtext, 'window.sessionStorage.scores=', window.sessionStorage.scores, '.extrascore=', window.sessionStorage.extrascore)
-console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
+console.log('lang=', lang.value, 'route.params.lang=')
 
 ///////////////////////////////
 //        FUNCTIONS          //
 ///////////////////////////////
 
-function play_answer(audio, i) 
-     {console.log("FUNCTION play_answer: audio=", audio, "i=", i);
-      current_audio_answer.value =i;
-      console.log("current_audio_answer=", current_audio_answer.value)
-      audio.play()}
-
-function stop_audio() {
-  console.log("FUNCTION STOP AUDIO: language=",lang.value, 'current_audio_answer', current_audio_answer.value);
-  questions_audio[lang.value][question.value].pause();
-  questions_audio[lang.value][question.value].currentTime = 0;
-  answers_audio[lang.value][current_audio_answer.value].pause();
-  answers_audio[lang.value][current_audio_answer.value].currentTime = 0;
-}
-
-
 function nextQuestion(diff) {
   console.log("FN nextQuestion start: diff=", diff, "selected=", selected.value, "question=", question.value)
-  stop_audio();  
-  console.log("alert_msg[language]=", alert_msg[language.value], ".value=", alert_msg[language.value])
+  console.log("nextQ: language=",lang.value)
+  questions_audio[lang.value][question.value].pause();
+  questions_audio[lang.value][question.value].currentTime = 0;
+  answers_audio[lang.value][0].pause();
+  answers_audio[lang.value][1].pause();
+  answers_audio[lang.value][2].pause();
+  answers_audio[lang.value][3].pause();
+  console.log("alert_msg[language]=", alert_msg[language], ".value=", alert_msg[language.value])
   if ( (selected.value != null && 
         question.value+diff >= 0 &&
         question.value+diff < questions[language.value].length) )
@@ -239,12 +210,11 @@ function nextQuestion(diff) {
 function changeSelected(id) {
   console.log("FN changeSelected:  id=", id, "question=", question.value );
   selected.value = id;
-  console.log("marker")
   updateData.qtext[question.value] = id;
-  // if (question.value==8)
-  //     {saveScores();}
+  if (question.value==8)
+      {saveScores();}
   console.log("FN changeSelected end:  updateData.qtext=", updateData.qtext, "selected=", selected.value);
-     }
+    }
 
 function setSelected(n)
     {console.log("FUNCTION setSelected:  updateData.qtext=", updateData.qtext, "n=", n, "updateData.qtext[n]=", updateData.qtext[n])
@@ -285,23 +255,6 @@ function saveScores() {
     lang.value =  l
     console.log("FUNCTION setlang: lang=", lang.value, " l=", l)
   }  
-  function gotoQIntro() {
-    console.log("FUNCTION gotoQIntro:  lang=", lang.value)
-    //questions_audio[lang.value][question.value].pause();
-    stop_audio();
-    router.push({name: 'qintro', params: { lang: lang.value}});
-  }
-
-  function gotoQ10() {
-   console.log("FUNCTION gotoQ10:  lang=", lang.value);
-   stop_audio();
-    if (selected.value == null)
-       { alert(alert_msg[language.value]);}
-    else {saveScores();
-          questions_audio[lang.value][question.value].pause();
-          router.push({name: 'extraquestion', params: { lang: lang.value}});
-        } 
-  }
 </script>
 
 
@@ -322,7 +275,7 @@ function saveScores() {
 
 {{ console.log("$route.params.lang=", $route.params.lang, "language=", language, "question=", question)}}  
 
-  <!-- <div class="container"> -->
+  <div class="container">
 
     <!------------------------------------------------------------------------------------------------------>
     <!--  HEADER                                                                                          -->
@@ -336,6 +289,8 @@ function saveScores() {
     <!--  QUESTION                                                                                        -->
     <!------------------------------------------------------------------------------------------------------> 
       <div class="question">
+<!-- {{ console.log("question=", question, "question_audio=", question_audio) }}
+{{ console.log("questions_audio[language[question]=", questions_audio[language][question]) }} -->
         <h1> {{ question+1 }} </h1>
         <h1> {{ questions[lang][question] }}</h1>
         <span  @click=questions_audio[lang][question].play() >     
@@ -349,17 +304,16 @@ function saveScores() {
       <div class="answers">
         <div v-for="(answer, index) in answers[lang]"
             @click="changeSelected(index)"
-            :class="[{['active border border-primary border-3']: (selected==index)}]"
+            :class="[{['active']: (selected==index)}]"
         >
 <!-- {{ console.log("answer=", answer, 'index=', index, 'answers_audio[language,index]=', answers_audio[language,index]) }} -->
             <h1> {{ index }} </h1>
             <h2 v-html="answer"></h2>
         </div>
-
-        <!-- @click=answer_audio.play() >  -->
         <span v-for="(answer_audio, index) in answers_audio[lang]"
-            @click=play_answer(answer_audio,index) >     
+            @click=answer_audio.play() >     
             <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
+            <!-- {{ console.log('answer_audio=', answer_audio) }} -->
         </span>    
       </div>
     
@@ -375,24 +329,22 @@ function saveScores() {
 
         <!-- Left arrow navigation, depending on question number -->
         <a v-if="question > 0" @click="nextQuestion(-1)" class="leftbutton"> &#8592 </a>
-        <a v-else @click="gotoQIntro()" class="leftbutton"> &#8592 </a>
-        <!-- <span v-else> <router-link :to="{ name: 'qintro', params: { lang } }" class="leftbutton"> &#8592 </router-link></span> -->
+        <span v-else> <router-link :to="{ name: 'qintro', params: { lang } }" class="leftbutton"> &#8592 </router-link></span>
         <router-link :to="{ name: 'extraquestion', params: { lang } }"> q10 </router-link>  
 
         <!-- Right arrow navigation, depending on question number-->
         <a v-if="question < 8" @click="nextQuestion(1)" class="rightbutton"> &#8594 </a>
         
-
+        <span v-else> 
           <!-- {{ saveScores() }} -->
-            <a v-else @click="gotoQ10()" class="rightbutton"> &#8594</a>
-          <!-- <router-link :to="{ name: 'extraquestion', params: { lang } }" class="leftbutton"> &#8594 </router-link>   -->
+          <router-link :to="{ name: 'extraquestion', params: { lang } }" class="leftbutton"> &#8594 </router-link>  
           
-
+        </span>  
            <!-- <router-link :to="{ name: 'complete', params: { lang, total:0} }" class="rightbutton" style="text-align: right"> &#8594 </router-link> -->
       </div>
     </div>
 
-<!-- </div> end of container -->
+</div> <!-- end of container -->
 
 </template>
 
@@ -471,6 +423,16 @@ h6 {
   border-width: 1px;
 }
 
+.active {
+  color: white;
+  background-color: blue;
+  border-width: 0px;
+  width: 70px;
+  padding: 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 /*.speaker_q:hover {
   width: 10px;
   background-color: blue;

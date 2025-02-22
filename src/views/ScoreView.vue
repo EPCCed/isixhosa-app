@@ -57,7 +57,7 @@ function buildMailString() {
 <!-- <div class="screendef"> -->
   <!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
 
-  <div class="container">
+  <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
@@ -136,7 +136,7 @@ function buildMailString() {
     </div>
 
   </div>
-</div>
+<!-- </div> -->
 </template>
 
 <style scoped>

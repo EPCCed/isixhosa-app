@@ -48,7 +48,7 @@
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-  <div class="container">
+  <!-- <div class="container"> -->
     {{setlang($route.params.lang)}}
 
     <!-- Screen Body (Disclaimer Text)-->
@@ -76,7 +76,7 @@
         <a @click="gotoScore" class="arrowsx"> &#8594 </a>
       </div>
     </div> 
-  </div>
+  <!-- </div> -->
 </template>
 
 <style scoped>

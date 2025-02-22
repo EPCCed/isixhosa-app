@@ -49,7 +49,7 @@
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-  <div class="container">
+  <!-- <div class="container"> -->
     {{setlang($route.params.lang)}}
 
     <!-- Screen Body (Disclaimer Text)-->
@@ -63,7 +63,7 @@
     </div>
 
   <!-- Footer  -->
-  <div class = "footer-mt-auto foot-fixed">  
+  <div class = "footer-mt-auto footer">  
     {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
       <!--  Speaker and Progress dots -->
       <div class="d-flex align-items-center justify-content-between">   
@@ -82,7 +82,7 @@
         <a @click="gotoDisc2" class="arrowsx"> &#8594 </a>
       </div>
     </div> 
-  </div>
+  <!-- </div> -->
 </template>
 
 <style scoped>

@@ -40,19 +40,19 @@ const num = ref(0)
 <!---------------------------->
 <template>
 
-<div class="container">
+<!-- <div class="container"> -->
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader ">
-      
+ 
         <img alt="isiXhosa" src="../assets/isiXhosaLogo.png" class="logo img-fluid"  />
     </div>
     <!-- <div class="set-width">
       <br>
     </div> -->
-    <br><br>
+    <br>
 
     <!-- Title and University Logos -->
     <div class="homemiddle">
@@ -78,7 +78,7 @@ const num = ref(0)
   </div>
 
   </div>
-</div>
+<!-- </div> -->
 </template>
 
 <style scoped>
@@ -87,14 +87,14 @@ h9 {
 }
 .homeheader {
   padding: 0vh;
-  width: 100%;
-  height: 55vh;
+  /* width: 100%; */
+  height: 60vh;
 }
 .homemiddle {
   padding: 0vh;
   text-align: center;
   margin-left: 0%;
-  width: 100%;
+  /* width: 100%; */
   height: 20vh; 
 }
 .homefooter {
@@ -102,7 +102,7 @@ h9 {
   background-color: darkred;
   color: white;
   /*width: 100%; */
-  height: 10vh;
+  height: 15vh;
 }
 .logo {
   display: block;

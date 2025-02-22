@@ -42,7 +42,7 @@ function save_ptID(string) {
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-<div class="container">
+<!-- <div class="container"> -->
   <div col-sm-6 col-12> 
 
     <!--  Header  -->
@@ -55,11 +55,11 @@ function save_ptID(string) {
   
     <!--  CENTRE SECTION  -->
     <div class="middle-small">
-      <br>
+      <br><br>
       <div class="center"> 
         <h3>  Enter Participant ID or Patient Code </h3>
         <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
-        
+        <br>
         <span v-if="confirmed === 0"> 
           <input v-model="ptIDData.ptID" class = "unselected">  
         </span> 
@@ -88,7 +88,7 @@ function save_ptID(string) {
     </div>
 
   </div> <!-- col-sm col -->
-</div> <!-- container row -->
+<!-- </div> container row -->
 
 </template>
 

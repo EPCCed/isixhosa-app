@@ -51,8 +51,6 @@ const screen_audio = {
 <!---------------------------->
 <template>
 
-<div class="container">
-
   <!-- Screen Body (Audio Info text) -->
     <div class = "infoscreen"> 
       {{setlang($route.params.lang)}}
@@ -65,7 +63,7 @@ const screen_audio = {
     </div>
 
   <!-- Footer navigation -->
-    <div class = "footer-mt-auto foot-fixed">  
+    <div class = "footer-mt-auto footer">  
       <div class="d-flex align-items-center justify-content-between">   
         <span @click = screen_audio[lang].play>
           <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
@@ -77,7 +75,6 @@ const screen_audio = {
       </div>
     </div>
 
- </div>
 </template>
 
 <style scoped>

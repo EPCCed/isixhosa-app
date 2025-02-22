@@ -49,7 +49,7 @@ function gotoPtID() {
 <!---------------------------->
 <template>
   {{console.log("start template: lang=", lang)}}
-  <div class="container">
+  <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
@@ -65,7 +65,7 @@ function gotoPtID() {
       </div>
 
       <!--  Language Choices  -->
-      <div class="middle">
+      <div class="middle-lang">
         <br><br>
          <a class="inputbox" @click="setlangI">
           <div v-if="lang === 'unset'"> <div class="unselected"> isiXhosa </div> </div>  
@@ -86,7 +86,7 @@ function gotoPtID() {
   <!-- Footer - Navigation -->
     <footer class="mt-auto footer"> 
       <span id="bottom"> 
-        <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>   
+        <!-- <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>    -->
         <!-- <div class = "footer-mt-auto foot-fixed">   -->
       <div class="d-flex align-items-center justify-content-between">
         <a @click="gotoPtID" class="arrowsx"> &#8592 </a>
@@ -97,7 +97,7 @@ function gotoPtID() {
 
     </footer>  
   </div>
-</div>
+<!-- </div> -->
 </template>
 
 <style scoped>
@@ -108,7 +108,16 @@ function gotoPtID() {
   text-align: center;
   margin: auto;
   width: 100%; 
-  height: 20vh;
+  height: 30vh;
+}
+.middle-lang {
+  padding: 2%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  margin: auto;
+  width: 100%; 
+  height: 50vh;
 }
 .selected {
   color: red;

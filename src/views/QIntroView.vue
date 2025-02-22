@@ -46,7 +46,7 @@ const screen_audio = {
 <template>
   {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
   {{setlang($route.params.lang)}}  
-  <div class="container">
+  <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
@@ -75,7 +75,7 @@ const screen_audio = {
     </div>
 
   </div>
-</div>
+<!-- </div> -->
 </template>
 
 
