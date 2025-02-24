@@ -20,12 +20,10 @@
   window.sessionStorage.reset_scores = 1
   console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
 
-  // import VueAudio from '../assets/AudioTest.m4a'
-  // var myTrack = new Audio('../assets/AudioTest.m4a')
-  function send() {
-    alert(`send function`);
-    myTrack.play()
-    } 
+  // function send() {
+  //   alert(`send function`);
+  //   myTrack.play()
+  //   } 
 
 const route = useRoute()
 const userData = ref()
@@ -42,43 +40,49 @@ const num = ref(0)
 
 <!-- <div class="container"> -->
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
-  <div col-sm-6 col-12>
+  <!-- <div col-sm-6 col-12> -->
   
     <!--  App Logo and Title Headings -->
-    <div class="homeheader ">
- 
-        <img alt="isiXhosa" src="../assets/isiXhosaLogo.png" class="logo img-fluid"  />
+    <div class="homeheader">
+          <img alt="isiXhosa" src="../assets/isiXhosaLogoP800.png" class="img-fluid " />
+          <br><br>
     </div>
-    <!-- <div class="set-width">
-      <br>
-    </div> -->
     <br>
+
+    <!-- <div class="homeheader ">
+        <br>
+        <img alt="isiXhosa" src="../assets/isiXhosaLogoP600.png" class="img-fluid"  />
+    </div> -->
 
     <!-- Title and University Logos -->
     <div class="homemiddle">
-         <h2 class="darkred"> IPHEPHA LEMIBUZO <br>
-                            LEMPILO YESIGULANE </h2>
-         <h3>PATIENT HEALTH QUESTIONNAIRE</h3>
-         <br>
-    </div>
-   
-    <div class="d-flex align-items-center justify-content-between"> 
-        <img alt="EdinburghUni" src="../assets/UoELogo.png" width="140vw" height="35vh" />            
-        <img alt="StellenboschUni" src="../assets/StellenboschLogo.png" width="120vw" height="45vh" />
-    </div>
-    
-    <br>     
+      <br>
+      <div class="d-none d-sm-block">
+        <br><br>
+      </div>
+
+        <h2 class="darkred"> IPHEPHA LEMIBUZO<br>
+                             LEMPILO YESIGULANE </h2>
+        <h3>PATIENT HEALTH QUESTIONNAIRE</h3>
+        <br>
+        <div class="d-none d-sm-block">
+          <br><br>
+        </div>  
+        <div class="d-flex align-items-center justify-content-between logos"> 
+          <img alt="EdinburghUni" src="../assets/UoELogo.png" width="180vw" height="45vh" />  
+          <img alt="StellenboschUni" src="../assets/StellenboschLogo.png" width="170vw" height="55vh" />
+        </div>
+        <br><br><br>
+      </div>
    
   <!--  Navigation Footer  -->
   <div class="homefooter">
-    <div class="d-flex align-items-center justify-content-between">   
-        <router-link :to="{ name: 'aboutapp' }" class="btn btn-outline-light btn-sm" style="margin-bottom:2%; margin-left:2%">ABOUT <br> THIS APP</router-link>
-        <router-link :to="{ name: 'email' }" class="arrowsx"> &#8594 </router-link> 
+    <div class="d-flex align-items-center justify-content-between logos fixed-bottom">   
+        <router-link :to="{ name: 'aboutapp' }" class="btn btn-outline-light btn-m" style="margin-bottom:2%; margin-left:2%">ABOUT <br> THIS APP</router-link>
+        <router-link :to="{ name: 'email' }" class="arrow"> &#8594 </router-link> 
     </div>
   </div>
 
-  </div>
-<!-- </div> -->
 </template>
 
 <style scoped>
@@ -88,14 +92,14 @@ h9 {
 .homeheader {
   padding: 0vh;
   /* width: 100%; */
-  height: 60vh;
+  height: 55vh;
 }
 .homemiddle {
   padding: 0vh;
   text-align: center;
   margin-left: 0%;
   /* width: 100%; */
-  height: 20vh; 
+  height: 30vh; 
 }
 .homefooter {
   padding: 0%;
@@ -120,17 +124,8 @@ h3 {
   font-weight:  800;
   font-size: 100%;
 }
-/*.aboutbutton {
-  /* display: flex;
-  flex-wrap: wrap; 
-  color: white;
-  text-decoration: none;
-  margin-left: 100px;
-  margin-right: 500px;
-  border: 1px solid white;
-} */
 
-.greetings h1,
+/* .greetings h1,
 .greetings h3 {
   text-align: center;
 }
@@ -140,5 +135,5 @@ h3 {
   .greetings h3 {
     text-align: left;
   }
-}
+} */
 </style>

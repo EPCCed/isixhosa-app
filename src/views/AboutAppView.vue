@@ -6,12 +6,12 @@ const route = useRoute()
 </script>
 
 <template>
-<div class="container">
+<!-- <div class="container"> -->
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
     
     <!--  Page title </div> -->
-    <div class="header"> 
+    <div class="header-small"> 
       <br>
       <h4> ABOUT THIS APP </h4>
     </div>
@@ -21,7 +21,7 @@ const route = useRoute()
 
       <!--Main text -->
     <div class="about-middle">
-      <br><br>
+      
       <h6> The isiXhosa translation of the nine-item Patient Health Questionnaire (PHQ-9) was developed and validated by a team of 
            researchers at The University of Edinburgh (UK) and Stellenbosch University (South Africa).</h6>
       <br>
@@ -38,7 +38,7 @@ const route = useRoute()
     </div>
 
     <!--  Navigation Footer  -->
-    <div class="mt-auto foot-fixed">
+    <div class="mt-auto footer-small">
       <div class="d-flex align-items-center justify-content-between">
         <RouterLink to="/" class = "leftbutton"> &#8592 </RouterLink>
         <RouterLink to="/acknowl" class = "rightbutton"> &#8594 </RouterLink>
@@ -46,7 +46,7 @@ const route = useRoute()
     </div> 
 
    </div> <!-- col-sm col -->
-</div> <!-- container row -->
+<!-- </div> container row -->
 
 </template>
 
@@ -57,16 +57,17 @@ const route = useRoute()
   color: black;
   text-align: left; 
   /*width: 20vw;*/
-  width: 100%;
-  height: 55vh;
-  margin-left: 0vw;
-  margin-right: 0vw;
+  width: 90vw;
+  height: 70vh;
+  margin-top: 5vw !important;
+  margin-left: 5vw !important;
+  margin-right: 0% !important;
 }
-h5 {
+/* h5 {
   font-weight: 200;
   font-size: 1rem;
   text-align: left;
   color: white;
-}
+} */
 
 </style>

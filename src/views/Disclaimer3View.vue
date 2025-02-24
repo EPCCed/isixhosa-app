@@ -57,7 +57,9 @@
       {{ console.log('screen_text[lang]', screen_text[lang]) }}
       <br>
       <div class="screenbox">
+        <div class = "centerV">
         {{ screen_text[lang] }}
+        </div>
       </div>
     </div>
 
@@ -65,7 +67,7 @@
   <div class = "footer-mt-auto foot-fixed">  
     {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
       <!--  Speaker and Progress dots -->
-      <div class="d-flex align-items-center justify-content-between">   
+      <div class="d-flex align-items-center justify-content-between footer-text">   
         <span @click = screen_audio[lang].play>
           <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
@@ -76,7 +78,7 @@
         </div>
       </div>
       <!--  Navigation Arros -->
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
         <a @click="gotoDisc2" class="arrowsx"> &#8592 </a>
         <a @click="gotoQIntro" class="arrowsx"> &#8594 </a>
       </div>

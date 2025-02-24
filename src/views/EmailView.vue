@@ -56,7 +56,7 @@ function saveemail(string) {
     
   <!--  Header  -->
     <div class = "header-mt-auto header-small"> 
-      
+      <br>
       <h5>  FOR OFFICE USE
             <br>
             UKUSETYENZISWA YIOFISI KUPHELA 
@@ -64,13 +64,16 @@ function saveemail(string) {
     </div> <!-- end header -->
   
  <!-- CENTRE SECTION  -->  
-    <div class="middle-small">
-      <br><br>
-      <div class="center"> 
+ <div class="middle-small">
+      <br><br><br>
+      <div class="center">
+      <div class="centerVH">
+  
       {{ console.log('emailData.email_address=', emailData.email_address) }}
           <h3> Enter email address to export results </h3>
           <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
-          <br>
+          <br><br>      <br>
+
           
 <!-- NB This code allows checking of email format but causes an error on clicking confirm and doesn't save email address
 <form>
@@ -91,14 +94,18 @@ function saveemail(string) {
             <input v-model="emailData.email_address" class = "selected">  
           </span> 
           <button @click = saveemail(email)> Confirm </button>
+      <!-- </div> -->
+      </div>
       </div>
     </div>
 
   <!--FOOTER SECTION -->
-    <footer class="mt-auto footer-large">
+  <!-- Non mobile devices -->
+  <div class="d-none d-sm-block">
+    <footer class="mt-auto footer fixed-bottom">
       <span id="bottom"> 
-        
-        <div class="footer-text ">
+        <br>
+        <div class="footer-text">
           Researchers or clinicians may enter an email address to which anonymised 
           user responses from the session will be exported. To send the results as 
           an email, you must have an email account on your device.
@@ -108,13 +115,37 @@ function saveemail(string) {
           njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho.
           
           <!-- Navigation Arrows -->
-          <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
             <span><RouterLink to="/" class="arrow" > &#8592 </RouterLink></span>
             <span><RouterLink to="/ptid" class="arrow"> &#8594 </RouterLink></span>
           </div> 
         </div>
       </span> 
     </footer> 
+  </div>
+
+  <!-- Mobile devices -->
+   <div class ="d-block d-sm-none">
+    <footer class="mt-auto footer-xlarge fixed-bottom">
+      <span id="bottom"> 
+        <div class="footer-text">
+          Researchers or clinicians may enter an email address to which anonymised 
+          user responses from the session will be exported. To send the results as 
+          an email, you must have an email account on your device.
+          <br><br>
+          Abaphandi okanye abanyangi bangafaka idilesi yeimeyile apho iimpendulo 
+          zomsebenzisi ofihliweyo kule seshini ziza kuthunyelwa khona. Ukuthumela iziphumo 
+          njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho.
+          
+          <!-- Navigation Arrows -->
+          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
+            <span><RouterLink to="/" class="arrow" > &#8592 </RouterLink></span>
+            <span><RouterLink to="/ptid" class="arrow"> &#8594 </RouterLink></span>
+          </div> 
+        </div>
+      </span> 
+    </footer> 
+  </div>
   
   </div> <!-- col-sm col -->
 <!-- </div> container row -->

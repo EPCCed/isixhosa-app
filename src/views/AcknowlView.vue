@@ -3,13 +3,13 @@
 
 <template>
 
-<div class="container">
+<!-- <div class="container"> -->
   
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
 
     <!--  Page title -->
-    <div class="header">
+    <div class="header-small">
        <br> 
        <h4> ACKNOWLEDGEMENTS </h4>
     </div>
@@ -47,16 +47,15 @@
                             &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
                 </tr> 
                 <tr> 
-                    <td>Lucy Norris<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td> 
-                        <td>Busiswa Fanqa<br>
-                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
-                <tr> 
                     <td>EPCC<br>
                         &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td> 
-                        <td>Felicity Lindani<br>
-                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
+                    <td>Busiswa Fanqa<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
+                </tr> 
+                <tr>
+                    <td></td> 
+                    <td>Felicity Lindani<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
                 </tr> 
                 <tr> 
                     <td></td> 
@@ -74,14 +73,14 @@
 
     <!--  University Logos -->
     <br><br>
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center justify-content-between logos">
         <img alt="isiXhosa" src="../assets/UoELogo.png" width="120" height="30"/>
         <img alt="isiXhosa" src="../assets/StellenboschLogo.png" width="120" height="30"/>
     </div>
     <br><br>
     
     <!--  Navigation Footer  -->
-    <div class="mt-auto footer">
+    <div class="mt-auto footer-small">
         <div class="d-flex align-items-center justify-content-between">
             <RouterLink to="/aboutapp" class = "leftbutton"> &#8592 </RouterLink>
             <RouterLink to="/" class = "rightbutton"> &#8594 </RouterLink>
@@ -89,7 +88,7 @@
     </div>
 
 </div>
-</div>
+<!-- </div> -->
     
 </template>
 
@@ -108,7 +107,7 @@ th {
 }
 td {
   font-weight: 200;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-align: left;
 }
 .header {
@@ -125,10 +124,11 @@ td {
   background-color: white;
   color: black;
   text-align: left; 
-width: 100%;
-height: 50vh; 
-  margin-left: 0vw;
-  margin-right: 0vw;
+  width: 90vw;
+  height: 60vh; 
+  margin-top: 5vw !important;
+  margin-left: 5vw !important;
+  margin-right: 0% !important;
 }
 .ack-footer {
   padding: 2%;

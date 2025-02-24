@@ -52,24 +52,27 @@ const screen_audio = {
 <template>
 
   <!-- Screen Body (Audio Info text) -->
-    <div class = "infoscreen"> 
+    <div class = "infoscreen">
+
       {{setlang($route.params.lang)}}
       {{console.log("$route.params.lang=", $route.params.lang, "lang=", lang)}}
       <br>
 
       <div class="screenbox">
+        <div class = "centerV">
         {{ screen_text[lang] }}
+        </div>
       </div>
     </div>
 
   <!-- Footer navigation -->
     <div class = "footer-mt-auto footer">  
       <div class="d-flex align-items-center justify-content-between">   
-        <span @click = screen_audio[lang].play>
+        <span @click = screen_audio[lang].play class="footer-text">
           <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
       </div>
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
         <a @click="gotoLanguage" class="arrowsx"> &#8592 </a>
         <a @click="gotoDisc1" class="arrowsx"> &#8594 </a>
       </div>

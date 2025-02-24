@@ -43,10 +43,11 @@ function save_ptID(string) {
 <!---------------------------->
 <template>
 <!-- <div class="container"> -->
-  <div col-sm-6 col-12> 
+  <!-- <div col-sm-6 col-12>  -->
 
     <!--  Header  -->
     <div class = "header-mt-auto header-small"> 
+      <br>
       <h5>  FOR OFFICE USE
             <br>
             UKUSETYENZISWA YIOFISI KUPHELA  
@@ -55,40 +56,57 @@ function save_ptID(string) {
   
     <!--  CENTRE SECTION  -->
     <div class="middle-small">
-      <br><br>
-      <div class="center"> 
-        <h3>  Enter Participant ID or Patient Code </h3>
-        <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
-        <br>
-        <span v-if="confirmed === 0"> 
-          <input v-model="ptIDData.ptID" class = "unselected">  
-        </span> 
-        <span v-if="confirmed === 1"> 
-          <input v-model="ptIDData.ptID" class = "selected">  
-        </span> 
-        <button @click = save_ptID(ptID)> Confirm </button>         
-        
+      <br><br><br>
+      <div class="center">
+        <div class="centerVH">
+          <h3>  Enter Participant ID or Patient Code </h3>
+          <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
+          <br><br><br>
+          <span v-if="confirmed === 0"> 
+            <input v-model="ptIDData.ptID" class = "unselected">  
+          </span> 
+          <span v-if="confirmed === 1"> 
+            <input v-model="ptIDData.ptID" class = "selected">  
+          </span> 
+          <button @click = save_ptID(ptID)> Confirm </button>         
+        </div>  
       </div>
     </div>
 
   
   <!--  FOOTER SECTION  -->
-    <div class="footer-mt-auto footer-large"> 
-      
+  <!-- Non mobile devices -->
+  <div class="d-none d-sm-block">
+    <div class="footer-mt-auto footer fixed-bottom">   
         <div class="footer-text">
+          <br>
           Exported user response from this session will be labelled using this provided identifier.
           <br><br>
           Impendulo yomsebenzisi ethunyelweyo kule seshini iza ku-labelled kusetyenziswa 
           esi sichongi sinikiweyo.
-          <div class="arrows">
-            <span><RouterLink to="/email" class = "arrows"> &#8592 </RouterLink> </span>
-            <span><RouterLink to="/language" class = "arrows"> &#8594 </RouterLink> </span>
+          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
+            <span><RouterLink to="/email" class="arrow"> &#8592 </RouterLink> </span>
+            <span><RouterLink to="/language" class="arrow"> &#8594 </RouterLink> </span>
           </div>
         </div>
     </div>
+  </div>
 
-  </div> <!-- col-sm col -->
-<!-- </div> container row -->
+  <div class="d-block d-sm-none">
+    <div class="footer-mt-auto footer-large fixed-bottom">   
+        <div class="footer-text">
+          <br>
+          Exported user response from this session will be labelled using this provided identifier.
+          <br><br>
+          Impendulo yomsebenzisi ethunyelweyo kule seshini iza ku-labelled kusetyenziswa 
+          esi sichongi sinikiweyo.
+          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
+            <span><RouterLink to="/email" class="arrow"> &#8592 </RouterLink> </span>
+            <span><RouterLink to="/language" class="arrow"> &#8594 </RouterLink> </span>
+          </div>
+        </div>
+    </div>
+  </div>
 
 </template>
 

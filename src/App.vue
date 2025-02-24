@@ -29,38 +29,25 @@ function increment() {
       <br><br>
   </header>
 -->
-  <div class="appbox">
+  
+<div class="appbox">
     <RouterView />
-  </div>
+</div>
+
 </template>
 
 <style scoped>
 
+.appbox {
+  width: 100vw;
+  height: 100vh;
+  border: 0px;
+  background-color: white;
+  display: block;
+  text-align: center;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
 
-  /*@media (min-width: 1024px) {
- header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-} */
 </style>

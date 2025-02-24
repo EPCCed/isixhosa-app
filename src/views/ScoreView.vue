@@ -74,7 +74,7 @@ function buildMailString() {
           {{ setEmailBody() }}
           <h3> Stored scores (Qs 1-9 & total): {{ display_scores }}</h3>
           <h3> Stored extra question score: {{ display_extrascore }}</h3>
-
+          <br>
           <a href="mailto:a.krause@epcc.ed.ac.uk?Subject='isiXHosa PHQ-9 Results'&body='Extra question score is:'">
               Send Email to AK
           </a>
@@ -112,7 +112,7 @@ function buildMailString() {
           </h5>
           {{ buildMailString() }}
           
-          <h6 class ="center">
+          <h6>
             <!-- <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}"> -->
             <a href="{{mail_string}}">
               Send Email 
@@ -129,7 +129,7 @@ function buildMailString() {
 
     <div class="footer">
       <h6> Blank footer text for language screen. Blank footer text for language screen. Next line </h6> 
-      <div class="d-flex align-items-center justify-content-between">            
+      <div class="d-flex align-items-center justify-content-between fixed-bottom">            
           <router-link :to="{ name: 'complete', params: { lang, total }}" class="leftbutton"> &#8592 </router-link>
           <RouterLink to="/" class="rightbutton" ><h5>Home</h5> </RouterLink> 
        </div>
@@ -145,11 +145,10 @@ function buildMailString() {
   background-color: white;
   color: black;
   text-align: left; 
-  /*width: 20vw;*/
-  width: 100%;
-  height: 55vh;
-  margin-left: 5vw;
-  margin-right: 0vw;
+  width: 80vw;
+  height: 60vh;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 h6 {

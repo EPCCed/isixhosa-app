@@ -55,6 +55,7 @@ function gotoPtID() {
     
       <!--  Header  -->
       <div class = "mt-auto head-lang"> 
+        <br>
         <h6> Nceda khetha ulwimi ukuqhubeka </h6>
         <h6 @click=audio_xh.play()>
             <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp</h6>
@@ -66,7 +67,7 @@ function gotoPtID() {
 
       <!--  Language Choices  -->
       <div class="middle-lang">
-        <br><br>
+        <br><br><br><br>
          <a class="inputbox" @click="setlangI">
           <div v-if="lang === 'unset'"> <div class="unselected"> isiXhosa </div> </div>  
           <div v-if="lang === 'xh'"> <div class="selected"> isiXhosa </div> </div>  
@@ -85,12 +86,12 @@ function gotoPtID() {
 
   <!-- Footer - Navigation -->
     <footer class="mt-auto footer"> 
-      <span id="bottom"> 
+      <span id="bottom" class="fixed-bottom"> 
         <!-- <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>    -->
         <!-- <div class = "footer-mt-auto foot-fixed">   -->
-      <div class="d-flex align-items-center justify-content-between">
-        <a @click="gotoPtID" class="arrowsx"> &#8592 </a>
-        <a @click="gotoAudioInfo" class="arrowsx"> &#8594 </a>
+      <div class="d-flex align-items-center justify-content-between footer-text">
+        <a @click="gotoPtID" class="arrow"> &#8592 </a>
+        <a @click="gotoAudioInfo" class="arrow"> &#8594 </a>
       </div>
           <!-- </div> -->
       </span> 

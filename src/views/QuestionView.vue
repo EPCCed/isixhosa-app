@@ -309,6 +309,7 @@ function saveScores() {
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
+
 <!-- {{ language =  $route.params.lang }} -->
 <!--{{ console.log("answers=",answers, "answers[en,1]", answers['en',1]) }}
 {{ console.log("answers_audio", answers_audio, "answers_audio[en,1]=", answers_audio['en',1]) }} -->
@@ -328,6 +329,7 @@ function saveScores() {
     <!--  HEADER                                                                                          -->
     <!------------------------------------------------------------------------------------------------------> 
     <div class = "header">
+      <br>
       <h2>{{ header[lang] }}</h2>
     </div>
 
@@ -336,6 +338,7 @@ function saveScores() {
     <!--  QUESTION                                                                                        -->
     <!------------------------------------------------------------------------------------------------------> 
       <div class="question">
+        <br>
         <h1> {{ question+1 }} </h1>
         <h1> {{ questions[lang][question] }}</h1>
         <span  @click=questions_audio[lang][question].play() >     
@@ -371,7 +374,7 @@ function saveScores() {
 <div class = "mt-auto footer">
   {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}}
   <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
 
         <!-- Left arrow navigation, depending on question number -->
         <a v-if="question > 0" @click="nextQuestion(-1)" class="leftbutton"> &#8592 </a>

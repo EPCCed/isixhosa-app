@@ -56,19 +56,20 @@ const screen_audio = {
 
     <!-- Question Intro text-->
       <div class="middle">      
-        <br><br><br>
-        <h5> {{ screen_text[lang] }} </h5>
-        <br>
+        
+        <h2 class="screentext centerV"> {{ screen_text[lang] }} </h2>
+        
       </div>
 
   <!-- Footer navigation -->
   <div class = "footer-mt-auto foot-fixed">  
-      <div class="d-flex align-items-center justify-content-between">   
+      <br>
+      <div class="d-flex align-items-center justify-content-between footer-text">   
         <span @click = screen_audio[lang].play>
           <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
       </div>
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
         <a @click="gotoDisc3" class="arrowsx"> &#8592 </a>
         <a @click="gotoQuestion" class="arrowsx"> &#8594 </a>
       </div>

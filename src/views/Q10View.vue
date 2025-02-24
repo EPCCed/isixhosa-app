@@ -200,25 +200,26 @@ console.log('qnum=', qnum.value)
 <!------------------------------------------------------------------------------------------------------>
 <!--  HEADER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
-    <div class = "header">
+    <div class = "header-small">
+      <br>
       <h2>{{ header[language] }}</h2>
-      <br><br>
+      <br>
     </div>
 
 <!------------------------------------------------------------------------------------------------------>
 <!--  QUESTION                                                                                        -->
 <!------------------------------------------------------------------------------------------------------> 
-<div class="middle"> 
+<div class="middle-large"> 
   <br>
   <div class="question">
     {{ console.log("QUESTION: language=", language, "selected=", selected) }} 
     {{ console.log("questions_audio[language]=", questions_audio[language]) }} 
-    <h1> {{ questions[language] }} </h1>
+    <h3> {{ questions[language] }} </h3>
     <span  @click=questions_audio[language].play() >     
           <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
     </span> 
   </div>
-  <br>
+  <br><br><br>
 <!------------------------------------------------------------------------------------------------------>
 <!--  ANSWERS                                                                                         -->
 <!------------------------------------------------------------------------------------------------------> 
@@ -233,20 +234,20 @@ console.log('qnum=', qnum.value)
     </div>
     <div v-for="(answer_audio, index) in answers_audio[language]"
         @click=answer_audio.play() >     
-          <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+          <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
           <!-- {{ console.log('answer_audio=', answer_audio) }} -->
         </div>    
   </div>
-  <br><br>
+  <br>
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <!--  FOOTER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
-<div class = "mt-auto footer">
+<div class = "mt-auto footer-small">
   {{setlang('E')}} 
   {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}}
       <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
         <a @click="gotoQ9" class="arrowsx"> &#8592 </a> 
          <a @click="gotoComplete" class="rightbutton" style="text-align: right"> &#8594 </a>
       </div>
@@ -265,17 +266,17 @@ console.log('qnum=', qnum.value)
 </template>
 
 <style scoped>
-.q-section {
+/* .q-section {
   padding: 0%;
   background-color: white;
   color: black;
   text-align: left; 
   /*width: 20vw;*/
-  width: 100vw;
+  /* width: 100vw;
   height: 40vh;
   margin-left: 0vw;
   margin-right: 0vw;
-}
+} */ 
 a.answer {
   color: black;
   font-weight:  500;
@@ -284,7 +285,7 @@ a.answer {
   text-decoration: none;
 }
 
-.backQ {
+/* .backQ {
   color: white;
   font-weight:  200;
   font-size: 1.5rem;
@@ -297,7 +298,7 @@ a.answer {
   font-size: 1.5rem;
   text-align: right;
   text-decoration: none;
-}
+} */
 h1 {
   font-weight:  600;
   font-size: 1.5rem;
@@ -314,7 +315,7 @@ h3 {
   text-align: center;
   text-decoration: none;
 }
-h4 {
+/* h4 {
   font-weight:  500;
   font-size: 1.5rem;
   text-align: center;
@@ -323,16 +324,27 @@ h6 {
   font-weight:  500;
   font-size: 2.0rem;
   text-align: right;
-}
+} */
 
 .question {
-  padding: 1rem;  
+  padding: 1rem !important;
+  margin-left: 8vw !important;
+  margin-right: 8vw !important;  
   text-align: center;
 }
 .answers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 0 2rem;
+}
+.middle-large {
+  background-color: white;
+  color: black;
+  text-align: left; 
+  width: 100vw;
+  height: 70vh;
+  margin-left: 5vw;
+  margin-right: 0vw;
 }
 
 </style>
