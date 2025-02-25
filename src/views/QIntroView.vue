@@ -48,7 +48,7 @@ const screen_audio = {
   {{setlang($route.params.lang)}}  
   <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
-    <div col-sm-6 col-12>
+    <!-- <div col-sm-6 col-12> -->
     
     <!--  Header  -->
       <div class = "header"> 
@@ -56,7 +56,7 @@ const screen_audio = {
 
     <!-- Question Intro text-->
       <div class="middle">      
-        
+        <br><br>
         <h2 class="screentext centerV"> {{ screen_text[lang] }} </h2>
         
       </div>
@@ -74,8 +74,8 @@ const screen_audio = {
         <a @click="gotoQuestion" class="arrowsx"> &#8594 </a>
       </div>
     </div>
-
-  </div>
+<!-- 
+  </div> -->
 <!-- </div> -->
 </template>
 

@@ -55,7 +55,7 @@ function saveemail(string) {
   <div col-sm-6 col-12>
     
   <!--  Header  -->
-    <div class = "header-mt-auto header-small"> 
+    <div class = "header-mt-auto header-small fixed-top"> 
       <br>
       <h5>  FOR OFFICE USE
             <br>
@@ -102,7 +102,7 @@ function saveemail(string) {
   <!--FOOTER SECTION -->
   <!-- Non mobile devices -->
   <div class="d-none d-sm-block">
-    <footer class="mt-auto footer fixed-bottom">
+    <footer class="mt-auto footer-large fixed-bottom">
       <span id="bottom"> 
         <br>
         <div class="footer-text">
@@ -129,14 +129,15 @@ function saveemail(string) {
     <footer class="mt-auto footer-xlarge fixed-bottom">
       <span id="bottom"> 
         <div class="footer-text">
-          Researchers or clinicians may enter an email address to which anonymised 
+          <br>
+          <h4>Researchers or clinicians may enter an email address to which anonymised 
           user responses from the session will be exported. To send the results as 
           an email, you must have an email account on your device.
           <br><br>
           Abaphandi okanye abanyangi bangafaka idilesi yeimeyile apho iimpendulo 
           zomsebenzisi ofihliweyo kule seshini ziza kuthunyelwa khona. Ukuthumela iziphumo 
           njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho.
-          
+          </h4>
           <!-- Navigation Arrows -->
           <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
             <span><RouterLink to="/" class="arrow" > &#8592 </RouterLink></span>
@@ -157,15 +158,10 @@ h3 {
   font-weight:  500;
   font-size: 1.2rem;
 }
-/* .email-middle {
-  padding: 0%;
-  background-color: white;
-  color: black;
-  text-align: left; 
-  /*width: 20vw;*/
-  /* width: 100%;
-  height: 35vh;
-  margin-left: 0vw;
-  margin-right: 0vw;
-} */
+h4 {
+  font-weight:  300;
+  font-size: 0.9rem;
+}
+
+
 </style> */

@@ -44,7 +44,7 @@ const num = ref(0)
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader">
-          <img alt="isiXhosa" src="../assets/isiXhosaLogoP800.png" class="img-fluid " />
+          <img alt="isiXhosa" src="../assets/isiXhosaLogoP700.png" class="img-fluid " />
           <br><br>
     </div>
     <br>
@@ -72,7 +72,7 @@ const num = ref(0)
           <img alt="EdinburghUni" src="../assets/UoELogo.png" width="180vw" height="45vh" />  
           <img alt="StellenboschUni" src="../assets/StellenboschLogo.png" width="170vw" height="55vh" />
         </div>
-        <br><br><br>
+        <br><br>
       </div>
    
   <!--  Navigation Footer  -->
@@ -102,7 +102,7 @@ h9 {
   height: 30vh; 
 }
 .homefooter {
-  padding: 0%;
+  padding: 1% !important;
   background-color: darkred;
   color: white;
   /*width: 100%; */

@@ -73,8 +73,8 @@ const screen_audio = {
         </span>
       </div>
       <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
-        <a @click="gotoLanguage" class="arrowsx"> &#8592 </a>
-        <a @click="gotoDisc1" class="arrowsx"> &#8594 </a>
+        <a @click="gotoLanguage" class="arrow"> &#8592 </a>
+        <a @click="gotoDisc1" class="arrow"> &#8594 </a>
       </div>
     </div>
 
