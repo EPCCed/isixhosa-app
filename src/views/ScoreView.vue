@@ -21,7 +21,7 @@ const email = ref('')
 
 const mailto = computed(() => {
   // return `mailto:${email.value}?Subject=isiXHosaPHQ-9Results&body=Score:${score.value}`
-    return `mailto:${display_email.value}?Subject=isiXHosaPHQ-9 Results&body=Extra Score: ${display_extrascore.value}`
+    return `mailto:${display_email.value}?Subject=isiXHosaPHQ-9 Results&body= Scores for Patient ID:  ${display_ptID.value} %0D%0A%0D%0A PHQ-9 scores (questions 1-9 and total):  ${display_scores.value} %0D%0A%0D%0A Extra Score:  ${display_extrascore.value}`
 })
 
 console.log('total=', total)
@@ -44,88 +44,47 @@ function setlang(langparam) {
     console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
     } 
 
-// function setEmailBody() {
-//     email_body_text.value = "Extra score is:"
-//      //email.body_text.value = "<b>STuff goes here</b> " //& display_extrascore & " more htmls in here</b>"
-//     console.log("email_body_text=", email_body_text.value)
-//     } 
-// function buildMailString() {
-//     mail_string.value ="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosaPHQ-9Results&body=ExtraQuestionScore:";
-//     console.log('mail_string=', mail_string.value);
-//   }
-
-
-
 </script>
 
 <template>
-<!-- {{console.log("lang=", lang, "$route.params.lang=", $route.params.lang)}}
-{{console.log("total=", total, "$route.params.total=", $route.params.total)}} -->
-<!-- <div class="screendef"> -->
-  <!-- {{ console.log("updateData.qtext=", updateData.qtext ) }} -->
-
-  <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
     
       <!--  Header  -->
         <div class = "header">
           <br> 
-          <!-- <h4 v-if="$route.params.lang === 'xh'"> UKUFAKWA IKHOWUDI YIOFISI </h4>
-          <h4 v-if="$route.params.lang === 'en'"> CODING BY THE OFFICE </h4> -->
         </div> 
 
         <div class="middle middle-score">
           <br>
           {{ setScores() }}
-          <!-- {{ setEmailBody() }} -->
-          <h3> Stored scores (Qs 1-9 & total): {{ display_scores }}</h3>
-          <h3> Stored extra question score: {{ display_extrascore }}</h3>
-          <br>
-          <a href="mailto:a.krause@epcc.ed.ac.uk?Subject='isiXHosa PHQ-9 Results'&body='Extra question score is:'">
-              Send Email to AK
-          </a>
-          <br><br>
 
           {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore) }}
 
-          <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
+          <!-- <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
             Send Email to LN
-          </a>
+          </a> -->
 
-          <!--  Score --> 
+      <!--  Middle --> 
           {{settotal($route.params.total)}}
           <!-- display_total= {{ display_total }} -->
 
-        <!-- <br><br> -->
-        <!-- <h4 v-if="$route.params.lang === 'xh'">
-          AmaNqaku eWonke   &nbsp&nbsp&nbsp&nbsp   {{ display_total }}
-        </h4> -->
-        <!-- <h4 v-if="$route.params.lang === 'en'">
-          Total Score &nbsp&nbsp&nbsp&nbsp {{ display_total }}
-        </h4> -->
-        <!-- <br><br> -->
-        <!-- <h5>Scores for Patient ID: &nbsp {{  display_ptID }} <br><br>
-            &nbsp will be emailed to: &nbsp&nbsp&nbsp {{ display_email }}
-            &nbsp&nbsp&nbsp&nbsp <button @click = send_email(ptID)> <a href="mailto:EMAILADDRESS"> Send Email </a> </button>    </h6> 
-        <br><br><br>
-        <p> <a href="mailto:l.norris@epcc.ed.ac.uk"> Send Email </a> </p> </h5> -->
-        <!-- <button @click="mailto:name@one.net" method="post" enctype="text/plain"></button> -->
-  
           <br><br> 
-          <h5>Scores for Pt ID: &nbsp&nbsp&nbsp&nbsp <span class="darkred"> {{  display_ptID }} </span> <br>
-              will be emailed to: &nbsp <span class="darkred"> {{ display_email }} </span>
-            <!-- &nbsp&nbsp&nbsp&nbsp <button @click = send_email(ptID)> <a href="mailto:EMAILADDRESS"> Send Email </a> </button>     -->
-          </h5>
-          <!-- {{ buildMailString() }} -->
-          
-          <h6>
-            <!-- <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}"> -->
+          <h3>Scores for Pt ID: &nbsp&nbsp&nbsp&nbsp <span class="darkred"> {{  display_ptID }} </span> 
+              <br><br>
+              &nbsp; will be emailed to: &nbsp <span class="darkred"> {{ display_email }} </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a :href="mailto">
-                Send Email
+                <button>Send Email</button>
               </a>
-        </h6>
-           <br><br><br> 
+          </h3>
+          <!-- {{ buildMailString() }} -->
+          <br><br>
+          <h5>
+            &nbsp;&nbsp;
+            <!-- <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}"> -->
+
+          </h5>
         </div>
 
   <!-- {{ console.log('email_address=',emailData.email_address) }}  -->

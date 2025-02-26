@@ -85,8 +85,8 @@ function gotoPtID() {
       {{ console.log('lang=', lang) }}
 
   <!-- Footer - Navigation -->
-    <footer class="mt-auto footer"> 
-      <span id="bottom" class="fixed-bottom"> 
+    <footer class="mt-auto footer fixed-bottom"> 
+      <span id="bottom"> 
         <!-- <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>    -->
         <!-- <div class = "footer-mt-auto foot-fixed">   -->
       <div class="d-flex align-items-center justify-content-between footer-text">

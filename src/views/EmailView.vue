@@ -55,7 +55,7 @@ function saveemail(string) {
   <div col-sm-6 col-12>
     
   <!--  Header  -->
-    <div class = "header-mt-auto header-small fixed-top"> 
+    <div class = "header-mt-auto header-small"> 
       <br>
       <h5>  FOR OFFICE USE
             <br>
@@ -64,7 +64,7 @@ function saveemail(string) {
     </div> <!-- end header -->
   
  <!-- CENTRE SECTION  -->  
- <div class="middle-small">
+ <div class="middle">
       <br><br><br>
       <div class="center">
       <div class="centerVH">
@@ -72,7 +72,7 @@ function saveemail(string) {
       {{ console.log('emailData.email_address=', emailData.email_address) }}
           <h3> Enter email address to export results </h3>
           <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
-          <br><br>      <br>
+          <br><br>  
 
           
 <!-- NB This code allows checking of email format but causes an error on clicking confirm and doesn't save email address

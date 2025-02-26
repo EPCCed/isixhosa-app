@@ -65,7 +65,7 @@
     </div>
 
   <!-- Footer  -->
-  <div class = "footer-mt-auto footer">  
+  <div class = "footer-mt-auto footer fixed-bottom">  
     {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
       <!--  Speaker and Progress dots -->
       <div class="d-flex align-items-center justify-content-between footer-text">   
@@ -75,11 +75,11 @@
         <div>
           <span class="dotx"></span> &nbsp; 
           <span class="circleoutlinex"></span> &nbsp;
-          <span class="circleoutlinex"></span> &nbsp;
+          <span class="circleoutlinex"></span>
         </div>
       </div>
       <!--  Navigation Arros -->
-      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
+      <div class="d-flex align-items-center justify-content-between footer-text ">
         <a @click="gotoAudioInfo" class="arrowsx"> &#8592 </a>
         <a @click="gotoDisc2" class="arrowsx"> &#8594 </a>
       </div>

@@ -61,7 +61,7 @@ function save_ptID(string) {
         <div class="centerVH">
           <h3>  Enter Participant ID or Patient Code </h3>
           <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
-          <br><br><br>
+          <br><br>
           <span v-if="confirmed === 0"> 
             <input v-model="ptIDData.ptID" class = "unselected">  
           </span> 
@@ -77,7 +77,7 @@ function save_ptID(string) {
   <!--  FOOTER SECTION  -->
   <!-- Non mobile devices -->
   <div class="d-none d-sm-block">
-    <div class="footer-mt-auto footer fixed-bottom">   
+    <div class="footer-mt-auto footer-large fixed-bottom">   
         <div class="footer-text">
           <br>
           Exported user response from this session will be labelled using this provided identifier.
@@ -96,10 +96,11 @@ function save_ptID(string) {
     <div class="footer-mt-auto footer-large fixed-bottom">   
         <div class="footer-text">
           <br>
-          Exported user response from this session will be labelled using this provided identifier.
+          <h4>Exported user response from this session will be labelled using this provided identifier.
           <br><br>
           Impendulo yomsebenzisi ethunyelweyo kule seshini iza ku-labelled kusetyenziswa 
           esi sichongi sinikiweyo.
+          </h4>
           <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
             <span><RouterLink to="/email" class="arrow"> &#8592 </RouterLink> </span>
             <span><RouterLink to="/language" class="arrow"> &#8594 </RouterLink> </span>
@@ -114,5 +115,9 @@ function save_ptID(string) {
 h3 {
   font-weight:  500;
   font-size: 1.2rem;
+}
+h4 {
+  font-weight:  300;
+  font-size: 0.9rem;
 }
 </style>

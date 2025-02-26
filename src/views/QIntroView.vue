@@ -62,14 +62,14 @@ const screen_audio = {
       </div>
 
   <!-- Footer navigation -->
-  <div class = "footer-mt-auto foot-fixed">  
+  <div class = "footer-mt-auto footer fixed-bottom">  
       <br>
       <div class="d-flex align-items-center justify-content-between footer-text">   
         <span @click = screen_audio[lang].play>
           <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
       </div>
-      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
+      <div class="d-flex align-items-center justify-content-between footer-text ">
         <a @click="gotoDisc3" class="arrowsx"> &#8592 </a>
         <a @click="gotoQuestion" class="arrowsx"> &#8594 </a>
       </div>

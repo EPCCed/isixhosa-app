@@ -44,7 +44,7 @@ const num = ref(0)
   
     <!--  App Logo and Title Headings -->
     <div class="homeheader">
-          <img alt="isiXhosa" src="../assets/isiXhosaLogoP700.png" class="img-fluid " />
+          <img alt="isiXhosa" src="../assets/isiXhosaLogoP700.png" class="img-fluid logo" />
           <br><br>
     </div>
     <br>
@@ -56,19 +56,17 @@ const num = ref(0)
 
     <!-- Title and University Logos -->
     <div class="homemiddle">
-      <br>
-      <div class="d-none d-sm-block">
+
+      <!-- <div class="d-none d-sm-block">
         <br><br>
-      </div>
+      </div> -->
 
         <h2 class="darkred"> IPHEPHA LEMIBUZO<br>
                              LEMPILO YESIGULANE </h2>
         <h3>PATIENT HEALTH QUESTIONNAIRE</h3>
-        <br>
-        <div class="d-none d-sm-block">
-          <br><br>
-        </div>  
-        <div class="d-flex align-items-center justify-content-between logos"> 
+        <br><br>
+ 
+        <div class="d-flex align-items-center justify-content-between logos "> 
           <img alt="EdinburghUni" src="../assets/UoELogo.png" width="180vw" height="45vh" />  
           <img alt="StellenboschUni" src="../assets/StellenboschLogo.png" width="170vw" height="55vh" />
         </div>
@@ -76,8 +74,8 @@ const num = ref(0)
       </div>
    
   <!--  Navigation Footer  -->
-  <div class="homefooter">
-    <div class="d-flex align-items-center justify-content-between logos fixed-bottom">   
+  <div class="homefooter fixed-bottom">
+    <div class="d-flex align-items-center justify-content-between logos ">   
         <router-link :to="{ name: 'aboutapp' }" class="btn btn-outline-light btn-m" style="margin-bottom:2%; margin-left:2%">ABOUT <br> THIS APP</router-link>
         <router-link :to="{ name: 'email' }" class="arrow"> &#8594 </router-link> 
     </div>
@@ -91,7 +89,7 @@ h9 {
 }
 .homeheader {
   padding: 0vh;
-  /* width: 100%; */
+  width: 100vw;;
   height: 55vh;
 }
 .homemiddle {
@@ -99,19 +97,21 @@ h9 {
   text-align: center;
   margin-left: 0%;
   /* width: 100%; */
-  height: 30vh; 
+  height: 15vh; 
 }
 .homefooter {
-  padding: 1% !important;
+  padding: 0 !important;
   background-color: darkred;
   color: white;
   /*width: 100%; */
-  height: 15vh;
+  height: 12vh;
 }
 .logo {
-  display: block;
+  /* display: block;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; */
+  max-width: 100%;
+  max-height: 100%;
 }
 
 h2 {
