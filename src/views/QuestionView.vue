@@ -285,7 +285,7 @@ function saveScores() {
   console.log('FN saveScores start: updateData.qtext=', updateData.qtext, 'updateData.qtext[1]=',updateData.qtext[1]);
   updateData.qtext[9] = updateData.qtext[0]+updateData.qtext[1]+updateData.qtext[2]+updateData.qtext[3]+updateData.qtext[4]+updateData.qtext[5]+
                           updateData.qtext[6]+updateData.qtext[7]+updateData.qtext[8];
-  window.sessionStorage.scores = updateData.qtext.value;
+  window.sessionStorage.scores = updateData.qtext;
   window.sessionStorage.scorearray = JSON.stringify(updateData.qtext)
   console.log('fn saveScores end: wss.scores=', window.sessionStorage.scores, 'wss.scorearray=', window.sessionStorage.scorearray);
 }
