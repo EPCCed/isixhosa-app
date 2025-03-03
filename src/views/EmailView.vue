@@ -9,11 +9,9 @@
 import { ref } from 'vue';
 import { useWindowSize } from '@vueuse/core';
 import emailData from '../email.json';
-console.log('email_address=', emailData.email_address);
+//console.log('email_address=', emailData.email_address);
 
-//console.log("updateData.qtext=", updateData.qtext );
-
-const { width, height } = useWindowSize()
+//const { width, height } = useWindowSize()
 
 const name= ref('First Last');
 const newName = ref('nN');
@@ -27,20 +25,20 @@ const newval = ref('nval')
 const newId = ('newID')
 const confirmed = ref(0)
 
-{{console.log('savedemail=', savedemail)}}
-  console.log('script set up: email=', email.value, 'sessionStorage.email =',sessionStorage.email);
+//{{console.log('savedemail=', savedemail)}}
+  //console.log('script set up: email=', email.value, 'sessionStorage.email =',sessionStorage.email);
 
 function getemail(e) {
-  console.log('fn getemail bef: email=', email.value, 'sessionStorage.email =',sessionStorage.email, 'ls.newval=',sessionStorage.newval);
+  //console.log('fn getemail bef: email=', email.value, 'sessionStorage.email =',sessionStorage.email, 'ls.newval=',sessionStorage.newval);
   //console.log('fn getemail aft: newval=') //, newval.value, 'email=', email.value)
   return newemail.value=sessionStorage.email;
 }
 function saveemail(string) {
-  console.log('fn saveemail bef: string=', string, 'email_address=', emailData.email_address);
-  window.sessionStorage.email = emailData.email_address //email.value //modelValue.value;
+  //console.log('fn saveemail bef: string=', string, 'email_address=', emailData.email_address);
+  window.sessionStorage.email = emailData.email_address 
   localStorage.email = emailData.email_address 
   confirmed.value = 1;
-  console.log('fn saveemail aft: wsessionS=',window.sessionStorage.email,'localS=',localStorage.email, 'email_address=', emailData.email_address);
+  //console.log('fn saveemail aft: wsessionS=',window.sessionStorage.email,'localS=',localStorage.email, 'email_address=', emailData.email_address);
   return email.value = window.sessionStorage.email;
 }
 
@@ -69,7 +67,7 @@ function saveemail(string) {
       <div class="center">
       <div class="centerVH">
   
-      {{ console.log('emailData.email_address=', emailData.email_address) }}
+      <!-- {{ console.log('emailData.email_address=', emailData.email_address) }} -->
           <h3> Enter email address to export results </h3>
           <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
           <br><br>  

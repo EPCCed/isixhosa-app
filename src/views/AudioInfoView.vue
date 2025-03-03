@@ -31,15 +31,15 @@ const screen_audio = {
 
   function setlang(l) {
     lang.value =  l
-    console.log("FUNCTION setlang: lang=", lang.value, " l=", l)
+    //console.log("FUNCTION setlang: lang=", lang.value, " l=", l)
   } 
   function gotoLanguage() {
-    console.log("FUNCTION gotoLang:  lang=", lang.value)
+    //console.log("FUNCTION gotoLang:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({name: 'language'});
   }
   function gotoDisc1() {
-    console.log("FUNCTION gotoDisc1:  lang=", lang.value)
+    //console.log("FUNCTION gotoDisc1:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({  name: 'disclaimer', params: { lang: lang.value } });
   }
@@ -55,7 +55,7 @@ const screen_audio = {
     <div class = "infoscreen">
 
       {{setlang($route.params.lang)}}
-      {{console.log("$route.params.lang=", $route.params.lang, "lang=", lang)}}
+      <!-- {{console.log("$route.params.lang=", $route.params.lang, "lang=", lang)}} -->
       <br>
 
       <div class="screenbox">

@@ -7,29 +7,32 @@
 <script setup>
   import { useRoute } from 'vue-router'
   import { ref, watch } from 'vue'
-  // import sound from '../assets/AudioTest.m4a'
   import FormInput from '../views/FormInput.vue'
   import { useWindowSize } from '@vueuse/core'
 
-  const { width, height } = useWindowSize()
+  //const { width, height } = useWindowSize()
 
-  console.log('useWindowSize=', useWindowSize())
-  //console.log('useRoute=', useRoute)
-  console.log('width=', width.value, ' height=', height.value)
-
+  const score_text = [  "one", 
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "total"
+]
   window.sessionStorage.reset_scores = 1
-  console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
+  window.sessionStorage.scorearray = JSON.stringify(score_text)
+  //console.log(score_text, 'wss.scorearray=', window.sessionStorage.scorearray)
+  //console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
 
-  // function send() {
-  //   alert(`send function`);
-  //   myTrack.play()
-  //   } 
+useRoute()
+//const userData = ref()
+//const clickcount = ref(0)
+//const inputvar = ref('writehere')
 
-const route = useRoute()
-const userData = ref()
-const clickcount = ref(0)
-const inputvar = ref('writehere')
-// const audio = new Audio(sound) 
 const num = ref(0)
 </script>
 
@@ -125,15 +128,4 @@ h3 {
   font-size: 100%;
 }
 
-/* .greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-} */
 </style>

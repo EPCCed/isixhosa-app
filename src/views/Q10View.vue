@@ -89,42 +89,27 @@ const confirmed = ref(0)
 const answered = ref(0)
 const answer_count =ref(0)
 
-console.log('lang=', lang.value, 'total=', total.value, 'qnum=', qnum.value)
+//console.log('lang=', lang.value, 'total=', total.value, 'qnum=', qnum.value)
 //console.log('score_list=', score_list)
-console.log('window.sessionStorage.scores=', window.sessionStorage.scores)
+//console.log('window.sessionStorage.scores=', window.sessionStorage.scores)
 
 //window.sessionStorage.extrascore = selected.value
-console.log("window.sessionStorage.extrascore=", window.sessionStorage.extrascore) 
+//console.log("window.sessionStorage.extrascore=", window.sessionStorage.extrascore) 
 
 ///////////////////////////////
 //        FUNCTIONS          //
 ///////////////////////////////
 
-// function nextQuestion(diff) {
-//   if (
-//     selected.value != null && 
-//     (question.value+diff >= 0 &&
-//     (question.value+diff < questions[language.value].length))
-//   ) {
-//     question.value += diff
-//     selected.value = null
-//   }
-//   else 
-//     {alert("Please choose an answer to continue");
-//   }    
-// }
-
-
 
 function changeSelected(id) {
-  console.log("start fn changeSelected; id=", id)
+  //console.log("start fn changeSelected; id=", id)
   selected.value = id
   window.sessionStorage.extrascore = selected.value;
-  console.log("id=", id, "window.sessionStorage.extrascore=", window.sessionStorage.extrascore)
+  //console.log("id=", id, "window.sessionStorage.extrascore=", window.sessionStorage.extrascore)
 }
 
 function setSelected()
-    {console.log("FUNCTION setSelected:  window.sessionStorage.extrascore=", window.sessionStorage.extrascore)
+    {//console.log("FUNCTION setSelected:  window.sessionStorage.extrascore=", window.sessionStorage.extrascore)
     //if (updateData.qtext[n]=='0' || updateData.qtext[n]=='1'|| updateData.qtext[n]=='2'|| updateData.qtext[n]=='3' )
     if (window.sessionStorage.extrascore != null)
         {selected.value=window.sessionStorage.extrascore;}
@@ -132,30 +117,18 @@ function setSelected()
     }
 
 function setLanguage(l) {
-  //lang.value=l;
-  if (l == 'en')
-      {language.value = 'en'
-      }
-  if (l == 'xh')
-      {language.value = 'xh'
-      }
-  console.log("FUNCTION setLanguage: language=", language.value, 'lang=', lang.value, 'l=', l)  
+  // if (l == 'en')
+  //     {language.value = 'en'
+  //     }
+  // if (l == 'xh')
+  //     {language.value = 'xh'
+  //     }
+  language.value = l;
+  //console.log("FUNCTION setLanguage: language=", language.value, 'lang=', lang.value, 'l=', l)  
 }
 
-// function save_scores(total, x) {
-//   console.log("start fn save_scores: total=", total, "  x=", x, "  qnum=", qnum);
-//   updateData.qtext[9] = x;
-//   updateData.qtext[10] = total;
-//   window.sessionStorage.total = total; 
-//   confirmed.value = 1;
-//   console.log("end fn save_scores: total=", total, "  x=", x, "   qnum=", qnum, "  qnumnew.value=", qnumnew.value);
-//   console.log("end fn 2: w.sStorage.total=", window.sessionStorage.total );
-//   console.log("updateData.qtext=", updateData.qtext );
-// }
 function setlang(langparam) {
     lang.value=langparam.value;
-    //lang_q.value="aaa";
-      console.log("fn setlang: lang=", lang.value)
   }
 function gotoQ9() {
     console.log("FUNCTION gotoQ9:  language=", language.value)
@@ -163,20 +136,20 @@ function gotoQ9() {
     router.push({name: 'question', params: { lang:language.value, qnumber: 9}});
   }
 function gotoComplete() {
-    console.log("FUNCTION gotoComplete:  selected=", selected.value);
-    {{console.log("lang=", lang.value, "language=",language.value)}};
+    //console.log("FUNCTION gotoComplete:  selected=", selected.value);
+    //{{console.log("lang=", lang.value, "language=",language.value)}};
     if (selected.value == 'null')
 
-      { console.log('alert=', alert_msg[language.value]);
+      { //console.log('alert=', alert_msg[language.value]);
         alert(alert_msg[language.value]);
     }
     else
-      {console.log("selected=", selected.value);
+      {//console.log("selected=", selected.value);
       questions_audio[language.value].pause();
       router.push({name: 'complete', params: { lang:language.value}});
     }
   }
-console.log('qnum=', qnum.value)
+//console.log('qnum=', qnum.value)
 </script>
 
 <!---------------------------->
@@ -192,7 +165,7 @@ console.log('qnum=', qnum.value)
 
 {{ setLanguage($route.params.lang) }}
 {{ setSelected () }}
-{{console.log('selected=', selected) }}
+<!-- {{console.log('selected=', selected) }} -->
 <!-- {{ console.log("TEMPLATE:  window.sessionStorage.extrascore=", window.sessionStorage.extrascore) }} -->
   
 <!-- <div class="container"> -->
@@ -212,8 +185,8 @@ console.log('qnum=', qnum.value)
 <div class="middle-large"> 
   <br>
   <div class="question">
-    {{ console.log("QUESTION: language=", language, "selected=", selected) }} 
-    {{ console.log("questions_audio[language]=", questions_audio[language]) }} 
+    <!-- {{ console.log("QUESTION: language=", language, "selected=", selected) }} 
+    {{ console.log("questions_audio[language]=", questions_audio[language]) }}  -->
     <h3> {{ questions[language] }} </h3>
     <span  @click=questions_audio[language].play() >     
           <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
@@ -245,21 +218,21 @@ console.log('qnum=', qnum.value)
 <!------------------------------------------------------------------------------------------------------> 
 <div class = "mt-auto footer-small">
   {{setlang('E')}} 
-  {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}}
+  <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}} -->
       <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
       <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
         <a @click="gotoQ9" class="arrowsx"> &#8592 </a> 
          <a @click="gotoComplete" class="rightbutton" style="text-align: right"> &#8594 </a>
       </div>
 </div>
-{{ console.log("language=", language, "selected=", selected) }}
+<!-- {{ console.log("language=", language, "selected=", selected) }} -->
 
 
   <br>
   <!-- </div> end of middle section -->
 
   <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}} -->
-  {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }}
+  <!-- {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }} -->
 <!-- </div> end of container -->
 
 <!-- </MyComponent> -->

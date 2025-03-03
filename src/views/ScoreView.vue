@@ -1,6 +1,5 @@
 <script setup>
-  console.log('script set up: localStorage.email =', localStorage.email);
-  console.log('wsessionS.email=', window.sessionStorage.email, '.ptID=', window.sessionStorage.ptID,'.total=', window.sessionStorage.total);
+console.log('wsessionS.email=', window.sessionStorage.email, '.ptID=', window.sessionStorage.ptID,'.total=', window.sessionStorage.total);
 
 
 import { computed,ref } from 'vue'
@@ -21,10 +20,10 @@ const email = ref('')
 
 const mailto = computed(() => {
   // return `mailto:${email.value}?Subject=isiXHosaPHQ-9Results&body=Score:${score.value}`
-    return `mailto:${display_email.value}?Subject=isiXHosaPHQ-9 Results&body= Scores for Patient ID:  ${display_ptID.value} %0D%0A%0D%0A PHQ-9 scores (questions 1-9 and total):  ${display_scores.value} %0D%0A%0D%0A Extra Score:  ${display_extrascore.value}`
+    return `mailto:${display_email.value}?Subject=${display_ptID.value} PHQ-9&body= Scores for Patient ID:  ${display_ptID.value} %0D%0A%0D%0A PHQ-9 scores (questions 1-9 and total):  ${display_scores.value} %0D%0A%0D%0A Extra Score:  ${display_extrascore.value}`
 })
 
-console.log('total=', total)
+//console.log('total=', total)
 
 function settotal(t) {
   display_total.value = window.sessionStorage.total;
@@ -32,16 +31,16 @@ function settotal(t) {
   display_ptID.value = window.sessionStorage.ptID;
 }
 function setScores() {
-  console.log("window.sessionStorage.scores=", window.sessionStorage.scores);
+  //console.log("window.sessionStorage.scores=", window.sessionStorage.scores);
   display_scores.value = window.sessionStorage.scores;
   display_extrascore.value = window.sessionStorage.extrascore;
-  console.log('FN setScores:  display_total=', display_total.value);
+  //console.log('FN setScores:  display_total=', display_total.value);
 }
 
 function setlang(langparam) {
     lang.value =  langparam.value
     total.value=langparam.value;
-    console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
+    //console.log("setlang: lang=", lang.value, " langparam=", langparam.value)
     } 
 
 </script>
@@ -59,7 +58,7 @@ function setlang(langparam) {
           <br>
           {{ setScores() }}
 
-          {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore) }}
+          <!-- {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore) }} -->
 
           <!-- <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
             Send Email to LN

@@ -30,15 +30,15 @@
 
   function setlang(l) {
     lang.value =  l
-    console.log("setlang: lang=", lang.value, " l=", l)
+    //console.log("setlang: lang=", lang.value, " l=", l)
   } 
   function gotoAudioInfo() {
-    console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
+    //console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({name: 'audioinfo', params: { lang: lang.value } });
   }
   function gotoDisc2() {
-    console.log("FUNCTION gotoDisc2:  lang=", lang.value)
+    //console.log("FUNCTION gotoDisc2:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({  name: 'disclaimer2', params: { lang: lang.value } });
   }
@@ -54,8 +54,8 @@
 
     <!-- Screen Body (Disclaimer Text)-->
     <div class = "infoscreen"> 
-      {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
-      {{ console.log('screen_text[lang]', screen_text[lang]) }}
+      <!-- {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
+      {{ console.log('screen_text[lang]', screen_text[lang]) }} -->
       <br>
       <div class="screenbox">
         <div class = "centerV">
@@ -66,7 +66,7 @@
 
   <!-- Footer  -->
   <div class = "footer-mt-auto footer fixed-bottom">  
-    {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
+    <!-- {{ console.log("screen_audio[lang]=", screen_audio[lang]) }} -->
       <!--  Speaker and Progress dots -->
       <div class="d-flex align-items-center justify-content-between footer-text">   
         <span @click = screen_audio[lang].play>

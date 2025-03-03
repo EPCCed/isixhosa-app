@@ -11,7 +11,6 @@
   
   const { width, height } = useWindowSize()
   const confirmed =ref(0)
-  //const id= ref('PtID');
   const ptID = ref('')
   const newName = ref('nN');
 
@@ -19,9 +18,8 @@ if (localStorage.name) {
       this.name = localStorage.name;
     }
 
-console.log("# name=", name.value );
-//console.log("# this.name=", $this.name.value);
-console.log('wsessionS=',window.sessionStorage.ptID);
+//console.log("# name=", name.value );
+//console.log('wsessionS=',window.sessionStorage.ptID);
 
 function save_ptID(string) {
   console.log('fn save_ptID bef: string=', string, 'ptID=', ptIDData.ptID, 'confirmed=', confirmed.value);
@@ -32,10 +30,6 @@ function save_ptID(string) {
               ptIDData.ptID,'confirmed=', confirmed.value);
   return ptID.value = window.sessionStorage.ptID;
 }
-//watch: {
-  //  name(newName); 
-    //  localStorage.name = newName;
-  //}
 </script>
 
 <!---------------------------->

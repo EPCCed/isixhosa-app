@@ -10,41 +10,34 @@
 
   const screen_text = {
     "en": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
-    "xh": "wiiveki ezi-2 ezidlulileyo, ingaba uhlutshwe rhoqo kangakanani yiyo nayiphi na kwezi ngxaki zilandelayo?"
+    "xh": "Kwiiveki ezi-2 ezidlulileyo, ingaba uhlutshwe rhoqo kangakanani yiyo nayiphi na kwezi ngxaki zilandelayo?"
   }
-const screen_audio = {
+  const screen_audio = {
     'en': new Audio(sound_en),
     'xh': new Audio(sound_xh)
     }
 
-  //const audio_en = new Audio(sound_en)
-  //const audio_xh = new Audio(sound_xh) 
-
   const lang = ref("L")
-  //const lang_qi=ref("a")
-  //const lang_q = ref("b")
-  //const words = ref("D")
   const x = ref("x")
-  //lang_q.value = "E"
 
   function setlang(l) {
     lang.value =  l
-    console.log("FUNCTION setlang: lang=", lang.value, " l=", l)
+    //console.log("FUNCTION setlang: lang=", lang.value, " l=", l)
   } 
   function gotoDisc3() {
-    console.log("FUNCTION gotoDisc3:  lang=", lang.value)
+    //console.log("FUNCTION gotoDisc3:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({  name: 'disclaimer3', params: { lang: lang.value } });
   }
   function gotoQuestion() {
-    console.log("FUNCTION Question:  lang=", lang.value)
+    //console.log("FUNCTION Question:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({name: 'question', params: { lang: lang.value, qnumber: 1 }});
   }
 </script>
 
 <template>
-  {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}}
+  <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}} -->
   {{setlang($route.params.lang)}}  
   <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->

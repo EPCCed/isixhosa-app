@@ -29,15 +29,15 @@
 
   function setlang(l) {
     lang.value =  l
-    console.log("setlang: lang=", lang.value, " l=", l)
+    //console.log("setlang: lang=", lang.value, " l=", l)
   } 
   function gotoQ10() {
-    console.log("FUNCTION gotoQ10:  lang=", lang.value)
+    //console.log("FUNCTION gotoQ10:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({name: 'extraquestion', params: { lang: lang.value } });
   }
   function gotoScore() {
-    console.log("FUNCTION gotoScore:  lang=", lang.value)
+    //console.log("FUNCTION gotoScore:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({  name: 'score', params: { lang: lang.value } });
   }
@@ -53,8 +53,8 @@
 
     <!-- Screen Body (Disclaimer Text)-->
     <div class = "infoscreen"> 
-      {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
-      {{ console.log('screen_text[lang]', screen_text[lang]) }}
+      <!-- {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
+      {{ console.log('screen_text[lang]', screen_text[lang]) }} -->
       <br>
       <div class="screenbox">
         <div class = "centerV">
@@ -65,7 +65,7 @@
 
   <!-- Footer  -->
   <div class = "footer-mt-auto foot-fixed">  
-    {{ console.log("screen_audio[lang]=", screen_audio[lang]) }}
+    <!-- {{ console.log("screen_audio[lang]=", screen_audio[lang]) }} -->
       <!--  Speaker and Progress dots -->
       <div class="d-flex align-items-center justify-content-between footer-text">   
         <span @click = screen_audio[lang].play>

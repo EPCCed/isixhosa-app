@@ -5,7 +5,6 @@
 <!---------------------------->
 
 <script setup>
-  console.log('script set up: localStorage.email =', localStorage.email);
 import { ref } from 'vue'
 import sound_en from '../assets/Audio/EN01-Lang.wav'
 import sound_xh from '../assets/Audio/XH01-Lang.wav'
@@ -48,7 +47,6 @@ function gotoPtID() {
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-  {{console.log("start template: lang=", lang)}}
   <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
     <div col-sm-6 col-12>
@@ -82,14 +80,12 @@ function gotoPtID() {
         <br><br><br><br>
       </div>
 
-      {{ console.log('lang=', lang) }}
-
   <!-- Footer - Navigation -->
     <footer class="mt-auto footer fixed-bottom"> 
       <span id="bottom"> 
         <!-- <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>    -->
         <!-- <div class = "footer-mt-auto foot-fixed">   -->
-      <div class="d-flex align-items-center justify-content-between footer-text">
+      <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
         <a @click="gotoPtID" class="arrow"> &#8592 </a>
         <a @click="gotoAudioInfo" class="arrow"> &#8594 </a>
       </div>
