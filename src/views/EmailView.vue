@@ -53,8 +53,8 @@ function saveemail(string) {
   <div col-sm-6 col-12>
     
   <!--  Header  -->
-    <div class = "header-mt-auto header-small"> 
-      <br>
+    <div class = "header-mt-auto header-large"> 
+      <br><br><br>
       <h5>  FOR OFFICE USE
             <br>
             UKUSETYENZISWA YIOFISI KUPHELA 
@@ -65,7 +65,6 @@ function saveemail(string) {
  <div class="middle">
       <br><br><br>
       <div class="center">
-      <div class="centerVH">
   
       <!-- {{ console.log('emailData.email_address=', emailData.email_address) }} -->
           <h3> Enter email address to export results </h3>
@@ -94,7 +93,7 @@ function saveemail(string) {
           <button @click = saveemail(email)> Confirm </button>
       <!-- </div> -->
       </div>
-      </div>
+
     </div>
 
   <!--FOOTER SECTION -->

@@ -15,9 +15,9 @@ const route = useRoute()
       <br>
       <h4> ABOUT THIS APP </h4>
     </div>
-    <div class="set-width">
+    <!-- <div class="set-width">
       <br>
-    </div>
+    </div> -->
 
       <!--Main text -->
     <div class="about-middle">
@@ -31,14 +31,14 @@ const route = useRoute()
       <h6> Results from the validation study of the paper-based isiXhosa PHQ-9 can be found at this link:</h6>
   
       <p><a href="https://doi.org/10.1177/23982128231194452">https://doi.org/10.1177/23982128231194452 </a></p>
-
+      <br>
       <h6> Development of this app was funded by the University of Edinburgh's Big Ideas Accelerator.  Development of the isiXhosa PHQ-9
            was funded by the Wellcome Trust (Grant 218493/Z/19/Z) and the Harold Hyam Wingate Foundation (Medical Research Travel Grant).</h6>    
       <br>
     </div>
 
     <!--  Navigation Footer  -->
-    <div class="mt-auto footer-small">
+    <div class="mt-auto footer-small fixed-bottom">
       <div class="d-flex align-items-center justify-content-between">
         <RouterLink to="/" class = "leftbutton"> &#8592 </RouterLink>
         <RouterLink to="/acknowl" class = "rightbutton"> &#8594 </RouterLink>

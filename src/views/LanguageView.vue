@@ -49,10 +49,10 @@ function gotoPtID() {
 <template>
   <!-- <div class="container"> -->
     <!-- Adjust width depending on small or larger screen size, by total columns used -->
-    <div col-sm-6 col-12>
+    <!-- <div col-sm-6 col-12> -->
     
       <!--  Header  -->
-      <div class = "mt-auto head-lang"> 
+      <div class = "mt-auto header-large"> 
         <br>
         <h6> Nceda khetha ulwimi ukuqhubeka </h6>
         <h6 @click=audio_xh.play()>
@@ -65,7 +65,7 @@ function gotoPtID() {
 
       <!--  Language Choices  -->
       <div class="middle-lang">
-        <br><br><br><br>
+        <br><br><br>
          <a class="inputbox" @click="setlangI">
           <div v-if="lang === 'unset'"> <div class="unselected"> isiXhosa </div> </div>  
           <div v-if="lang === 'xh'"> <div class="selected"> isiXhosa </div> </div>  
@@ -93,7 +93,7 @@ function gotoPtID() {
       </span> 
 
     </footer>  
-  </div>
+  <!-- </div> -->
 <!-- </div> -->
 </template>
 
@@ -105,7 +105,7 @@ function gotoPtID() {
   text-align: center;
   margin: auto;
   width: 100%; 
-  height: 30vh;
+  height: 25vh;
 }
 .middle-lang {
   padding: 2%;

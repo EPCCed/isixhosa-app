@@ -4,81 +4,81 @@
 <template>
 
 <!-- <div class="container"> -->
-  
+
   <!-- Adjust width depending on small or larger screen size, by total columns used -->
   <div col-sm-6 col-12>
 
     <!--  Page title -->
     <div class="header-small">
-       <br> 
+       <br>
        <h4> ACKNOWLEDGEMENTS </h4>
     </div>
 
-    <div class="set-width">
+    <!-- <div class="set-width">
         <br>
-    </div>
-    
+    </div> -->
+
     <!-- Main text -->
     <div class="ack-middle">
-        <table class="table table-sm table-striped"> 
-            <thead> 
-                <tr> 
-                    <th>App Development</th> 
-                    <th>ixiXhosa PHQ-9 Development</th> 
-                </tr> 
-            </thead> 
-            <tbody> 
-                <tr> 
-                    <td>Arish Mudra Rakshasa-Loots<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td> 
-                    <td>Arish Mudra Rakshasa-Loots<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td> 
-                </tr> 
-                <tr> 
-                    <td>Heather C Whalley<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td> 
-                    <td>Barbara Laughton<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
-                <tr> 
-                    <td>Barbara Laughton<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                        <td>Thandi Hamana<br>
-                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
-                <tr> 
-                    <td>EPCC<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td> 
-                    <td>Busiswa Fanqa<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
+        <table class="table table-striped table-bordered">
+            <thead>
                 <tr>
-                    <td></td> 
+                    <th>App Development</th>
+                    <th>ixiXhosa PHQ-9 Development</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Arish Mudra Rakshasa-Loots<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td>
+                    <td>Arish Mudra Rakshasa-Loots<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td>
+                </tr>
+                <tr>
+                    <td>Heather C Whalley<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Edinburgh</td>
+                    <td>Barbara Laughton<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                </tr>
+                <tr>
+                    <td>Barbara Laughton<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                    <td>Thandi Hamana<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                </tr>
+                <tr>
+                    <td>Lucy Norris<br>
+                        &nbsp &nbsp &nbsp &nbsp EPCC, University of Edinburgh</td>
+                    <td>Busiswa Fanqa<br>
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                </tr>
+                <tr>
+                    <td></td>
                     <td>Felicity Lindani<br>
-                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
-                <tr> 
-                    <td></td> 
+                        &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                </tr>
+                <tr>
+                    <td></td>
                         <td>Kaylee van Wyhe<br>
-                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
-                <tr> 
-                    <td></td> 
+                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                </tr>
+                <tr>
+                    <td></td>
                         <td>Sharon Kruger<br>
-                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td> 
-                </tr> 
-            </tbody> 
-            </table> 
+                            &nbsp &nbsp &nbsp &nbsp University of Stellenbosch</td>
+                </tr>
+            </tbody>
+            </table>
         </div>
-
+<div class="fixed-bottom">
     <!--  University Logos -->
-    <br><br>
+    <br>
     <div class="d-flex align-items-center justify-content-between logos">
         <img alt="isiXhosa" src="../assets/UoELogo.png" width="120" height="30"/>
         <img alt="isiXhosa" src="../assets/StellenboschLogo.png" width="120" height="30"/>
     </div>
-    <br><br>
-    
+    <br>
+
     <!--  Navigation Footer  -->
     <div class="mt-auto footer-small">
         <div class="d-flex align-items-center justify-content-between">
@@ -86,29 +86,32 @@
             <RouterLink to="/" class = "rightbutton"> &#8594 </RouterLink>
         </div>
     </div>
-
+</div>
 </div>
 <!-- </div> -->
-    
+
 </template>
 
 
 <style scoped>
 
 table {
-  margin-left:200;
-  width:100%;
-  margin: 0px auto;
+  /* margin-left:200; */
+  width:90vw;
+  height: 50vh;
+  /* margin: 0px auto; */
 }
 th {
   font-weight: 700;
   font-size: 0.8rem;
-  padding:50;
+  padding:10px !important;
+  padding-left: 10px !important;
 }
 td {
   font-weight: 200;
   font-size: 0.8rem;
   text-align: left;
+  padding-left: 10px !important;
 }
 .header {
   padding: 5%;
@@ -123,9 +126,9 @@ td {
   padding: 0%;
   background-color: white;
   color: black;
-  text-align: left; 
+  text-align: left;
   width: 90vw;
-  height: 60vh; 
+  height: 45vh;
   margin-top: 5vw !important;
   margin-left: 5vw !important;
   margin-right: 0% !important;

@@ -40,8 +40,8 @@ function save_ptID(string) {
   <!-- <div col-sm-6 col-12>  -->
 
     <!--  Header  -->
-    <div class = "header-mt-auto header-small"> 
-      <br>
+    <div class = "header-mt-auto header-large"> 
+      <br><br><br>
       <h5>  FOR OFFICE USE
             <br>
             UKUSETYENZISWA YIOFISI KUPHELA  
@@ -52,7 +52,7 @@ function save_ptID(string) {
     <div class="middle-small">
       <br><br><br>
       <div class="center">
-        <div class="centerVH">
+
           <h3>  Enter Participant ID or Patient Code </h3>
           <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
           <br><br>
@@ -64,7 +64,7 @@ function save_ptID(string) {
           </span> 
           <button @click = save_ptID(ptID)> Confirm </button>         
         </div>  
-      </div>
+
     </div>
 
   

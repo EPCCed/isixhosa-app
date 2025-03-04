@@ -345,10 +345,12 @@ function saveScores() {
         <br>
         <h1> {{ question+1 }} </h1>
         <h1> {{ questions[lang][question] }}</h1>
-        <span  @click=questions_audio[lang][question].play() >     
-            <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-        </span>
-      </div>
+        <!-- <button type="button" class="btn btn-light speaker-btn"> -->
+          <span  @click=questions_audio[lang][question].play() >     
+              <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+          </span>
+        <!-- </button> -->
+        </div>
       <br>
 <!------------------------------------------------------------------------------------------------------>
 <!--  ANSWERS                                                                                         -->
@@ -361,9 +363,12 @@ function saveScores() {
             <h1> {{ index }} </h1>
             <h2 v-html="answer"></h2>
         </div>
+        
         <span v-for="(answer_audio, index) in answers_audio[lang]"
-            @click=play_answer(answer_audio,index) >     
+            @click=play_answer(answer_audio,index) >  
+  
             <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
+    
         </span>    
       </div>
     
@@ -409,24 +414,11 @@ a.answer:hover{
   background-color: lightgrey; 
   padding: 10px;
 }
-.selected {
-  color: red;
-  background-color: lightgrey;
-  padding: 10px;
-}
-.backQ {
-  color: white;
-  font-weight:  200;
-  font-size: 1.5rem;
-  text-align: left;
-  text-decoration: none;
-}
-.forwardQ {
-  color: white;
-  font-weight:  200;
-  font-size: 1.5rem;
-  text-align: right;
-  text-decoration: none;
+.speaker-box {
+  background-color: blue;
+  height: 40 px;
+  border: 20px !important;
+  border-color: purple;
 }
 h1 {
   font-weight:  600;
@@ -466,9 +458,13 @@ h6 {
   height: 20vh;
   border-width: 1px;
 }
-.speaker_q:hover {
-  width: 40px;
-  background-color: blue;
-  padding: 5px;
+/* .speaker-btn {
+  width: 500 px;
+  color: purple;
 }
+.speaker-btn:hover {
+  width: 100 px;
+  color: blue;
+} */
+
 </style>

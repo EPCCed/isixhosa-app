@@ -173,7 +173,7 @@ function gotoComplete() {
 <!------------------------------------------------------------------------------------------------------>
 <!--  HEADER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
-    <div class = "header-small">
+    <div class = "header">
       <br>
       <h2>{{ header[language] }}</h2>
       <br>
@@ -216,7 +216,7 @@ function gotoComplete() {
 <!------------------------------------------------------------------------------------------------------>
 <!--  FOOTER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
-<div class = "mt-auto footer-small">
+<div class = "mt-auto footer-small fixed-bottom">
   {{setlang('E')}} 
   <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}} -->
       <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
@@ -239,17 +239,7 @@ function gotoComplete() {
 </template>
 
 <style scoped>
-/* .q-section {
-  padding: 0%;
-  background-color: white;
-  color: black;
-  text-align: left; 
-  /*width: 20vw;*/
-  /* width: 100vw;
-  height: 40vh;
-  margin-left: 0vw;
-  margin-right: 0vw;
-} */ 
+
 a.answer {
   color: black;
   font-weight:  500;
@@ -257,21 +247,6 @@ a.answer {
   text-align: center;
   text-decoration: none;
 }
-
-/* .backQ {
-  color: white;
-  font-weight:  200;
-  font-size: 1.5rem;
-  text-align: left;
-  text-decoration: none;
-}
-.forwardQ {
-  color: white;
-  font-weight:  200;
-  font-size: 1.5rem;
-  text-align: right;
-  text-decoration: none;
-} */
 h1 {
   font-weight:  600;
   font-size: 1.5rem;
@@ -288,17 +263,6 @@ h3 {
   text-align: center;
   text-decoration: none;
 }
-/* h4 {
-  font-weight:  500;
-  font-size: 1.5rem;
-  text-align: center;
-}
-h6 {
-  font-weight:  500;
-  font-size: 2.0rem;
-  text-align: right;
-} */
-
 .question {
   padding: 1rem !important;
   margin-left: 8vw !important;
@@ -307,8 +271,9 @@ h6 {
 }
 .answers {
   display: grid;
+  /* grid-template-columns: 25vw 25vw 25vw 25vw; */
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
 }
 .middle-large {
   background-color: white;
