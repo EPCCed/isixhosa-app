@@ -73,14 +73,14 @@ const answers = {
   'en': [
     "Not at<br> all<br>",
     "Several<br> days<br>",
-    "More<br> than<br> half the<br> days<br>",
+    "More than<br> half the<br> days<br>",
     "Nearly<br> every<br> day<br>",
   ],
   'xh': [
-    "Andikhange<br> konke konke<br>",
-    "lintsuku<br> eziliqela<br>",
-    "Ngaphezulu<br> kwesiqingatha<br> seentsuku<br>",
-    "Phantse<br> yonke<br> imihla <br>"
+    "Andikhange<br> konke konke",
+    "lintsuku<br> eziliqela",
+    "Ngaphezulu<br> kwesiqinga-<br>tha seentsuku",
+    "Phantse<br> yonke<br> imihla"
   ]
 }
 const header = {
@@ -166,47 +166,33 @@ const answer_count = ref(0)
 const already_reversed = ref(0)
 const current_audio_answer = ref(0)
 
-//console.log("wss.scorearray", window.sessionStorage.scorearray) //, 'wss.scorearray[8]=', JSON.parse(window.sessionStorage.scorearray)[8])
-//console.log("wss.json.parse", JSON.parse(window.sessionStorage.scores))
 updateData.qtext = JSON.parse(window.sessionStorage.scorearray)
-
-//console.log('updateData.qtext=', updateData.qtext)
-//updateData.qtext[1]= JSON.stringify(window.sessionStorage.scores)[1]
-//console.log('updateData.qtext=', updateData.qtext)
-//console.log('score_list=', score_list)
-//score_list_saved.value = score_list.value
 score_list.value = updateData.qtext.value
-//console.log('score_list=', score_list)
-//window.sessionStorage.scores = {'one','two','three','four','five','six','seven','eight','nine','total'}
-//updateData.qtext = score_list ;
-//selected.value=5;
-//console.log('updateData.qtext=', updateData.qtext, 'window.sessionStorage.scores=', window.sessionStorage.scores)
-//console.log('wss.scores[1]=', window.sessionStorage[1])
 updateData.qtext.value = window.sessionStorage.scores;
-//console.log('updateData.qtext=', updateData.qtext, 'window.sessionStorage.scores=', window.sessionStorage.scores)
 
-//console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
 if (window.sessionStorage.reset_scores == 1)
     { updateData.qtext = score_list;
       window.sessionStorage.extrascore = null
       window.sessionStorage.reset_scores = 0
      }
 
-//console.log('updateData.qtext=', updateData.qtext, 'window.sessionStorage.scores=', window.sessionStorage.scores, '.extrascore=', window.sessionStorage.extrascore)
-//console.log('window.sessionStorage.reset_scores=', window.sessionStorage.reset_scores)
-
 ///////////////////////////////
 //        FUNCTIONS          //
 ///////////////////////////////
 
-function play_answer(audio, i) 
-     {//console.log("FUNCTION play_answer: audio=", audio, "i=", i);
-      current_audio_answer.value =i;
-      console.log("current_audio_answer=", current_audio_answer.value)
-      audio.play()}
+function play_question(lang, question) {
+    stop_audio(); 
+    questions_audio[lang][question].play();
+    }
+
+function play_answer(audio, i) {
+    stop_audio(); 
+    current_audio_answer.value =i;
+    audio.play();
+    }
 
 function stop_audio() {
-  //console.log("FUNCTION STOP AUDIO: language=",lang.value, 'current_audio_answer', current_audio_answer.value);
+  console.log("FUNCTION STOP AUDIO: language=",lang.value, 'current_audio_answer', current_audio_answer.value);
   questions_audio[lang.value][question.value].pause();
   questions_audio[lang.value][question.value].currentTime = 0;
   answers_audio[lang.value][current_audio_answer.value].pause();
@@ -214,9 +200,10 @@ function stop_audio() {
 }
 
 function nextQuestion(diff) {
-  //console.log("FN nextQuestion start: diff=", diff, "selected=", selected.value, "question=", question.value)
+  console.log("FN nextQuestion start: diff=", diff, "selected=", selected.value, "question=", question.value)
   stop_audio();  
-  //console.log("alert_msg[language]=", alert_msg[language.value], ".value=", alert_msg[language.value])
+  console.log("alert_msg[lang]=", alert_msg[lang.value], ".value=", alert_msg[lang.value])
+  console.log("lang.value=", lang.value)
   if ( (selected.value != null && 
         question.value+diff >= 0 &&
         question.value+diff < questions[language.value].length) )
@@ -233,7 +220,7 @@ function nextQuestion(diff) {
     }
   else 
     if (diff==1)
-    {alert(alert_msg[language.value]);
+    {alert(alert_msg[lang.value]);
   }    
   //console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
 }
@@ -250,35 +237,16 @@ function changeSelected(id) {
   //console.log("wss.json.stringify", JSON.stringify(window.sessionStorage.scores), 'wss.scores[1]=', JSON.stringify(window.sessionStorage.scores)[1])
      }
 
-function setSelected(n)
-    {console.log("FUNCTION setSelected:  updateData.qtext=", updateData.qtext, "wss.scores=", window.sessionStorage.scores)
-    {console.log("FUNCTION setSelected:  n=", n, "updateData.qtext.value[n]=", updateData.qtext[n].value)}
-    //updateData.qtext[n] = JSON.stringify(window.sessionStorage.scores[n]);
-    //console.log("  uD.q[n]", updateData.qtext[n])
-    //{console.log("FUNCTION setSelected:  n=", n, "wss.scores[n]=", window.sessionStorage.scores[n].value)}
-    
+function setSelected(n) {
     if (updateData.qtext[n]=='0' || updateData.qtext[n]=='1'|| updateData.qtext[n]=='2'|| updateData.qtext[n]=='3' )
         {selected.value=updateData.qtext[n];}
-    {console.log("FUNCTION setSelected:  selected=", selected.value)}    
     }
 
-function setLanguage(l) {
-  if (l == 'en')
-      {language.value = 'en';
-       }
-  if (l == 'xh')
-      {language.value = 'xh';
-       }
-}
-
 function setQnumber(n) {
-  //console.log("FUNCTION setQnumber start: n=", n)
-  //  If page was arrived by coming back from Question 10, set the current question to 9 (but not if this has already been done)
   if ( n == 9 & already_reversed.value==0)
       {already_reversed.value = 1
         question.value =8
        }
-      //console.log("FUNCTION setQnumber end: n=", n)
 }
 
 function saveScores() {
@@ -290,7 +258,9 @@ function saveScores() {
   console.log('fn saveScores end: wss.scores=', window.sessionStorage.scores, 'wss.scorearray=', window.sessionStorage.scorearray);
 }
   function setlang(l) {
+
     lang.value =  l
+    //console.log("l=", l, 'lang.value=', lang.value)
   }  
   function gotoQIntro() {
     console.log("FUNCTION gotoQIntro:  lang=", lang.value)
@@ -342,33 +312,33 @@ function saveScores() {
     <!--  QUESTION                                                                                        -->
     <!------------------------------------------------------------------------------------------------------> 
       <div class="question">
-        <br>
+ 
         <h1> {{ question+1 }} </h1>
         <h1> {{ questions[lang][question] }}</h1>
         <!-- <button type="button" class="btn btn-light speaker-btn"> -->
-          <span  @click=questions_audio[lang][question].play() >     
-              <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+          <!-- <span  @click=questions_audio[lang][question].play() >      -->
+          <span  @click=play_question(lang,question) >   
+            <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
           </span>
-        <!-- </button> -->
-        </div>
-      <br>
+        <br>
+      </div>
+      
 <!------------------------------------------------------------------------------------------------------>
 <!--  ANSWERS                                                                                         -->
 <!------------------------------------------------------------------------------------------------------> 
       <div class="answers">
         <div v-for="(answer, index) in answers[lang]"
             @click="changeSelected(index)"
-            :class="[{['active border border-primary border-3']: (selected==index)}]"
-        >
+            :class="[{['active border border-primary border-3']: (selected==index)},
+                     {['inactive border border-white border-3']: (selected!=index)}]"
+            >
             <h1> {{ index }} </h1>
             <h2 v-html="answer"></h2>
         </div>
         
         <span v-for="(answer_audio, index) in answers_audio[lang]"
             @click=play_answer(answer_audio,index) >  
-  
             <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
-    
         </span>    
       </div>
     
@@ -378,28 +348,37 @@ function saveScores() {
 <!--  FOOTER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
 <div class = "mt-auto footer">
+
   <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
-      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
+      <div class="footer-arrows d-flex align-items-center justify-content-between footer-text fixed-bottom">
 
         <!-- Left arrow navigation, depending on question number -->
-        <a v-if="question > 0" @click="nextQuestion(-1)" class="leftbutton"> &#8592 </a>
-        <a v-else @click="gotoQIntro()" class="leftbutton"> &#8592 </a>
+        <a v-if="question > 0" @click="nextQuestion(-1)"> &#8592 </a>
+        <a v-else @click="gotoQIntro()"> &#8592 </a>
 
 <!-- temporary link for testing -->
-  <router-link :to="{ name: 'extraquestion', params: { lang } }"> q10 </router-link>  
+<router-link :to="{ name: 'extraquestion', params: { lang } }" class="darkred"> q10 </router-link>  
 
         <!-- Right arrow navigation, depending on question number-->
-        <a v-if="question < 8" @click="nextQuestion(1)" class="rightbutton"> &#8594 </a>
-        <a v-else @click="gotoQ10()" class="rightbutton"> &#8594</a>
+        <a v-if="question < 8" @click="nextQuestion(1)"> &#8594 </a>
+        <a v-else @click="gotoQ10()"> &#8594</a>
       </div>
-    </div>
 
-<!-- </div> end of container -->
-
+</div> 
 </template>
 
 <style scoped>
-
+.darkred {
+  color: darkred;
+  /* font-size: 4rem; */
+}
+.unselected {
+  color: black;
+  font-weight:  100;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+}
 a.answer {
   color: black;
   font-weight:  500;
@@ -422,12 +401,12 @@ a.answer:hover{
 }
 h1 {
   font-weight:  600;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
 }
 h2 {
   font-weight:  500;
-  font-size: 1.0rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 h3 {
@@ -447,24 +426,21 @@ h6 {
   text-align: right;
 }
 .question {
-  padding: 1rem;  
+  padding: 1rem !important;
+  margin-left: 4vw !important;
+  margin-right: 4vw !important;  
   text-align: center;
-  height: 30vh;
 }
 .answers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 2 rem;
-  height: 20vh;
-  border-width: 1px;
+  margin-left: 1vw !important;
+  margin-right: 1vw !important;
+  /*align-items: center !important;
+  /*padding: 30 rem !important;
+  /*height: 10vh;
+  border-width: 1px !important;
+  border-color: grey; */
 }
-/* .speaker-btn {
-  width: 500 px;
-  color: purple;
-}
-.speaker-btn:hover {
-  width: 100 px;
-  color: blue;
-} */
 
 </style>

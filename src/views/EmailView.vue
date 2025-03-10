@@ -25,20 +25,13 @@ const newval = ref('nval')
 const newId = ('newID')
 const confirmed = ref(0)
 
-//{{console.log('savedemail=', savedemail)}}
-  //console.log('script set up: email=', email.value, 'sessionStorage.email =',sessionStorage.email);
-
 function getemail(e) {
-  //console.log('fn getemail bef: email=', email.value, 'sessionStorage.email =',sessionStorage.email, 'ls.newval=',sessionStorage.newval);
-  //console.log('fn getemail aft: newval=') //, newval.value, 'email=', email.value)
   return newemail.value=sessionStorage.email;
 }
 function saveemail(string) {
-  //console.log('fn saveemail bef: string=', string, 'email_address=', emailData.email_address);
   window.sessionStorage.email = emailData.email_address 
   localStorage.email = emailData.email_address 
   confirmed.value = 1;
-  //console.log('fn saveemail aft: wsessionS=',window.sessionStorage.email,'localS=',localStorage.email, 'email_address=', emailData.email_address);
   return email.value = window.sessionStorage.email;
 }
 
@@ -50,7 +43,7 @@ function saveemail(string) {
 <template>
 
 <!-- <div class="container"> -->
-  <div col-sm-6 col-12>
+  <!-- <div col-sm-6 col-12> -->
     
   <!--  Header  -->
     <div class = "header-mt-auto header-large"> 
@@ -61,17 +54,14 @@ function saveemail(string) {
       </h5>  
     </div> <!-- end header -->
   
- <!-- CENTRE SECTION  -->  
+  <!-- CENTRE SECTION  -->  
  <div class="middle">
       <br><br><br>
       <div class="center">
-  
-      <!-- {{ console.log('emailData.email_address=', emailData.email_address) }} -->
-          <h3> Enter email address to export results </h3>
-          <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
-          <br><br>  
-
-          
+        <h3> Enter email address to export results </h3>
+        <h3> Faka idilesi yeimeyile (email address) ukuthumela iziphumo </h3>
+        <br><br>  
+        
 <!-- NB This code allows checking of email format but causes an error on clicking confirm and doesn't save email address
 <form>
           <span v-if="confirmed === 0"> 
@@ -84,22 +74,22 @@ function saveemail(string) {
           <button @click = saveemail(email)> Confirm </button>
           {{ console.log('emailData.email_address=', emailData.email_address) }}
 </form> -->
-          <span v-if="confirmed === 0"> 
-            <input v-model="emailData.email_address" class = "unselected">  
-          </span> 
-          <span v-if="confirmed === 1"> 
-            <input v-model="emailData.email_address" class = "selected">  
-          </span> 
-          <button @click = saveemail(email)> Confirm </button>
+        <span v-if="confirmed === 0"> 
+          <input v-model="emailData.email_address" class = "unselected">  
+        </span> 
+        <span v-if="confirmed === 1"> 
+          <input v-model="emailData.email_address" class = "selected">  
+        </span> 
+        <button @click = saveemail(email)> Confirm </button>
       <!-- </div> -->
-      </div>
-
     </div>
+
+</div>
 
   <!--FOOTER SECTION -->
   <!-- Non mobile devices -->
   <div class="d-none d-sm-block">
-    <footer class="mt-auto footer-large fixed-bottom">
+    <div class="mt-auto footer-large fixed-bottom">
       <span id="bottom"> 
         <br>
         <div class="footer-text">
@@ -110,19 +100,18 @@ function saveemail(string) {
           Abaphandi okanye abanyangi bangafaka idilesi yeimeyile apho iimpendulo 
           zomsebenzisi ofihliweyo kule seshini ziza kuthunyelwa khona. Ukuthumela iziphumo 
           njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho.
-          
-          <!-- Navigation Arrows -->
-          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
-            <span><RouterLink to="/" class="arrow" > &#8592 </RouterLink></span>
-            <span><RouterLink to="/ptid" class="arrow"> &#8594 </RouterLink></span>
-          </div> 
-        </div>
+        </div>  
+        <!-- Navigation Arrows -->
+          <div class="d-flex align-items-center justify-content-between fixed-bottom">
+              <span><RouterLink to="/" class="footer-arrows"> &#8592 </RouterLink></span>
+              <span><RouterLink to="/ptid" class="footer-arrows"> &#8594 </RouterLink></span>
+          </div>    
       </span> 
-    </footer> 
+    </div> 
   </div>
 
   <!-- Mobile devices -->
-   <div class ="d-block d-sm-none">
+   <div class ="d-block d-sm-none">  
     <footer class="mt-auto footer-xlarge fixed-bottom">
       <span id="bottom"> 
         <div class="footer-text">
@@ -135,17 +124,20 @@ function saveemail(string) {
           zomsebenzisi ofihliweyo kule seshini ziza kuthunyelwa khona. Ukuthumela iziphumo 
           njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho.
           </h4>
-          <!-- Navigation Arrows -->
-          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
-            <span><RouterLink to="/" class="arrow" > &#8592 </RouterLink></span>
-            <span><RouterLink to="/ptid" class="arrow"> &#8594 </RouterLink></span>
-          </div> 
         </div>
+
+        <!-- Navigation Arrows -->
+        <div class="d-flex align-items-center justify-content-between fixed-bottom">
+          <span><RouterLink to="/" class="footer-arrows"> &#8592 </RouterLink></span>
+          <span><RouterLink to="/ptid" class="footer-arrows"> &#8594 </RouterLink></span>
+        </div> 
+
       </span> 
+
     </footer> 
   </div>
   
-  </div> <!-- col-sm col -->
+  <!--</div>  col-sm col -->
 <!-- </div> container row -->
 </template>
 

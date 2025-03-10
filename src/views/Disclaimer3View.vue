@@ -17,7 +17,7 @@
   const route = useRoute()
 
   const screen_text = {
-    "en": "If you are concerned about your mental health or feel that you may be struggling with symptoms of depression, please contact your doctor or local clinic..",
+    "en": "If you are concerned about your mental health or feel that you may be struggling with symptoms of depression, please contact your doctor or local clinic.",
     "xh": "Ukuba unenkxalabo ngempilo yengqondo yakho okanye uziva ngathi usokoliswa ziimpawu zokudakumba, nceda uqhagamshelane nogqirha wakho okanye iklinikhi yengingqi."
   }
   const screen_audio = {
@@ -65,11 +65,12 @@
 
   <!-- Footer  -->
   <div class = "footer-mt-auto footer fixed-bottom">  
+    <div class="fixed-bottom">
     <!-- {{ console.log("screen_audio[lang]=", screen_audio[lang]) }} -->
       <!--  Speaker and Progress dots -->
-      <div class="d-flex align-items-center justify-content-between footer-text">   
+      <div class="d-flex align-items-center justify-content-between">   
         <span @click = screen_audio[lang].play>
-          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          &nbsp; <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
         <div>
           <span class="circleoutlinex"></span> &nbsp;
@@ -78,12 +79,12 @@
         </div>
       </div>
       <!--  Navigation Arros -->
-      <div class="d-flex align-items-center justify-content-between footer-text">
-        <a @click="gotoDisc2" class="arrowsx"> &#8592 </a>
-        <a @click="gotoQIntro" class="arrowsx"> &#8594 </a>
+      <div class="d-flex align-items-center justify-content-between">
+        <a @click="gotoDisc2" class="footer-arrows"> &#8592 </a>
+        <a @click="gotoQIntro" class="footer-arrows"> &#8594 </a>
       </div>
     </div> 
-  <!-- </div> -->
+  </div>
 </template>
 
 <style scoped>

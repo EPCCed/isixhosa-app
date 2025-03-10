@@ -64,21 +64,22 @@
     </div>
 
   <!-- Footer  -->
-  <div class = "footer-mt-auto foot-fixed">  
+  <div class = "footer-mt-auto footer fixed-bottom">  
+    <div class="fixed-bottom">
     <!-- {{ console.log("screen_audio[lang]=", screen_audio[lang]) }} -->
       <!--  Speaker and Progress dots -->
-      <div class="d-flex align-items-center justify-content-between footer-text">   
+      <div class="d-flex align-items-center justify-content-between">   
         <span @click = screen_audio[lang].play>
-          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          &nbsp; <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
       </div>
       <!--  Navigation Arros -->
-      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
-        <a @click="gotoQ10" class="arrowsx"> &#8592 </a>
-        <a @click="gotoScore" class="arrowsx"> &#8594 </a>
+      <div class="d-flex align-items-center justify-content-between">
+        <a @click="gotoQ10" class="footer-arrows"> &#8592 </a>
+        <a @click="gotoScore" class="footer-arrows"> &#8594 </a>
       </div>
     </div> 
-  <!-- </div> -->
+  </div>
 </template>
 
 <style scoped>

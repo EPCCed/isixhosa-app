@@ -47,54 +47,46 @@ function gotoPtID() {
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-  <!-- <div class="container"> -->
-    <!-- Adjust width depending on small or larger screen size, by total columns used -->
-    <!-- <div col-sm-6 col-12> -->
-    
-      <!--  Header  -->
-      <div class = "mt-auto header-large"> 
-        <br>
-        <h6> Nceda khetha ulwimi ukuqhubeka </h6>
-        <h6 @click=audio_xh.play()>
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp</h6>
-        <br>
-        <h6> Please choose a language to continue </h6>
-        <h6 @click=audio_en.play()>
-            <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp </h6>
-      </div>
+  
+  <!--  Header  -->
+  <div class = "mt-auto header-large"> 
+    <br>
+    <h6> Nceda khetha ulwimi ukuqhubeka </h6>
+    <h6 @click=audio_xh.play()>
+        <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp</h6>
+    <br>
+    <h6> Please choose a language to continue </h6>
+    <h6 @click=audio_en.play()>
+        <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> &nbsp </h6>
+  </div>
 
-      <!--  Language Choices  -->
-      <div class="middle-lang">
-        <br><br><br>
-         <a class="inputbox" @click="setlangI">
-          <div v-if="lang === 'unset'"> <div class="unselected"> isiXhosa </div> </div>  
-          <div v-if="lang === 'xh'"> <div class="selected"> isiXhosa </div> </div>  
-          <div v-if="lang === 'en'"> <div class="unselected"> isiXhosa </div> </div>  
-        </a>
-        <br><br>
-        <a class="inputbox" @click="setlangE">
-          <div v-if="lang === 'unset'"> <div class="unselected"> English </div> </div> 
-          <div v-if="lang === 'en'"> <div class="selected"> English </div> </div>  
-          <div v-if="lang === 'xh'"> <div class="unselected"> English </div> </div>  
-        </a>
-        <br><br><br><br>
-      </div>
+  <!--  Language Choices  -->
+  <div class="middle-lang">
+    <br><br><br>
+     <a class="inputbox" @click="setlangI">
+      <div v-if="lang === 'unset'"> <div class="unselected"> isiXhosa </div> </div>  
+      <div v-if="lang === 'xh'"> <div class="selected"> isiXhosa </div> </div>  
+      <div v-if="lang === 'en'"> <div class="unselected"> isiXhosa </div> </div>  
+    </a>
+    <br><br>
+    <a class="inputbox" @click="setlangE">
+      <div v-if="lang === 'unset'"> <div class="unselected"> English </div> </div> 
+      <div v-if="lang === 'en'"> <div class="selected"> English </div> </div>  
+      <div v-if="lang === 'xh'"> <div class="unselected"> English </div> </div>  
+    </a>
+    <br><br><br><br>
+  </div>
 
   <!-- Footer - Navigation -->
-    <footer class="mt-auto footer fixed-bottom"> 
-      <span id="bottom"> 
-        <!-- <h5> Blank footer text for language screen. Blank footer text for language screen. Next line </h5>    -->
-        <!-- <div class = "footer-mt-auto foot-fixed">   -->
-      <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
-        <a @click="gotoPtID" class="arrow"> &#8592 </a>
-        <a @click="gotoAudioInfo" class="arrow"> &#8594 </a>
+  <footer class="mt-auto footer fixed-bottom"> 
+    <span id="bottom"> 
+      <div class="d-flex align-items-center justify-content-between fixed-bottom">
+        <a @click="gotoPtID" class="footer-arrows"> &#8592 </a>
+        <a @click="gotoAudioInfo" class="footer-arrows"> &#8594 </a>
       </div>
-          <!-- </div> -->
-      </span> 
+    </span> 
+  </footer>  
 
-    </footer>  
-  <!-- </div> -->
-<!-- </div> -->
 </template>
 
 <style scoped>

@@ -78,9 +78,9 @@ function save_ptID(string) {
           <br><br>
           Impendulo yomsebenzisi ethunyelweyo kule seshini iza ku-labelled kusetyenziswa 
           esi sichongi sinikiweyo.
-          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
-            <span><RouterLink to="/email" class="arrow"> &#8592 </RouterLink> </span>
-            <span><RouterLink to="/language" class="arrow"> &#8594 </RouterLink> </span>
+          <div class="d-flex align-items-center justify-content-between fixed-bottom">
+            <span><RouterLink to="/email" class="footer-arrows"> &#8592 </RouterLink> </span>
+            <span><RouterLink to="/language" class="footer-arrows"> &#8594 </RouterLink> </span>
           </div>
         </div>
     </div>
@@ -95,9 +95,9 @@ function save_ptID(string) {
           Impendulo yomsebenzisi ethunyelweyo kule seshini iza ku-labelled kusetyenziswa 
           esi sichongi sinikiweyo.
           </h4>
-          <div class="d-flex align-items-center justify-content-between fixed-bottom footer-text">
-            <span><RouterLink to="/email" class="arrow"> &#8592 </RouterLink> </span>
-            <span><RouterLink to="/language" class="arrow"> &#8594 </RouterLink> </span>
+          <div class="d-flex align-items-center justify-content-between fixed-bottom">
+            <span><RouterLink to="/email" class="footer-arrows"> &#8592 </RouterLink> </span>
+            <span><RouterLink to="/language" class="footer-arrows"> &#8594 </RouterLink> </span>
           </div>
         </div>
     </div>

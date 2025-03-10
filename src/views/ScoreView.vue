@@ -58,12 +58,6 @@ function setlang(langparam) {
           <br>
           {{ setScores() }}
 
-          <!-- {{ console.log('email_body_text=', email_body_text, "display_extrascore=", display_extrascore) }} -->
-
-          <!-- <a href="mailto:l.norris@epcc.ed.ac.uk?Subject=isiXHosa PHQ-9 Results&body=ExtraQuestionScore:&email_body_text">
-            Send Email to LN
-          </a> -->
-
       <!--  Middle --> 
           {{settotal($route.params.total)}}
           <!-- display_total= {{ display_total }} -->
@@ -77,17 +71,11 @@ function setlang(langparam) {
                 <button>Send Email</button>
               </a>
           </h3>
-          <!-- {{ buildMailString() }} -->
           <br><br>
           <h5>
             &nbsp;&nbsp;
-            <!-- <a href="mailto:&display_email?Subject=PHQ-9Results&body=ExtraQuestionScore:{{ display_extrascore }}"> -->
-
           </h5>
         </div>
-
-  <!-- {{ console.log('email_address=',emailData.email_address) }}  -->
-  <!-- {{console.log('UpdateData=', UpdateData.qtext) }} -->
 
   {{setlang($route.params.lang)}}     
 
@@ -96,13 +84,12 @@ function setlang(langparam) {
     <div class="footer">
       <h6> Blank footer text for language screen. Blank footer text for language screen. Next line </h6> 
       <div class="d-flex align-items-center justify-content-between fixed-bottom">            
-          <router-link :to="{ name: 'complete', params: { lang, total }}" class="leftbutton"> &#8592 </router-link>
-          <RouterLink to="/" class="rightbutton" ><h5>Home</h5> </RouterLink> 
+          <router-link :to="{ name: 'complete', params: { lang, total }}" class="footer-arrows"> &#8592 </router-link>
+          <RouterLink to="/" class="footer-arrows" ><h5>Home</h5> </RouterLink> 
        </div>
     </div>
 
   </div>
-<!-- </div> -->
 </template>
 
 <style scoped>
@@ -112,7 +99,7 @@ function setlang(langparam) {
   color: black;
   text-align: left; 
   width: 80vw;
-  height: 60vh;
+  height: 64vh;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -121,72 +108,5 @@ h6 {
   color: darkred
 }
 
-/* * {height: 20vh;
-    width: 50vw;
-    margin: 0;
-    padding: 0%;
-} */
-/* .align-items-center {
-  display: flex; 
-  align-items: center;  /*Aligns vertically center 
-  justify-content: center; /*Aligns horizontally center 
-} */
 
-  /* .header {
-  padding: 5%;
-  background-color: darkred;
-  color: white;
-  text-align: center;
-  margin: auto;
-  width: 100vw;
-  height: 15vh;
-} 
-/* .centre { */
-  padding: 0%;
-  background-color: white;
-  color: black;
-  /* text-align: center; */
-  /* margin: auto; 
-  width: 50vw;
-  height: 40vh;
-} */
-/* .footer {
-  padding: 5%;
-  background-color: darkred;
-  color: white;
-  width: 50vw;
-  height: 20vh;
-} */
-
-
-/* .scorebox {
-  padding: 25%;
-  width: 100%;
-  height: 60%;
-  text-align: center;
-}
-h3 {
-  font-weight:  500;
-  font-size: 1.2rem;
-  text-align: center;
-  margin: auto;
-}
-
-.h4 {
-    font-size: 2.0rem;
-    color: white;
-    margin: auto;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-} */
 </style>

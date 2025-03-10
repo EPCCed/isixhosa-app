@@ -40,16 +40,16 @@ const questions = {
 }
 const answers = {
   'en': [
-    "Not difficult at<br> all<br><br>",
-    "Somewhat<br> difficult<br><br>",
-    "Very<br> difficult<br><br>",
-    "Extremely<br> difficult<br><br>",
+    "Not difficult at all<br><br><br>",
+    "Somewhat<br> difficult<br><br><br>",
+    "Very<br> difficult<br><br><br>",
+    "Extremely<br> difficult<br><br><br>",
   ],
   'xh': [
-    "Akunzimanga <br> konke konke<br>",
-    "Kunzinyana<br> noko<br>",
-    "Kunzima <br> kakhulu<br>",
-    "Kube nzima <br> ngokugqi <br>thisileyo <br>"
+    "Akunzima-<br>nga konke<br> konke<br>",
+    "Kunzinyana<br> noko<br><br>",
+    "Kunzima <br> kakhulu<br><br>",
+    "Kube <br>nzima <br> ngokugqi <br>thisileyo"
   ]
 }
 
@@ -88,6 +88,7 @@ const scores = ref([])
 const confirmed = ref(0)
 const answered = ref(0)
 const answer_count =ref(0)
+const current_audio_answer = ref(0)
 
 //console.log('lang=', lang.value, 'total=', total.value, 'qnum=', qnum.value)
 //console.log('score_list=', score_list)
@@ -99,6 +100,25 @@ const answer_count =ref(0)
 ///////////////////////////////
 //        FUNCTIONS          //
 ///////////////////////////////
+
+function play_question(lang) {
+    stop_audio(); 
+    questions_audio[lang].play();
+    }
+
+function play_answer(audio, i) {
+  console.log('FN play_answer:  audio=', audio, 'i=', i)
+    stop_audio(); 
+    current_audio_answer.value =i;
+    audio.play();
+    }
+function stop_audio() {
+  console.log("FUNCTION STOP AUDIO: language=",language.value, 'current_audio_answer', current_audio_answer.value);
+  questions_audio[language.value].pause();
+  questions_audio[language.value].currentTime = 0;
+  answers_audio[language.value][current_audio_answer.value].pause();
+  answers_audio[language.value][current_audio_answer.value].currentTime = 0;
+}
 
 
 function changeSelected(id) {
@@ -117,12 +137,6 @@ function setSelected()
     }
 
 function setLanguage(l) {
-  // if (l == 'en')
-  //     {language.value = 'en'
-  //     }
-  // if (l == 'xh')
-  //     {language.value = 'xh'
-  //     }
   language.value = l;
   //console.log("FUNCTION setLanguage: language=", language.value, 'lang=', lang.value, 'l=', l)  
 }
@@ -157,18 +171,8 @@ function gotoComplete() {
 <!---------------------------->
 <template>
 
-<!-- {{ console.log("$route.params.lang=", $route.params.lang, "language=", language)}} -->
-<!-- {{ console.log("answers=",answers, "answers[en,1]", answers['en',1]) }}
-{{ console.log("answers_audio", answers_audio, "answers_audio[en,1]=", answers_audio['en',1]) }} -->
-<!-- {{console.log('START TEMPLATE: selected=', selected, 'window.sessionStorage.extrascore=', window.sessionStorage.extrascore) }} -->
-
-
 {{ setLanguage($route.params.lang) }}
 {{ setSelected () }}
-<!-- {{console.log('selected=', selected) }} -->
-<!-- {{ console.log("TEMPLATE:  window.sessionStorage.extrascore=", window.sessionStorage.extrascore) }} -->
-  
-<!-- <div class="container"> -->
 
 <!------------------------------------------------------------------------------------------------------>
 <!--  HEADER                                                                                          -->
@@ -185,31 +189,42 @@ function gotoComplete() {
 <div class="middle-large"> 
   <br>
   <div class="question">
-    <!-- {{ console.log("QUESTION: language=", language, "selected=", selected) }} 
-    {{ console.log("questions_audio[language]=", questions_audio[language]) }}  -->
     <h3> {{ questions[language] }} </h3>
-    <span  @click=questions_audio[language].play() >     
+    <!-- <span  @click=questions_audio[language].play() >     
           <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-    </span> 
+    </span>  -->
+    <span  @click=play_question(language) >   
+            <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+    </span>
   </div>
-  <br><br><br>
+  <br>
 <!------------------------------------------------------------------------------------------------------>
 <!--  ANSWERS                                                                                         -->
 <!------------------------------------------------------------------------------------------------------> 
   <div class="answers">
     <div v-for="(answer, index) in answers[language]"
         @click="changeSelected(index)"
-        :class="[{['active border border-primary border-3']: (selected==index)}]"
+            :class="[{['active border border-primary border-4']: (selected==index)},
+                     {['inactive border border-white border-4']: (selected!=index)}]"
+
      >
-<!-- {{ console.log("answer=", answer, 'index=', index, 'answers_audio[language,index]=', answers_audio[language,index]) }} -->
       <h1>{{ index }}</h1>
       <h2 v-html="answer"></h2>
+      <br>
     </div>
-    <div v-for="(answer_audio, index) in answers_audio[language]"
+  
+    <!-- <div v-for="(answer_audio, index) in answers_audio[language]"
         @click=answer_audio.play() >     
           <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
-          <!-- {{ console.log('answer_audio=', answer_audio) }} -->
-        </div>    
+    </div>     -->
+    <div v-for="(answer_audio, index) in answers_audio[language]"
+        @click=play_answer(answer_audio,index) >     
+          <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
+    </div> 
+          <!-- <div v-for="(answer_audio, index) in answers_audio[lang]"
+            @click=play_answer(answer_audio,index) >  
+            <img alt="speaker" src="../assets/speaker.png"  class="speaker_a" /> 
+          </div>   -->
   </div>
   <br>
 </div>
@@ -218,24 +233,13 @@ function gotoComplete() {
 <!------------------------------------------------------------------------------------------------------> 
 <div class = "mt-auto footer-small fixed-bottom">
   {{setlang('E')}} 
-  <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang, "language=",language)}} -->
-      <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
-      <div class="d-flex align-items-center justify-content-between footer-text fixed-bottom">
-        <a @click="gotoQ9" class="arrowsx"> &#8592 </a> 
-         <a @click="gotoComplete" class="rightbutton" style="text-align: right"> &#8594 </a>
-      </div>
+  <div class="footer-arrows d-flex align-items-center justify-content-between fixed-bottom">
+      <a @click="gotoQ9"> &#8592 </a> 
+      <a @click="gotoComplete" style="text-align: right"> &#8594 </a>
+  </div>
 </div>
-<!-- {{ console.log("language=", language, "selected=", selected) }} -->
+<br>
 
-
-  <br>
-  <!-- </div> end of middle section -->
-
-  <!-- {{console.log("lang=", lang, "  $route.params.lang=", $route.params.lang)}} -->
-  <!-- {{ console.log('tot=', tot, 'qnum=', qnum, 'qnumnew=', qnumnew, 'answered=', answered) }} -->
-<!-- </div> end of container -->
-
-<!-- </MyComponent> -->
 </template>
 
 <style scoped>
@@ -254,7 +258,7 @@ h1 {
 }
 h2 {
   font-weight:  500;
-  font-size: 1.0rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 h3 {
@@ -275,14 +279,15 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   /* padding: 0 2rem; */
 }
-.middle-large {
-  background-color: white;
-  color: black;
-  text-align: left; 
-  width: 100vw;
-  height: 70vh;
-  margin-left: 5vw;
-  margin-right: 0vw;
-}
 
+.active {
+  color: red;
+  width: 22vw;
+  height: 110px;
+}
+.inactive {
+  color: black;
+  width: 22vw;;
+  height: 110px;
+}
 </style>

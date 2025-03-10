@@ -24,7 +24,7 @@
             <thead>
                 <tr>
                     <th>App Development</th>
-                    <th>ixiXhosa PHQ-9 Development</th>
+                    <th>isiXhosa PHQ-9 Development</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,13 +69,14 @@
                 </tr>
             </tbody>
             </table>
+            <br>
         </div>
 <div class="fixed-bottom">
     <!--  University Logos -->
     <br>
     <div class="d-flex align-items-center justify-content-between logos">
         <img alt="isiXhosa" src="../assets/UoELogo.png" width="120" height="30"/>
-        <img alt="isiXhosa" src="../assets/StellenboschLogo.png" width="120" height="30"/>
+        <img alt="isiXhosa" src="../assets/StellenboschLogo.png" width="120" height="45"/>
     </div>
     <br>
 
@@ -98,7 +99,7 @@
 table {
   /* margin-left:200; */
   width:90vw;
-  height: 50vh;
+  height: 48vh;
   /* margin: 0px auto; */
 }
 th {
@@ -133,11 +134,11 @@ td {
   margin-left: 5vw !important;
   margin-right: 0% !important;
 }
-.ack-footer {
+/* .ack-footer {
   padding: 2%;
   background-color: darkred;
   color: white;
-  /* height: 20vh; */
-}
+  height: 0vh;
+} */
 
 </style>

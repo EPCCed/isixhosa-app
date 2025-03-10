@@ -56,17 +56,18 @@
 
   <!-- Footer navigation -->
   <div class = "footer-mt-auto footer fixed-bottom">  
-      <br>
-      <div class="d-flex align-items-center justify-content-between footer-text">   
+    <div class="fixed-bottom">
+      <div class="d-flex align-items-center justify-content-between">   
         <span @click = screen_audio[lang].play>
-          <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
+          &nbsp; <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
       </div>
-      <div class="d-flex align-items-center justify-content-between footer-text ">
-        <a @click="gotoDisc3" class="arrowsx"> &#8592 </a>
-        <a @click="gotoQuestion" class="arrowsx"> &#8594 </a>
+      <div class="d-flex align-items-center justify-content-between">
+        <a @click="gotoDisc3" class="footer-arrows"> &#8592 </a>
+        <a @click="gotoQuestion" class="footer-arrows"> &#8594 </a>
       </div>
     </div>
+  </div>
 <!-- 
   </div> -->
 <!-- </div> -->

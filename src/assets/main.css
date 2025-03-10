@@ -43,7 +43,7 @@ a,
   color: white;
   text-align: center;
   margin: auto;
-  height: 20vh;
+  height: 18vh;
 }
 .header-large {
   padding: 5%;
@@ -61,15 +61,6 @@ a,
   margin: auto;
   height: 15vh;
 }
-/* .head-fixed {
-  padding: 5%;
-  background-color: darkred;
-  color: white;
-  text-align: center;
-  margin: auto;
-  width: 100%; 
-  height: 20vh;
-} */
 
 .middle {
   padding: 0%;
@@ -77,7 +68,7 @@ a,
   color: black;
   text-align: left; 
   width: 100%;
-  height: 60vh;
+  height: 64vh;
   margin-left: 0vw;
   margin-right: 0vw;
 }
@@ -91,19 +82,28 @@ a,
   margin-left: 0vw;
   margin-right: 0vw;
 }
+.middle-large {
+  background-color: white;
+  color: black;
+  text-align: left; 
+  width: 100vw;
+  height: 70vh;
+  margin-left: 5vw;
+  margin-right: 0vw;
+}
 .infoscreen {
   background-color: darkred;
   color: white;
   font-size: 25px;
   text-align: left;
-  height: 80vh;
+  height: 83vh;
 }
 .footer {
   padding: 2%;
   background-color: darkred;
   color: white;
   width: 100%;
-  height: 20vh;
+  height: 18vh;
 }
 .footer-large {
   background-color: darkred;
@@ -115,7 +115,7 @@ a,
   background-color: darkred;
   color: white;
   width: 100%;
-  height: 40vh;
+  height: 35vh;
 }
 .footer-small {
   padding: 2%;
@@ -136,6 +136,15 @@ a,
   margin-right: 5vw !important;
   text-align: center;
   padding: 0% !important;
+}
+.footer-arrows {
+  font-size: 3.5rem;
+  color: white;
+  margin-left: 1vw !important;
+  margin-right: 1vw !important;
+  text-decoration: none;
+  /* text-align: center;
+  padding: 0% !important; */
 }
 h9 {
   color: darkred
@@ -186,19 +195,14 @@ h9 {
   width: 100%;
   height: 60%;
 }
-/* BOXES - Footers */
-/* .footbox {
-   background-color:darkred;
-   color: white;
-   padding: 10px;
-   text-decoration: none;
- } */
+/* Footer icons */
  .logos {
   margin-left: 3% !important;
   margin-right: 3% !important;
   padding: 0% !important;
+  margin-bottom: 0% !important;
 }
-.arrows {
+/* .arrows {
   color: white;
   font-weight:  200;
   font-size: 3rem;
@@ -210,11 +214,11 @@ h9 {
 .arrow {
   color: white;
   font-weight:  100;
-  font-size: 4rem;
+  font-size: 3rem;
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-}
+} */
 .leftbutton {
   color: white;
   font-weight:  200;
@@ -336,7 +340,7 @@ button:hover {
     padding: 0 2rem;
   }
 }
-.selected {
+/* .selected {
   color: red;
   background-color: lightgrey;
   font-weight: 700;
@@ -344,7 +348,7 @@ button:hover {
 .unselected {
   color: black;
   font-weight: 500;
-}
+} */
 .unselected:hover{
   color: black;
   font-weight: 500;
@@ -352,9 +356,18 @@ button:hover {
 }
 .active {
   color: red;
-  border-width: 0px;
-  width: 90px;
-  height: 108px;
+  /* width: 108px; */
+  width: 21vw;
+  height: 100px;
+  padding: 0px;
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.inactive {
+  color: black;
+  width: 21vw;;
+  height: 100px;
   padding: 0px;
   display: block;
   margin-left: auto !important;
