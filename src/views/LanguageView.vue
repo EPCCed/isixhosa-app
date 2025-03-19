@@ -28,13 +28,11 @@ function setlangE(event) {
   lang.value="en";
   } 
 function gotoPtID() {
-  console.log("FUNCTION gotoPtID:  lang=", lang.value)
   audio_xh.pause();
   audio_en.pause();
   router.push({name: 'ptid'});
  }
 function gotoAudioInfo() {
-  console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
   audio_xh.pause();
   audio_en.pause();
   if (lang.value=="unset")

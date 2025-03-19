@@ -18,14 +18,13 @@
 //       this.name = localStorage.name;
 //     }
 
-
+//-----------//
+// Functions //
+//-----------//
 function save_ptID(string) {
-  console.log('fn save_ptID bef: string=', string, 'ptID=', ptIDData.ptID, 'confirmed=', confirmed.value);
   window.sessionStorage.ptID = ptIDData.ptID;
   localStorage.ptID = ptIDData.ptID; 
   confirmed.value = 1;
-  console.log('fn save_ptID aft: wsessionS=',window.sessionStorage.ptID,'localS=',localStorage.ptID, 'ptID=', 
-              ptIDData.ptID,'confirmed=', confirmed.value);
   return ptID.value = window.sessionStorage.ptID;
 }
 </script>
