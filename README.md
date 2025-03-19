@@ -9,4 +9,6 @@ https://doi.org/10.1177/23982128231194452
 
 Development of this app was funded by the University of Edinburgh’s Big Ideas Accelerator. Development of the isiXhosa PHQ-9 was funded by the Wellcome Trust (Grant 218493/Z/19/Z) and the Harold Hyam Wingate Foundation (Medical Research Travel Grant).
 
-The app is hosted at: https://epcced.github.io/isixhosa-app/.
+The app is hosted at:   https://edin.ac/isixhosa-phq9
+
+
