@@ -12,14 +12,15 @@ import sound_xh from '../assets/Audio/XH01-Lang.wav'
 // to allow use of router.push in functions:
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
-const route = useRoute()
-
-const name = ref('Lucy')
+// const route = useRoute()
 const lang = ref("unset")
-const audio = ref(); 
+
 const audio_en = new Audio(sound_en);
 const audio_xh = new Audio(sound_xh); 
 
+//-----------//
+// Functions //
+//-----------//
 function setlangI(event) {
   lang.value="xh";
   } 
@@ -27,20 +28,19 @@ function setlangE(event) {
   lang.value="en";
   } 
 function gotoPtID() {
-    console.log("FUNCTION gotoPtID:  lang=", lang.value)
-    audio_xh.pause();
-    audio_en.pause();
-    router.push({name: 'ptid'});
-   }
-  function gotoAudioInfo() {
-    console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
-    audio_xh.pause();
-    audio_en.pause();
-    if (lang.value=="unset")
-        {setlangE()}
-    router.push({  name: 'audioinfo', params: { lang: lang.value } });
-  }
-
+  console.log("FUNCTION gotoPtID:  lang=", lang.value)
+  audio_xh.pause();
+  audio_en.pause();
+  router.push({name: 'ptid'});
+ }
+function gotoAudioInfo() {
+  console.log("FUNCTION gotoAudioInfo:  lang=", lang.value)
+  audio_xh.pause();
+  audio_en.pause();
+  if (lang.value=="unset")
+      {setlangE()}
+  router.push({  name: 'audioinfo', params: { lang: lang.value } });
+}
 </script>
 
 <!---------------------------->
@@ -90,15 +90,6 @@ function gotoPtID() {
 </template>
 
 <style scoped>
-.head-lang {
-  padding: 2%;
-  background-color: darkred;
-  color: white;
-  text-align: center;
-  margin: auto;
-  width: 100%; 
-  height: 25vh;
-}
 .middle-lang {
   padding: 2%;
   background-color: white;
@@ -119,15 +110,5 @@ function gotoPtID() {
 }
 .unselected:hover{
   color: blue;
-  /* background-color: lightgrey;  */
-}
-.lang-middle {
-  height: 100%;
-}
-.blank-footer {
-  width: 35vw;
-}
-h5 {
-  color: darkred
 }
 </style>

@@ -1,4 +1,4 @@
-<!-- DISCLAIMER SCREEN (x3) -->
+<!-- COMPLETION SCREEN -->
 
 <!---------------------------->
 <!--  SCRIPT SETUP SECTION  -->
@@ -6,8 +6,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import { useWindowSize } from '@vueuse/core'
-  import { useElementSize } from '@vueuse/core'
   import sound_en from '../assets/Audio/EN25-Thx.wav'
   import sound_xh from '../assets/Audio/XH25-Thx.wav'
 
@@ -19,25 +17,25 @@
   const screen_text = {
     "en": "You have now completed the questionnaire.  Thank you.",
     "xh": "Uligqibile ngoku iphephamibuzo. Enkosi."
-  }
+    }
   const screen_audio = {
     'en': new Audio(sound_en),
     'xh': new Audio(sound_xh)
-  }
+    }
 
   const lang = ref("L")
 
+///////////////////////////////
+//        FUNCTIONS          //
+///////////////////////////////
   function setlang(l) {
     lang.value =  l
-    //console.log("setlang: lang=", lang.value, " l=", l)
   } 
   function gotoQ10() {
-    //console.log("FUNCTION gotoQ10:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({name: 'extraquestion', params: { lang: lang.value } });
   }
   function gotoScore() {
-    //console.log("FUNCTION gotoScore:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({  name: 'score', params: { lang: lang.value } });
   }
@@ -48,32 +46,28 @@
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-  <!-- <div class="container"> -->
-    {{setlang($route.params.lang)}}
+  {{setlang($route.params.lang)}}
 
-    <!-- Screen Body (Disclaimer Text)-->
-    <div class = "infoscreen"> 
-      <!-- {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
-      {{ console.log('screen_text[lang]', screen_text[lang]) }} -->
-      <br>
-      <div class="screenbox">
-        <div class = "centerV">
-        {{ screen_text[lang] }}
-        </div> 
-      </div>
+  <!-- Screen Body (Disclaimer Text)-->
+  <div class = "infoscreen"> 
+    <br>
+    <div class="screenbox">
+      <div class = "centerV">
+      {{ screen_text[lang] }}
+      </div> 
     </div>
+  </div>
 
   <!-- Footer  -->
   <div class = "footer-mt-auto footer fixed-bottom">  
     <div class="fixed-bottom">
-    <!-- {{ console.log("screen_audio[lang]=", screen_audio[lang]) }} -->
-      <!--  Speaker and Progress dots -->
+      <!--  Speaker icon -->
       <div class="d-flex align-items-center justify-content-between">   
         <span @click = screen_audio[lang].play>
           &nbsp; <img alt="speaker" src="../assets/speaker-white.png"  class="speaker" /> 
         </span>
       </div>
-      <!--  Navigation Arros -->
+      <!--  Navigation Arrows -->
       <div class="d-flex align-items-center justify-content-between">
         <a @click="gotoQ10" class="footer-arrows"> &#8592 </a>
         <a @click="gotoScore" class="footer-arrows"> &#8594 </a>

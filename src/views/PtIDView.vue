@@ -5,21 +5,19 @@
 <!---------------------------->
 
 <script setup>
-  import { useWindowSize } from '@vueuse/core';
+  // import { useWindowSize } from '@vueuse/core';
   import ptIDData from '../email.json';
   import { ref } from 'vue'
   
-  const { width, height } = useWindowSize()
+  // const { width, height } = useWindowSize()
   const confirmed =ref(0)
   const ptID = ref('')
-  const newName = ref('nN');
+  // const newName = ref('nN');
 
-if (localStorage.name) {
-      this.name = localStorage.name;
-    }
+// if (localStorage.name) {
+//       this.name = localStorage.name;
+//     }
 
-//console.log("# name=", name.value );
-//console.log('wsessionS=',window.sessionStorage.ptID);
 
 function save_ptID(string) {
   console.log('fn save_ptID bef: string=', string, 'ptID=', ptIDData.ptID, 'confirmed=', confirmed.value);
@@ -36,39 +34,36 @@ function save_ptID(string) {
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-<!-- <div class="container"> -->
-  <!-- <div col-sm-6 col-12>  -->
 
-    <!--  Header  -->
-    <div class = "header-mt-auto header-large"> 
-      <br><br><br>
-      <h5>  FOR OFFICE USE
-            <br>
-            UKUSETYENZISWA YIOFISI KUPHELA  
-      </h5>
-    </div>
+  <!--  Header  -->
+  <div class = "header-mt-auto header-large"> 
+    <br><br><br>
+    <h5> FOR OFFICE USE
+         <br>
+         UKUSETYENZISWA YIOFISI KUPHELA  
+    </h5>
+  </div>
   
-    <!--  CENTRE SECTION  -->
+    <!--  Centre text  -->
     <div class="middle-small">
       <br><br><br>
       <div class="center">
-
-          <h3>  Enter Participant ID or Patient Code </h3>
-          <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
-          <br><br>
-          <span v-if="confirmed === 0"> 
-            <input v-model="ptIDData.ptID" class = "unselected">  
-          </span> 
-          <span v-if="confirmed === 1"> 
-            <input v-model="ptIDData.ptID" class = "selected">  
-          </span> 
-          <button @click = save_ptID(ptID)> Confirm </button>         
-        </div>  
-
+        <h3>  Enter Participant ID or Patient Code </h3>
+        <h3>  Faka i-ID yoMthabathinxaxheba okanye iKhowudi yesiGulane </h3>
+        <br><br>
+        <span v-if="confirmed === 0"> 
+          <input v-model="ptIDData.ptID" class = "unselected">  
+        </span> 
+        <span v-if="confirmed === 1"> 
+          <input v-model="ptIDData.ptID" class = "selected">  
+        </span> 
+        <button @click = save_ptID(ptID)> Confirm </button>         
+      </div>  
     </div>
 
   
   <!--  FOOTER SECTION  -->
+
   <!-- Non mobile devices -->
   <div class="d-none d-sm-block">
     <div class="footer-mt-auto footer-large fixed-bottom">   
@@ -86,6 +81,7 @@ function save_ptID(string) {
     </div>
   </div>
 
+  <!-- Mobile devices -->
   <div class="d-block d-sm-none">
     <div class="footer-mt-auto footer-large fixed-bottom">   
         <div class="footer-text">

@@ -1,4 +1,4 @@
-<!-- DISCLAIMER SCREEN (x3) -->
+<!-- DISCLAIMER SCREEN 2/3 -->
 
 <!---------------------------->
 <!--  SCRIPT SETUP SECTION  -->
@@ -6,16 +6,13 @@
 
 <script setup>
   import { ref } from 'vue'
-  import { useWindowSize } from '@vueuse/core'
-  import { useElementSize } from '@vueuse/core'
-  //import sound from '../assets/AudioTest.m4a'
   import sound_en from '../assets/Audio/EN04-Disc2.wav'
   import sound_xh from '../assets/Audio/XH04-Disc2.wav'
 
   // to allow use of router.push in functions:
   import { useRouter, useRoute } from 'vue-router'
   const router = useRouter()
-  const route = useRoute()
+  // const route = useRoute()
 
   const screen_text = {
     "en": "You should NOT complete this questionnaire in a setting where you do not have access to psychological care referrals, such as when you are at home.",
@@ -28,17 +25,17 @@
 
   const lang = ref("L")
 
+//-----------//
+// Functions //
+//-----------//
   function setlang(l) {
     lang.value =  l
-    //console.log("setlang: lang=", lang.value, " l=", l)
   } 
   function gotoDisc1() {
-    //console.log("FUNCTION gotoDisc1:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({name: 'disclaimer', params: { lang: lang.value } });
   }
   function gotoDisc3() {
-    //console.log("FUNCTION gotoDisc3:  lang=", lang.value)
     screen_audio[lang.value].pause();
     router.push({  name: 'disclaimer3', params: { lang: lang.value } });
   }
@@ -49,13 +46,10 @@
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
-  <!-- <div class="container"> -->
     {{setlang($route.params.lang)}}
 
     <!-- Screen Body (Disclaimer Text)-->
     <div class = "infoscreen"> 
-      <!-- {{console.log("$route.params.lang=", $route.params.lang, 'lang=', lang)}}
-      {{ console.log('screen_text[lang]', screen_text[lang]) }} -->
       <br>
       <div class="screenbox">
         <div class = "centerV">
@@ -66,8 +60,6 @@
 
   <!-- Footer  -->
   <div class = "footer-mt-auto footer fixed-bottom">  
-    <!-- {{ console.log("screen_audio[lang]=", screen_audio[lang]) }} -->
-      <!--  Speaker and Progress dots -->
     <div class="fixed-bottom">
       <div class="d-flex align-items-center justify-content-between">   
         <span @click = screen_audio[lang].play>

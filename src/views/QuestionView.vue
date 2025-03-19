@@ -1,4 +1,4 @@
-<!--  MAIN QUESTIONNAIRE SCREEN     -->
+<!--  MAIN QUESTIONNAIRE SCREEN (questions 1-9) -->
 
 <!---------------------------->
 <!--  SCRIPT SETUP SECTION  -->
@@ -27,8 +27,6 @@ import soundQ8_en from '../assets/Audio/EN14-Q8.wav'
 import soundQ8_xh from '../assets/Audio/XH14-Q8.wav'
 import soundQ9_en from '../assets/Audio/EN15-Q9.wav'
 import soundQ9_xh from '../assets/Audio/XH15-Q9.wav'
-import soundXQ_en from '../assets/Audio/EN20-XQ.wav'
-import soundXQ_xh from '../assets/Audio/XH20-XQ.wav'
 
 import soundA0_en from '../assets/Audio/EN16-A0.wav'
 import soundA0_xh from '../assets/Audio/XH16-A0.wav'
@@ -39,36 +37,27 @@ import soundA2_xh from '../assets/Audio/XH18-A2.wav'
 import soundA3_en from '../assets/Audio/EN19-A3.wav'
 import soundA3_xh from '../assets/Audio/XH19-A3.wav'
 
-import soundXA0_en from '../assets/Audio/EN21-XA0.wav'
-import soundXA0_xh from '../assets/Audio/XH21-XA0.wav'
-import soundXA1_en from '../assets/Audio/EN22-XA1.wav'
-import soundXA1_xh from '../assets/Audio/XH22-XA1.wav'
-import soundXA2_en from '../assets/Audio/EN23-XA2.wav'
-import soundXA2_xh from '../assets/Audio/XH23-XA2.wav'
-import soundXA3_en from '../assets/Audio/EN24-XA3.wav'
-import soundXA3_xh from '../assets/Audio/XH24-XA3.wav'
-
 // to allow use of router.push in functions:
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
-const route = useRoute()
+// const route = useRoute()
 
 const selected = ref(null)
 const language = ref('en')
 const question = ref(0)
 
 const score_list = 
-    [  "one", 
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine",
-        "total"
-]
+  [ "one", 
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "total"
+  ]
 const answers = {
   'en': [
     "Not at<br> all<br>",
@@ -86,7 +75,7 @@ const answers = {
 const header = {
   "en": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
   "xh": "Kwiiveki ezi-2 ezidlulileyo, ingaba uhlutshwe rhoqo kangakanani yiyo nayiphi na kwezi ngxaki zilandelayo?"
-}
+  }
 const questions = {
     "en": [
         "Little interest or pleasure in doing things", 
@@ -112,11 +101,11 @@ const questions = {
         "Iingcinga zokuba kungcono ubhubhe okanye ukuzenzakalisa ngandlela ithile",
         "question 10 text"
     ],
-}
+  }
 const alert_msg = {
   "en": "Please choose an answer to continue.",
   "xh": "Ukuthumela iziphumo njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho."
-}
+  }
 const questions_audio = {
   'en': [
     new Audio(soundQ1_en),
@@ -139,7 +128,8 @@ const questions_audio = {
     new Audio(soundQ7_xh),
     new Audio(soundQ8_xh),
     new Audio(soundQ9_xh)
-  ]}
+  ]
+  }
 const answers_audio = {
   'en': [
     new Audio(soundA0_en),
@@ -152,17 +142,10 @@ const answers_audio = {
     new Audio(soundA1_xh),
     new Audio(soundA2_xh),
     new Audio(soundA3_xh)
-  ]}
+  ]
+  }
 
-const total = ref(0)
-const tot = ref(0)
-const x = ref(0)
 const lang = ref("L")
-const qnum = ref(1)
-const qnumnew = ref(1)
-const confirmed = ref(0)
-const answered = ref(0)
-const answer_count = ref(0)
 const already_reversed = ref(0)
 const current_audio_answer = ref(0)
 
@@ -181,147 +164,107 @@ if (window.sessionStorage.reset_scores == 1)
 ///////////////////////////////
 
 function play_question(lang, question) {
-    stop_audio(); 
-    questions_audio[lang][question].play();
-    }
-
+  stop_audio(); 
+  questions_audio[lang][question].play();
+  }
 function play_answer(audio, i) {
-    stop_audio(); 
-    current_audio_answer.value =i;
-    audio.play();
-    }
-
+  stop_audio(); 
+  current_audio_answer.value =i;
+  audio.play();
+  }
 function stop_audio() {
-  console.log("FUNCTION STOP AUDIO: language=",lang.value, 'current_audio_answer', current_audio_answer.value);
   questions_audio[lang.value][question.value].pause();
   questions_audio[lang.value][question.value].currentTime = 0;
   answers_audio[lang.value][current_audio_answer.value].pause();
   answers_audio[lang.value][current_audio_answer.value].currentTime = 0;
-}
-
+  }
 function nextQuestion(diff) {
-  console.log("FN nextQuestion start: diff=", diff, "selected=", selected.value, "question=", question.value)
   stop_audio();  
-  console.log("alert_msg[lang]=", alert_msg[lang.value], ".value=", alert_msg[lang.value])
-  console.log("lang.value=", lang.value)
   if ( (selected.value != null && 
         question.value+diff >= 0 &&
         question.value+diff < questions[language.value].length) )
     { 
       question.value += diff
       selected.value = null
-      console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
     }
   else 
     if (selected.value == null &&
         diff == -1)
     {question.value += diff
-      console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
     }
   else 
     if (diff==1)
     {alert(alert_msg[lang.value]);
   }    
-  //console.log("diff=", diff, "selected=", selected.value, "question=", question.value)
-}
-
+  }
 function changeSelected(id) {
-  console.log("FN changeSelected:  id=", id, "question.value=", question.value );
   selected.value = id;
   updateData.qtext[question.value] = id;
   window.sessionStorage.scorearray = JSON.stringify(updateData.qtext)
-  //window.sessionStorage.scores = updateData.qtext;
-  console.log("FN changeSelected end:  updateData.qtext=", updateData.qtext, "selected=", selected.value);
-  // score_list_saved[question.value] = id;
-  // console.log("score_list_saved=", score_list_saved, "score_list_saved[question.value]=", score_list_saved[question.value]);
-  //console.log("wss.json.stringify", JSON.stringify(window.sessionStorage.scores), 'wss.scores[1]=', JSON.stringify(window.sessionStorage.scores)[1])
-     }
-
+  }
 function setSelected(n) {
-    if (updateData.qtext[n]=='0' || updateData.qtext[n]=='1'|| updateData.qtext[n]=='2'|| updateData.qtext[n]=='3' )
-        {selected.value=updateData.qtext[n];}
-    }
-
+  if (updateData.qtext[n]=='0' || updateData.qtext[n]=='1'|| updateData.qtext[n]=='2'|| updateData.qtext[n]=='3' )
+      {selected.value=updateData.qtext[n];}
+  }
 function setQnumber(n) {
   if ( n == 9 & already_reversed.value==0)
       {already_reversed.value = 1
         question.value =8
        }
-}
-
+  }
 function saveScores() {
-  console.log('FN saveScores start: updateData.qtext=', updateData.qtext, 'updateData.qtext[1]=',updateData.qtext[1]);
   updateData.qtext[9] = updateData.qtext[0]+updateData.qtext[1]+updateData.qtext[2]+updateData.qtext[3]+updateData.qtext[4]+updateData.qtext[5]+
                           updateData.qtext[6]+updateData.qtext[7]+updateData.qtext[8];
   window.sessionStorage.scores = updateData.qtext;
   window.sessionStorage.scorearray = JSON.stringify(updateData.qtext)
-  console.log('fn saveScores end: wss.scores=', window.sessionStorage.scores, 'wss.scorearray=', window.sessionStorage.scorearray);
-}
-  function setlang(l) {
-
-    lang.value =  l
-    //console.log("l=", l, 'lang.value=', lang.value)
-  }  
-  function gotoQIntro() {
-    console.log("FUNCTION gotoQIntro:  lang=", lang.value)
-    stop_audio();
-    router.push({name: 'qintro', params: { lang: lang.value}});
   }
-
-  function gotoQ10() {
-   console.log("FUNCTION gotoQ10:  lang=", lang.value);
-   stop_audio();
-    if (selected.value == null)
-       { alert(alert_msg[language.value]);}
-    else {saveScores();
-          questions_audio[lang.value][question.value].pause();
-          router.push({name: 'extraquestion', params: { lang: lang.value}});
-        } 
+function setlang(l) {
+  lang.value =  l
+  }  
+function gotoQIntro() {
+  stop_audio();
+  router.push({name: 'qintro', params: { lang: lang.value}});
+  }
+function gotoQ10() {
+  stop_audio();
+  if (selected.value == null)
+     { alert(alert_msg[language.value]);}
+  else {saveScores();
+        questions_audio[lang.value][question.value].pause();
+        router.push({name: 'extraquestion', params: { lang: lang.value}});
+       } 
   }
 </script>
-
 
 <!---------------------------->
 <!--  SCREEN SETUP SECTION  -->
 <!---------------------------->
 <template>
 
-<!-- {{ language =  $route.params.lang }} -->
-<!--{{ console.log("answers=",answers, "answers[en,1]", answers['en',1]) }}
-{{ console.log("answers_audio", answers_audio, "answers_audio[en,1]=", answers_audio['en',1]) }} -->
-<!-- {{ console.log("$route.params.lang=", $route.params.lang, "$route.params.qnumber", $route.params.qnumber)}}  -->
-
-<!-- {{ setLanguage($route.params.lang) }} -->
-
   {{ setlang($route.params.lang) }}
   {{ setQnumber($route.params.qnumber) }}
   {{ setSelected(question) }}
 
-  <!-- <div class="container"> -->
+  <!------------------------------------------------------------------------------------------------------>
+  <!--  HEADER                                                                                          -->
+  <!------------------------------------------------------------------------------------------------------> 
+  <div class = "header">
+    <br>
+    <h2>{{ header[lang] }}</h2>
+  </div>
 
-    <!------------------------------------------------------------------------------------------------------>
-    <!--  HEADER                                                                                          -->
-    <!------------------------------------------------------------------------------------------------------> 
-    <div class = "header">
+  <div class="middle">
+  <!------------------------------------------------------------------------------------------------------>
+  <!--  QUESTION                                                                                        -->
+  <!------------------------------------------------------------------------------------------------------> 
+    <div class="question">
+      <h1> {{ question+1 }} </h1>
+      <h1> {{ questions[lang][question] }}</h1>
+        <span  @click=play_question(lang,question) >   
+          <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
+        </span>
       <br>
-      <h2>{{ header[lang] }}</h2>
     </div>
-
-    <div class="middle">
-    <!------------------------------------------------------------------------------------------------------>
-    <!--  QUESTION                                                                                        -->
-    <!------------------------------------------------------------------------------------------------------> 
-      <div class="question">
- 
-        <h1> {{ question+1 }} </h1>
-        <h1> {{ questions[lang][question] }}</h1>
-        <!-- <button type="button" class="btn btn-light speaker-btn"> -->
-          <!-- <span  @click=questions_audio[lang][question].play() >      -->
-          <span  @click=play_question(lang,question) >   
-            <img alt="speaker" src="../assets/speaker.png"  class="speaker_q" /> 
-          </span>
-        <br>
-      </div>
       
 <!------------------------------------------------------------------------------------------------------>
 <!--  ANSWERS                                                                                         -->
@@ -348,21 +291,18 @@ function saveScores() {
 <!--  FOOTER                                                                                          -->
 <!------------------------------------------------------------------------------------------------------> 
 <div class = "mt-auto footer">
-
-  <!-- <h8> Blank footer text for language screen. Blank footer text for language screen. Next line </h8>  -->
-      <div class="footer-arrows d-flex align-items-center justify-content-between footer-text fixed-bottom">
-
-        <!-- Left arrow navigation, depending on question number -->
-        <a v-if="question > 0" @click="nextQuestion(-1)"> &#8592 </a>
-        <a v-else @click="gotoQIntro()"> &#8592 </a>
+  <div class="footer-arrows d-flex align-items-center justify-content-between footer-text fixed-bottom">
+    <!-- Left arrow navigation, depending on question number -->
+    <a v-if="question > 0" @click="nextQuestion(-1)"> &#8592 </a>
+    <a v-else @click="gotoQIntro()"> &#8592 </a>
 
 <!-- temporary link for testing -->
-<router-link :to="{ name: 'extraquestion', params: { lang } }" class="darkred"> q10 </router-link>  
+<!-- <router-link :to="{ name: 'extraquestion', params: { lang } }" class="darkred"> q10 </router-link>   -->
 
-        <!-- Right arrow navigation, depending on question number-->
-        <a v-if="question < 8" @click="nextQuestion(1)"> &#8594 </a>
-        <a v-else @click="gotoQ10()"> &#8594</a>
-      </div>
+    <!-- Right arrow navigation, depending on question number-->
+    <a v-if="question < 8" @click="nextQuestion(1)"> &#8594 </a>
+    <a v-else @click="gotoQ10()"> &#8594</a>
+  </div>
 
 </div> 
 </template>
@@ -370,34 +310,6 @@ function saveScores() {
 <style scoped>
 .darkred {
   color: darkred;
-  /* font-size: 4rem; */
-}
-.unselected {
-  color: black;
-  font-weight:  100;
-  font-size: 1.5rem;
-  text-align: center;
-  text-decoration: none;
-}
-a.answer {
-  color: black;
-  font-weight:  500;
-  font-size: 1.5rem;
-  text-align: center;
-  text-decoration: none;
-}
-a.answer:hover{
-  font-size: 1.6rem;
-  font-weight: 600;
-  color:blue;
-  background-color: lightgrey; 
-  padding: 10px;
-}
-.speaker-box {
-  background-color: blue;
-  height: 40 px;
-  border: 20px !important;
-  border-color: purple;
 }
 h1 {
   font-weight:  600;
@@ -408,22 +320,6 @@ h2 {
   font-weight:  500;
   font-size: 0.9rem;
   text-align: center;
-}
-h3 {
-  font-weight:  500;
-  font-size: 1.2rem;
-  text-align: center;
-  text-decoration: none;
-}
-h4 {
-  font-weight:  500;
-  font-size: 1.5rem;
-  text-align: center;
-}
-h6 {
-  font-weight:  500;
-  font-size: 2.0rem;
-  text-align: right;
 }
 .question {
   padding: 1rem !important;
@@ -436,11 +332,5 @@ h6 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-left: 1vw !important;
   margin-right: 1vw !important;
-  /*align-items: center !important;
-  /*padding: 30 rem !important;
-  /*height: 10vh;
-  border-width: 1px !important;
-  border-color: grey; */
 }
-
 </style>

@@ -1,12 +1,15 @@
+<!--  ACKNOWLEDGEMENTS SCREEN           -->
+
+<!---------------------------->
+<!--  SCRIPT SETUP SECTION  -->
+<!---------------------------->
 <script setup>
 </script>
 
+<!---------------------------->
+<!--  SCREEN SETUP SECTION  -->
+<!---------------------------->
 <template>
-
-<!-- <div class="container"> -->
-
-  <!-- Adjust width depending on small or larger screen size, by total columns used -->
-  <div col-sm-6 col-12>
 
     <!--  Page title -->
     <div class="header-small">
@@ -14,11 +17,7 @@
        <h4> ACKNOWLEDGEMENTS </h4>
     </div>
 
-    <!-- <div class="set-width">
-        <br>
-    </div> -->
-
-    <!-- Main text -->
+    <!-- Information text -->
     <div class="ack-middle">
         <table class="table table-striped table-bordered">
             <thead>
@@ -71,6 +70,7 @@
             </table>
             <br>
         </div>
+
 <div class="fixed-bottom">
     <!--  University Logos -->
     <br>
@@ -88,19 +88,13 @@
         </div>
     </div>
 </div>
-</div>
-<!-- </div> -->
 
 </template>
 
-
 <style scoped>
-
 table {
-  /* margin-left:200; */
   width:90vw;
   height: 48vh;
-  /* margin: 0px auto; */
 }
 th {
   font-weight: 700;
@@ -114,15 +108,6 @@ td {
   text-align: left;
   padding-left: 10px !important;
 }
-.header {
-  padding: 5%;
-  background-color: darkred;
-  color: white;
-  text-align: center;
-  margin: auto;
-  width: 100%;
-  height: 15vh;
-}
 .ack-middle {
   padding: 0%;
   background-color: white;
@@ -134,11 +119,4 @@ td {
   margin-left: 5vw !important;
   margin-right: 0% !important;
 }
-/* .ack-footer {
-  padding: 2%;
-  background-color: darkred;
-  color: white;
-  height: 0vh;
-} */
-
 </style>
