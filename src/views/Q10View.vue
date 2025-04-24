@@ -70,7 +70,7 @@ const answers_audio = {
   }
 const alert_msg = {
   "en": "Please choose an answer to continue.",
-  "xh": "Ukuthumela iziphumo njenge imeyile, kufuneka ube ne akhawunti ye imeyile kwisixhobo sakho."
+  "xh": "Nceda khetha impendulo ukuqhubeka."
   }
 
 const lang = ref("L")

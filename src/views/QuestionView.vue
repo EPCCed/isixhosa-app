@@ -104,7 +104,7 @@ const questions = {
   }
 const alert_msg = {
   "en": "Please choose an answer to continue.",
-  "xh": "Nceda khetha impendulo ukuqhubeka."
+  "xh": "Nceda khetha impendulo ukuqhubeka."
   }
 const questions_audio = {
   'en': [
@@ -227,8 +227,9 @@ function gotoQIntro() {
   }
 function gotoQ10() {
   stop_audio();
+  console.log("FUNCTION gotoQ10:  language=", lang.value)
   if (selected.value == null)
-     { alert(alert_msg[language.value]);}
+     { alert(alert_msg[lang.value]);}
   else {saveScores();
         questions_audio[lang.value][question.value].pause();
         router.push({name: 'extraquestion', params: { lang: lang.value}});
